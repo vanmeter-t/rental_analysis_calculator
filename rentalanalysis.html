@@ -23,15 +23,18 @@ Author: Deven Swiergiel
     crossorigin="anonymous">
 
   <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-    crossorigin="anonymous">
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
+    crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
+    crossorigin="anonymous"></script>
 
-
-
-    </script>
+  <script>
+    $(function () {
+      $('[data-toggle="tooltip"]').tooltip()
+    })</script>
 
   <style>
-    /* TESTING ACCORDION */
-
     /*----- Accordion -----*/
 
     .accordion,
@@ -92,39 +95,7 @@ Author: Deven Swiergiel
 
     }
 
-    /* END TESTING ACCORDION */
-
-    /* Accordion */
-
-    /* .accordion {
-      background-color: #eee;
-      color: #444;
-      cursor: pointer;
-      padding: 10px;
-      width: 100%;
-      border: solid;
-      border-color: rgb(63, 63, 63);
-      text-align: left;
-      outline: none;
-      font-size: 15px;
-      transition: 0.4s;
-    }
-
-    .active,
-    .accordion:hover {
-      background-color: #ccc;
-    }
-
-    .panel {
-      padding: 10px;
-      display: none;
-      border: solid;
-      border-color: rgb(63, 63, 63);
-      background-color: white;
-      color: black;
-    } */
-
-    /* END Accordion */
+    /*----- END Accordion -----*/
 
     body {
       margin-top: 50px;
@@ -139,7 +110,7 @@ Author: Deven Swiergiel
     #panel {
       background-color: #333;
       /* padding: 20px 0px 15px 0px; */
-      padding: 30px 10px 30px 10px;
+      padding: 30px 10px 10px 10px;
     }
 
     .col-md-8 {
@@ -189,52 +160,35 @@ Author: Deven Swiergiel
       float: right;
     }
 
-    .ToolTip {
-      position: relative;
-      display: inline-block;
 
-    }
-
-    .ToolTip .TipText {
+    .arrow {
       visibility: hidden;
-      width: 200px;
-      background-color: black;
-      color: lightgrey;
-      text-align: center;
-      border-radius: 6px;
-      padding: 5px 5px 10px 5px;
-      position: absolute;
-      z-index: 5!important;
-      bottom: 150%;
-      left: 50%;
-      margin-left: -100px;
     }
 
-    .ToolTip .TipText::after {
-      content: "";
-      position: absolute;
-      top: 100%;
-      left: 50%;
-      margin-left: -5px;
-      border-width: 5px;
+    .tooltip {
+
+      max-width: 300px;
+      background-color: white;
+
+      border-radius: 3px;
+      border-width: 1px;
+      border-color: #686868;
       border-style: solid;
-      border-color: black transparent transparent transparent;
+
+      left: 10px!important;
+      top: -5px!important;
+      right: 10px!important;
+
     }
 
-    .ToolTip #cashFlow.TipText {
-      width: 300px;
-      margin-left: -200px;
-    }
+    .tooltip-inner {
+      background-color: white;
+      color: black;
+      font-size: 15px;
+      text-align: left;
+      max-width: 300px;
 
-    .ToolTip #cashFlow.TipText::after {
-      left: 67%;
     }
-
-    .ToolTip:hover .TipText {
-      visibility: visible;
-      opacity: .85;
-    }
-
 
     @media(max-width: 900px) {
 
@@ -251,11 +205,11 @@ Author: Deven Swiergiel
         font-size: 40px;
       }
       .container {
-        width: 800px!important;
+        width: 1000px!important;
         max-width: 100%!important;
       }
       .col-md-8 {
-        width: 800px!important;
+        width: 1000px!important;
         max-width: 100%!important;
       }
 
@@ -436,42 +390,22 @@ Author: Deven Swiergiel
 
                 <form id="propertyInfo" onsubmit="return Submit()">
                   <div>
+
                     <h6>Street address
-                      <!-- <div class="ToolTip">
-                        <span class="TipText">How many units on average will the properties you invest in have?
-                          <br>
-                          <br>1 unit = single family</span>
-                        <i class="fa fa-info-circle" style="color: grey; margin-left: .2em;" aria-hidden="true"></i>
-                      </div> -->
+                      <i class="fa fa-info-circle" style="color: grey; margin-left: .2em;" aria-hidden="true" data-toggle="tooltip" data-placement="top"
+                        title="Where is the property located? This is optional."></i>
                     </h6>
                     <input id="addressIN" type="text" class="form-control form-control-md" placeholder="745 Seventh Avenue">
 
                     <div class="mt-2 form-row align-items-center">
                       <div class="col-9">
                         <h6>City
-                          <!-- <div class="ToolTip">
-                        <span id="cashFlow" class="TipText">What is the estimated monthly cash flow per unit on average?
-                          <br>
-                          <br>This is profit after all expenses.
-                          <br>Typically, at a minimum, these expenses are considered:
-                          <br>
-                          <br>mortgage, property taxes, and insurance
-
-                          <br>as well as
-
-                          <br>percentages accounting for: major and minor repairs and vacancies.</span>
-                        <i class="fa fa-info-circle" style="color: grey; margin-left: .2em;" aria-hidden="true"></i>
-                      </div> -->
                         </h6>
                         <input id="cityIN" type="text" class="form-control " placeholder="New York">
 
                       </div>
                       <div class="col-3">
                         <h6>State
-                          <!-- <div class="ToolTip">
-                        <span class="TipText">How much money do you plan to invest not counting rental income?</span>
-                        <i class="fa fa-info-circle" style="color: grey; margin-left: .2em;" aria-hidden="true"></i>
-                      </div> -->
                         </h6>
                         <input id="stateIN" type="text" class="form-control " placeholder="NY">
                       </div>
@@ -479,23 +413,13 @@ Author: Deven Swiergiel
 
                     <div class="mt-2"></div>
                     <h6>Zip Code
-                      <!-- <div class="ToolTip">
-                        <span class="TipText">What is the average amount you plan to spend on a down payment per property?
-                          <br>
-                          <br>For more accurate results, include all estimated closing costs.</span>
-                        <i class="fa fa-info-circle" style="color: grey; margin-left: .2em;" aria-hidden="true"></i>
-                      </div> -->
                     </h6>
                     <input id="zipIN" type="number" min="0" class="form-control form-control-md " placeholder="10019">
 
                     <div class="mt-2"></div>
                     <h6>Annual Property Taxes
-                      <!-- <div class="ToolTip">
-                        <span class="TipText">What is the average amount you plan to spend on a down payment per property?
-                          <br>
-                          <br>For more accurate results, include all estimated closing costs.</span>
-                        <i class="fa fa-info-circle" style="color: grey; margin-left: .2em;" aria-hidden="true"></i>
-                      </div> -->
+                      <i class="fa fa-info-circle" style="color: grey; margin-left: .2em;" aria-hidden="true" data-toggle="tooltip" container:'body' data-placement="top" data-html="true"
+                        title="How much are the total annual property taxes for the property? <br><br>If you are unsure, this information is typically found on the county's assessor website."></i>
                     </h6>
                     <div class="input-group">
                       <span class="input-group-addon">
@@ -544,19 +468,19 @@ Author: Deven Swiergiel
 
                     <div class="mt-2"></div>
                     <h6>After Repair Value
-                        <!-- <div class="ToolTip">
+                      <!-- <div class="ToolTip">
                                   <span class="TipText">How many units on average will the properties you invest in have?
                                     <br>
                                     <br>1 unit = single family</span>
                                   <i class="fa fa-info-circle" style="color: grey; margin-left: .2em;" aria-hidden="true"></i>
                                 </div> -->
-                      </h6>
-                      <div class="input-group">
-                        <span class="input-group-addon">
-                          <i class="fa fa-usd"></i>
-                        </span>
-                        <input id="arvIN" type="number" class="form-control form-control-md" placeholder="204,000">
-                      </div>
+                    </h6>
+                    <div class="input-group">
+                      <span class="input-group-addon">
+                        <i class="fa fa-usd"></i>
+                      </span>
+                      <input id="arvIN" type="number" class="form-control form-control-md" placeholder="204,000">
+                    </div>
 
                     <div class="mt-2 form-row align-items-center">
                       <div class="col-9">
