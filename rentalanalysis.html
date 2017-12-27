@@ -185,7 +185,7 @@ Author: Deven Swiergiel
       background-color: white;
       color: black;
       font-size: 15px;
-      text-align: left;
+      text-align: center;
       max-width: 300px;
 
     }
@@ -276,9 +276,6 @@ Author: Deven Swiergiel
       }
     }
   </style>
-
-
-
 </head>
 
 <body class="marginTop container" onload="">
@@ -290,39 +287,7 @@ Author: Deven Swiergiel
         <h2 class="lead text-center " style="margin-bottom: 20px; font-size: 21px">Created by Deven Swiergiel</h2>
         <p class="lead text-center mobileSubHeader">This tool will allow you to quickly analyze potential rental property investments to help you determine whether or
           not it's a good deal.
-          <!--Keep in mind that this is for rough estimation purposes, you should not expect exact results.-->
         </p>
-
-        <!-- 
-
-          Things needed: 
-
-          Summation function:
-          rent*n where n is the number of years
-
-          Fututure features:
-          - swipe/slide/click over for viewing estimated equity
-            - this can be done by asking for down payment percentage and interest rate(or assumging the typical 20% and interest rate)
-              - This is then used to calculate the cost of the house and then appling typical amortization
-
-
-          Input:
-          - monthly rent per unit(average)
-          - money to spend each year on properties
-          - average down payment
-          - how many years
-          
-          For more advanced estimation using actual income and tax brackets(will use API to calculate income tax):
-          - Individual personal income
-
-          Output:
-          - all of the above
-          - Monthly and yearly income after x number of years and units
-          - how many units after x number of years
-
-         -->
-
-        <!-- Output -->
 
         <div id="output" class="col-md-7 right" style="padding-right: 0px; padding-left: 0px;">
           <div class="card output ">
@@ -348,9 +313,8 @@ Author: Deven Swiergiel
                 <h5>Years:
                   <div class="right outputMobile" id="yearsOUT">0</div>
                 </h5>
-
-                <h5 id="dashed" style="border-style: dashed; ">
-                </h5>
+                
+                <hr>
 
                 <h5>Total Units:
                   <div class="right outputMobile" id="totalNumberOfUnits">0</div>
@@ -378,9 +342,7 @@ Author: Deven Swiergiel
         </div>
 
         <!-- Input -->
-
         <div class="form-group  left col-md-5 ">
-
 
           <div class="accordion">
             <div class="accordion-section">
@@ -418,8 +380,8 @@ Author: Deven Swiergiel
 
                     <div class="mt-2"></div>
                     <h6>Annual Property Taxes
-                      <i class="fa fa-info-circle" style="color: grey; margin-left: .2em;" aria-hidden="true" data-toggle="tooltip" container:'body' data-placement="top" data-html="true"
-                        title="How much are the total annual property taxes for the property? <br><br>If you are unsure, this information is typically found on the county's assessor website."></i>
+                      <i class="fa fa-info-circle" style="color: grey; margin-left: .2em;" aria-hidden="true" data-toggle="tooltip" container:
+                        'body' data-placement="top" data-html="true" title="How much are the total annual property taxes for the property? <br><br>If you are unsure, this information is typically found on the county's assessor website."></i>
                     </h6>
                     <div class="input-group">
                       <span class="input-group-addon">
@@ -435,12 +397,7 @@ Author: Deven Swiergiel
                     onclick="propertyValidate()">Next</button>
                 </form>
 
-                <!-- <a class="accordion-section-title mt-3" style="text-align: center; padding: 8px; padding-bottom: 10px; border: 1px solid; border-radius: 3px;"
-                  href="#accordion-2">Next</a> -->
-
               </div>
-
-
             </div>
           </div>
 
@@ -452,12 +409,7 @@ Author: Deven Swiergiel
                   <div>
 
                     <h6>Purchase Price
-                      <!-- <div class="ToolTip">
-                                <span class="TipText">How many units on average will the properties you invest in have?
-                                  <br>
-                                  <br>1 unit = single family</span>
-                                <i class="fa fa-info-circle" style="color: grey; margin-left: .2em;" aria-hidden="true"></i>
-                              </div> -->
+
                     </h6>
                     <div class="input-group">
                       <span class="input-group-addon">
@@ -468,12 +420,7 @@ Author: Deven Swiergiel
 
                     <div class="mt-2"></div>
                     <h6>After Repair Value
-                      <!-- <div class="ToolTip">
-                                  <span class="TipText">How many units on average will the properties you invest in have?
-                                    <br>
-                                    <br>1 unit = single family</span>
-                                  <i class="fa fa-info-circle" style="color: grey; margin-left: .2em;" aria-hidden="true"></i>
-                                </div> -->
+
                     </h6>
                     <div class="input-group">
                       <span class="input-group-addon">
@@ -485,29 +432,14 @@ Author: Deven Swiergiel
                     <div class="mt-2 form-row align-items-center">
                       <div class="col-9">
                         <h6>City
-                          <!-- <div class="ToolTip">
-                            <span id="cashFlow" class="TipText">What is the estimated monthly cash flow per unit on average?
-                              <br>
-                              <br>This is profit after all expenses.
-                              <br>Typically, at a minimum, these expenses are considered:
-                              <br>
-                              <br>mortgage, property taxes, and insurance
-    
-                              <br>as well as
-    
-                              <br>percentages accounting for: major and minor repairs and vacancies.</span>
-                            <i class="fa fa-info-circle" style="color: grey; margin-left: .2em;" aria-hidden="true"></i>
-                          </div> -->
+
                         </h6>
                         <input id="cityIN" type="text" class="form-control " placeholder="New York">
 
                       </div>
                       <div class="col-3">
                         <h6>State
-                          <!-- <div class="ToolTip">
-                            <span class="TipText">How much money do you plan to invest not counting rental income?</span>
-                            <i class="fa fa-info-circle" style="color: grey; margin-left: .2em;" aria-hidden="true"></i>
-                          </div> -->
+
                         </h6>
                         <input id="stateIN" type="text" class="form-control " placeholder="NY">
                       </div>
@@ -515,23 +447,13 @@ Author: Deven Swiergiel
 
                     <div class="mt-2"></div>
                     <h6>Zip Code
-                      <!-- <div class="ToolTip">
-                            <span class="TipText">What is the average amount you plan to spend on a down payment per property?
-                              <br>
-                              <br>For more accurate results, include all estimated closing costs.</span>
-                            <i class="fa fa-info-circle" style="color: grey; margin-left: .2em;" aria-hidden="true"></i>
-                          </div> -->
+
                     </h6>
                     <input id="zipIN" type="number" min="0" class="form-control form-control-md " placeholder="10019">
 
                     <div class="mt-2"></div>
                     <h6>Annual Property Taxes
-                      <!-- <div class="ToolTip">
-                            <span class="TipText">What is the average amount you plan to spend on a down payment per property?
-                              <br>
-                              <br>For more accurate results, include all estimated closing costs.</span>
-                            <i class="fa fa-info-circle" style="color: grey; margin-left: .2em;" aria-hidden="true"></i>
-                          </div> -->
+
                     </h6>
                     <input id="ssdf" type="number" min="00.00" step="any" class="form-control form-control-md " required placeholder="1234.55">
 
@@ -556,41 +478,21 @@ Author: Deven Swiergiel
                 <form id="rentalInfo" onsubmit="return Submit()">
                   <div>
                     <h6>Street address
-                      <!-- <div class="ToolTip">
-                                <span class="TipText">How many units on average will the properties you invest in have?
-                                  <br>
-                                  <br>1 unit = single family</span>
-                                <i class="fa fa-info-circle" style="color: grey; margin-left: .2em;" aria-hidden="true"></i>
-                              </div> -->
+
                     </h6>
                     <input id="addressIN" type="text" class="form-control form-control-md" placeholder="745 Seventh Avenue">
 
                     <div class="mt-2 form-row align-items-center">
                       <div class="col-9">
                         <h6>City
-                          <!-- <div class="ToolTip">
-                                <span id="cashFlow" class="TipText">What is the estimated monthly cash flow per unit on average?
-                                  <br>
-                                  <br>This is profit after all expenses.
-                                  <br>Typically, at a minimum, these expenses are considered:
-                                  <br>
-                                  <br>mortgage, property taxes, and insurance
-        
-                                  <br>as well as
-        
-                                  <br>percentages accounting for: major and minor repairs and vacancies.</span>
-                                <i class="fa fa-info-circle" style="color: grey; margin-left: .2em;" aria-hidden="true"></i>
-                              </div> -->
+
                         </h6>
                         <input id="cityIN" type="text" class="form-control " placeholder="New York">
 
                       </div>
                       <div class="col-3">
                         <h6>State
-                          <!-- <div class="ToolTip">
-                                <span class="TipText">How much money do you plan to invest not counting rental income?</span>
-                                <i class="fa fa-info-circle" style="color: grey; margin-left: .2em;" aria-hidden="true"></i>
-                              </div> -->
+
                         </h6>
                         <input id="stateIN" type="text" class="form-control " placeholder="NY">
                       </div>
@@ -598,23 +500,13 @@ Author: Deven Swiergiel
 
                     <div class="mt-2"></div>
                     <h6>Zip Code
-                      <!-- <div class="ToolTip">
-                                <span class="TipText">What is the average amount you plan to spend on a down payment per property?
-                                  <br>
-                                  <br>For more accurate results, include all estimated closing costs.</span>
-                                <i class="fa fa-info-circle" style="color: grey; margin-left: .2em;" aria-hidden="true"></i>
-                              </div> -->
+
                     </h6>
                     <input id="zipIN" type="number" min="0" class="form-control form-control-md " placeholder="10019">
 
                     <div class="mt-2"></div>
                     <h6>Annual Property Taxes
-                      <!-- <div class="ToolTip">
-                                <span class="TipText">What is the average amount you plan to spend on a down payment per property?
-                                  <br>
-                                  <br>For more accurate results, include all estimated closing costs.</span>
-                                <i class="fa fa-info-circle" style="color: grey; margin-left: .2em;" aria-hidden="true"></i>
-                              </div> -->
+
                     </h6>
                     <input id="ssdf" type="number" min="00.00" step="any" class="form-control form-control-md " required placeholder="1234.55">
 
