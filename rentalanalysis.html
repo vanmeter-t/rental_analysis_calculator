@@ -33,7 +33,6 @@ Author: Deven Swiergiel
     $(function () {
       $('[data-toggle="tooltip"]').tooltip()
     })</script>
-
   <style>
     /*----- Accordion -----*/
 
@@ -74,6 +73,7 @@ Author: Deven Swiergiel
 
     }
 
+
     .accordion-section-title.active,
     .accordion-section-title:hover {
       background: #ccc;
@@ -97,6 +97,85 @@ Author: Deven Swiergiel
 
     /*----- END Accordion -----*/
 
+    /*----- Checkbox----- */
+
+    /* The container */
+
+    .CBcontainer {
+      display: block;
+      position: relative;
+      padding-left: 30px;
+      margin-bottom: 0px;
+      cursor: pointer;
+      font-size: 1.2em;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
+
+    /* Hide the browser's default checkbox */
+
+    .CBcontainer input {
+      position: absolute;
+      opacity: 0;
+    }
+
+    /* Create a custom checkbox */
+
+    .checkmark {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 20px;
+      width: 20px;
+      background-color: rgba(165, 165, 165, 0);
+      border: 1px solid;
+      border-radius: 2px;
+    }
+
+    /* On mouse-over, add a grey background color */
+
+    .CBcontainer:hover input~.checkmark {
+      background-color: #ccc;
+    }
+
+    /* When the checkbox is checked, add a blue background */
+
+    .CBcontainer input:checked~.checkmark {
+      background-color: rgb(42, 68, 90);
+    }
+
+    /* Create the checkmark/indicator (hidden when not checked) */
+
+    .checkmark:after {
+      content: "";
+      position: absolute;
+      display: none;
+    }
+
+    /* Show the checkmark when checked */
+
+    .CBcontainer input:checked~.checkmark:after {
+      display: block;
+    }
+
+    /* Style the checkmark/indicator */
+
+    .CBcontainer .checkmark:after {
+      left: 7px;
+      top: 3px;
+      width: 5px;
+      height: 10px;
+      border: solid white;
+      border-width: 0 3px 3px 0;
+      -webkit-transform: rotate(45deg);
+      -ms-transform: rotate(45deg);
+      transform: rotate(45deg);
+    }
+
+    /*----- END Checkbox----- */
+
     body {
       margin-top: 50px;
       background: #2c3e50;
@@ -106,9 +185,23 @@ Author: Deven Swiergiel
     h6 {
       margin-bottom: 4px;
     }
+
     h5 {
       font-size: 17px;
     }
+
+    .subHeader {
+      width: 100%;
+      text-align: center;
+      display: inline-block;
+      position: relative;
+      transition: all linear 0.15s;
+      /* Type */
+      font-size: 1.200em;
+      /* text-shadow: 0px 1px 0px #1a1a1a; */
+      color: #333;
+    }
+
 
     #panel {
       background-color: #333;
@@ -260,6 +353,14 @@ Author: Deven Swiergiel
       .marginTop {
         margin-top: 10px;
       }
+
+      .container {
+        padding: 0px;
+      }
+      .col-md-8 {
+        padding: 0px;
+      }
+
       h5 {
         font-size: 16px;
       }
@@ -277,6 +378,23 @@ Author: Deven Swiergiel
       h5 {
         font-size: 16px;
       }
+      h6 {
+        font-size: 14px;
+      }
+    }
+
+    @media (max-width: 325px) {
+
+      #output {
+        margin-bottom: 10px;
+      }
+      #panel {
+        padding: 1px;
+      }
+
+      h6 {
+        font-size: 14px;
+      }
     }
   </style>
 </head>
@@ -284,268 +402,461 @@ Author: Deven Swiergiel
 <body class="marginTop container" onload="">
   <div id="panel" class="col-md-8 card">
     <title>Rental Analysis Calculator</title>
-    <div class="">
-      <div class="col-md-8">
-        <h1 class="display-4 text-center mobileHeader">Rental Property Analysis Calculator</h1>
-        <h2 class="lead text-center " style="margin-bottom: 20px; font-size: 21px">Created by Deven Swiergiel</h2>
-        <p class="lead text-center mobileSubHeader">This tool will allow you to quickly analyze potential rental property investments to help you determine whether or
-          not it's a good deal.
-        </p>
+    <div class="col-md-8">
+      <h1 class="display-4 text-center mobileHeader">Rental Property Analysis Calculator</h1>
+      <h2 class="lead text-center " style="margin-bottom: 20px; font-size: 21px">Created by Deven Swiergiel</h2>
+      <p class="lead text-center mobileSubHeader">This tool will allow you to quickly analyze potential rental property investments to help you determine whether or
+        not it's a good deal.
+      </p>
 
-        <div id="output" class="col-md-7 right" style="padding-right: 0px; padding-left: 0px;">
-          <div class="card output ">
-            <div class="mt-2 mb-2 ml-1 mr-1">
-              <div class="mr-2 ml-2">
+      <div id="output" class="col-md-7 right" style="padding-right: 0px; padding-left: 0px;">
+        <div class="card output ">
+          <div class="mt-2 mb-2 ml-1 mr-1">
+            <div class="mr-2 ml-2">
 
-                <h5>Units per Property:
-                  <div class="right outputMobile" id="numberOfUnitsOUT">0</div>
-                </h5>
+              <h5>Units per Property:
+                <div class="right outputMobile" id="numberOfUnitsOUT">0</div>
+              </h5>
 
-                <h5>Cash Flow per Unit:
-                  <div class="right outputMobile" id="rentPerUnitOUT">0</div>
-                </h5>
+              <h5>Cash Flow per Unit:
+                <div class="right outputMobile" id="rentPerUnitOUT">0</div>
+              </h5>
 
-                <h5>Funds per Year:
-                  <div class="right outputMobile" id="investableFundsOUT">0</div>
-                </h5>
+              <h5>Funds per Year:
+                <div class="right outputMobile" id="investableFundsOUT">0</div>
+              </h5>
 
-                <h5>Down Payment:
-                  <div class="right outputMobile" id="downPaymentOUT">0</div>
-                </h5>
+              <h5>Down Payment:
+                <div class="right outputMobile" id="downPaymentOUT">0</div>
+              </h5>
 
-                <h5>Years:
-                  <div class="right outputMobile" id="yearsOUT">0</div>
-                </h5>
-                
-                <hr>
+              <h5>Years:
+                <div class="right outputMobile" id="yearsOUT">0</div>
+              </h5>
 
-                <h5>Total Units:
-                  <div class="right outputMobile" id="totalNumberOfUnits">0</div>
-                </h5>
+              <hr>
 
-                <h5>Total Properties:
-                  <div class="right outputMobile" id="numberOfProperties">0</div>
-                </h5>
+              <h5>Total Units:
+                <div class="right outputMobile" id="totalNumberOfUnits">0</div>
+              </h5>
 
-                <h5>Total Monthly Profit:
-                  <div class="right outputMobile" id="monthlyRent">0</div>
-                </h5>
-                <h5>Total Yearly Profit:
-                  <div class="right outputMobile" id="yearlyRent">0</div>
-                </h5>
+              <h5>Total Properties:
+                <div class="right outputMobile" id="numberOfProperties">0</div>
+              </h5>
 
-                <h5 style="margin-bottom: 0px;">Amount Left Over:
-                  <div class="right outputMobile" id="leftOver">0</div>
-                </h5>
+              <h5>Total Monthly Profit:
+                <div class="right outputMobile" id="monthlyRent">0</div>
+              </h5>
+              <h5>Total Yearly Profit:
+                <div class="right outputMobile" id="yearlyRent">0</div>
+              </h5>
 
-              </div>
+              <h5 style="margin-bottom: 0px;">Amount Left Over:
+                <div class="right outputMobile" id="leftOver">0</div>
+              </h5>
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- Input -->
+      <div class="form-group  left col-md-5 ">
+
+        <!-- PROPERTY INFO -->
+        <div class="accordion">
+          <div class="accordion-section">
+            <a id="firstTab" class="accordion-section-title active" href="#accordion-1">Property Info</a>
+
+            <div id="accordion-1" class="accordion-section-content open" style="display: block;">
+
+              <form id="propertyInfo" onsubmit="return Submit()">
+                <div>
+
+                  <h6>Street address
+                    <i class="fa fa-info-circle" style="color: grey; margin-left: .2em;" aria-hidden="true" data-toggle="tooltip" data-placement="top"
+                      title="Where is the property located? This is optional."></i>
+                  </h6>
+                  <input id="addressIN" type="text" class="form-control form-control-md" placeholder="745 Seventh Avenue">
+
+                  <div class="mt-2 form-row align-items-center">
+                    <div class="col-9">
+                      <h6>City
+                      </h6>
+                      <input id="cityIN" type="text" class="form-control " placeholder="New York">
+
+                    </div>
+                    <div class="col-3">
+                      <h6>State
+                      </h6>
+                      <input id="stateIN" type="text" class="form-control " placeholder="NY">
+                    </div>
+                  </div>
+
+                  <div class="mt-2"></div>
+                  <h6>Zip Code
+                  </h6>
+                  <input id="zipIN" type="number" min="0" class="form-control form-control-md " placeholder="10019">
+
+                  <div class="mt-2"></div>
+                  <h6>Annual Property Taxes
+                    <i class="fa fa-info-circle" style="color: grey; margin-left: .2em;" aria-hidden="true" data-toggle="tooltip" container:
+                      'body' data-placement="top" data-html="true" title="How much are the total annual property taxes for the property? <br><br>If you are unsure, this information is typically found on the county's assessor website."></i>
+                  </h6>
+                  <div class="input-group">
+                    <span class="input-group-addon">
+                      <i class="fa fa-usd"></i>
+                    </span>
+                    <input id="taxesIN" type="number" min="00.00" step="any" class="form-control form-control-md " required placeholder="1,234.55">
+                  </div>
+
+                </div>
+
+
+                <button type="submit" class="accordion-section-title mt-3" style="text-align: center; padding: 4px; padding-bottom: 8px;  border: 1px solid; border-radius: 3px;"
+                  onclick="propertyValidate()">Next</button>
+              </form>
 
             </div>
           </div>
         </div>
+        <!-- END PROPERTY INFO -->
 
-        <!-- Input -->
-        <div class="form-group  left col-md-5 ">
+        <!-- PURCHASE INFO -->
+        <div class="accordion">
+          <div class="accordion-section">
+            <a id="secondTab" class="accordion-section-title" href="#accordion-2">Purchase Info</a>
+            <div id="accordion-2" class="accordion-section-content">
+              <form id="purchaseInfo" onsubmit="return Submit()">
+                <div>
 
-          <div class="accordion">
-            <div class="accordion-section">
-              <a id="firstTab" class="accordion-section-title active" href="#accordion-1">Property Info</a>
-
-              <div id="accordion-1" class="accordion-section-content open" style="display: block;">
-
-                <form id="propertyInfo" onsubmit="return Submit()">
-                  <div>
-
-                    <h6>Street address
-                      <i class="fa fa-info-circle" style="color: grey; margin-left: .2em;" aria-hidden="true" data-toggle="tooltip" data-placement="top"
-                        title="Where is the property located? This is optional."></i>
-                    </h6>
-                    <input id="addressIN" type="text" class="form-control form-control-md" placeholder="745 Seventh Avenue">
-
-                    <div class="mt-2 form-row align-items-center">
-                      <div class="col-9">
-                        <h6>City
-                        </h6>
-                        <input id="cityIN" type="text" class="form-control " placeholder="New York">
-
+                  <div class="form-row align-items-center">
+                    <div class="col-6">
+                      <h6>Purchase Price
+                        <i class="fa fa-info-circle" style="color: grey; margin-left: .2em;" aria-hidden="true" data-toggle="tooltip" container:
+                          'body' data-placement="top" data-html="true" title="What is the purchase price you plan to pay for the property. If unsure, estimate what you can get the property for."></i>
+                      </h6>
+                      <div class="input-group">
+                        <span class="input-group-addon">
+                          <i class="fa fa-usd"></i>
+                        </span>
+                        <input id="purchasePriceIN" type="number" required class="form-control form-control-md" placeholder="185,000">
                       </div>
-                      <div class="col-3">
-                        <h6>State
-                        </h6>
-                        <input id="stateIN" type="text" class="form-control " placeholder="NY">
+
+                    </div>
+                    <div class="col-6">
+                      <h6>After Repair Value
+                        <i class="fa fa-info-circle" style="color: grey; margin-left: .2em;" aria-hidden="true" data-toggle="tooltip" container:
+                          'body' data-placement="top" data-html="true" title="This is what you estimate the property to be worth after all repairs. This metric is used for many calculations so make sure to be as close and conservative as possible for best results."></i>
+                      </h6>
+                      <div class="input-group">
+                        <span class="input-group-addon">
+                          <i class="fa fa-usd"></i>
+                        </span>
+                        <input id="arvIN" type="number" required class="form-control form-control-md" placeholder="204,000">
                       </div>
                     </div>
-
-                    <div class="mt-2"></div>
-                    <h6>Zip Code
-                    </h6>
-                    <input id="zipIN" type="number" min="0" class="form-control form-control-md " placeholder="10019">
-
-                    <div class="mt-2"></div>
-                    <h6>Annual Property Taxes
-                      <i class="fa fa-info-circle" style="color: grey; margin-left: .2em;" aria-hidden="true" data-toggle="tooltip" container:
-                        'body' data-placement="top" data-html="true" title="How much are the total annual property taxes for the property? <br><br>If you are unsure, this information is typically found on the county's assessor website."></i>
-                    </h6>
-                    <div class="input-group">
-                      <span class="input-group-addon">
-                        <i class="fa fa-usd"></i>
-                      </span>
-                      <input id="taxesIN" type="number" min="00.00" step="any" class="form-control form-control-md " required placeholder="1,234.55">
-                    </div>
-
                   </div>
 
-
-                  <button type="submit" class="accordion-section-title mt-3" style="text-align: center; padding: 4px; padding-bottom: 8px;  border: 1px solid; border-radius: 3px;"
-                    onclick="propertyValidate()">Next</button>
-                </form>
-
-              </div>
-            </div>
-          </div>
-
-          <div class="accordion">
-            <div class="accordion-section">
-              <a id="secondTab" class="accordion-section-title" href="#accordion-2">Purchase Info</a>
-              <div id="accordion-2" class="accordion-section-content">
-                <form id="purchaseInfo" onsubmit="return Submit()">
-                  <div>
-
-                    <h6>Purchase Price
-
+                  <!-- <h6>Purchase Price
+                      <i class="fa fa-info-circle" style="color: grey; margin-left: .2em;" aria-hidden="true" data-toggle="tooltip" container:
+                        'body' data-placement="top" data-html="true" title="What is the purchase price you plan to pay for the property. If unsure, estimate what you can get the property for."></i>
                     </h6>
                     <div class="input-group">
                       <span class="input-group-addon">
                         <i class="fa fa-usd"></i>
                       </span>
-                      <input id="purchasePriceIN" type="number" class="form-control form-control-md" placeholder="185,000">
+                      <input id="purchasePriceIN" type="number" required class="form-control form-control-md" placeholder="185,000">
                     </div>
 
                     <div class="mt-2"></div>
                     <h6>After Repair Value
-
+                      <i class="fa fa-info-circle" style="color: grey; margin-left: .2em;" aria-hidden="true" data-toggle="tooltip" container:
+                        'body' data-placement="top" data-html="true" title="This is what you estimate the property to be worth after all repairs. This metric is used for many calculations so make sure to be as close and conservative as possible for best results."></i>
                     </h6>
                     <div class="input-group">
                       <span class="input-group-addon">
                         <i class="fa fa-usd"></i>
                       </span>
-                      <input id="arvIN" type="number" class="form-control form-control-md" placeholder="204,000">
-                    </div>
+                      <input id="arvIN" type="number" required class="form-control form-control-md" placeholder="204,000">
+                    </div> -->
 
-                    <div class="mt-2 form-row align-items-center">
-                      <div class="col-9">
-                        <h6>City
+                  <div class="mt-2"></div>
+                  <h6>Purchase Closing Cost
+                    <i class="fa fa-info-circle" style="color: grey; margin-left: .2em;" aria-hidden="true" data-toggle="tooltip" container:
+                      'body' data-placement="top" data-html="true" title="What are the total fees of the transaction? Typically closing costs are around $1,500-$2,500, but can differ depending on the location and financing."></i>
+                  </h6>
+                  <div class="input-group">
+                    <span class="input-group-addon">
+                      <i class="fa fa-usd"></i>
+                    </span>
+                    <input id="closingCostIN" type="number" class="form-control form-control-md" placeholder="2,300">
+                  </div>
 
+                  <div class="mt-2"></div>
+                  <h6>Estimated Repair Cost
+                    <i class="fa fa-info-circle" style="color: grey; margin-left: .2em;" aria-hidden="true" data-toggle="tooltip" container:
+                      'body' data-placement="top" data-html="true" title="How much do you plan to spend repairing the property to get it rent ready? If no repairs are needed, just leave this field blank."></i>
+                  </h6>
+                  <div class="input-group">
+                    <span class="input-group-addon">
+                      <i class="fa fa-usd"></i>
+                    </span>
+                    <input id="repairCostIN" type="number" class="form-control form-control-md" placeholder="15,000">
+                  </div>
+                  <hr>
+
+                  <h5 class="subHeader">
+                    Financing Info
+                  </h5>
+
+                  <div class="mt-2"></div>
+                  <label class="CBcontainer">
+                    <h6>Cash Purchase?
+                      <i class="fa fa-info-circle" style="color: grey; margin-left: .2em;" aria-hidden="true" data-toggle="tooltip" container:
+                        'body' data-placement="top" data-html="true" title="Do you plan on paying in all cash for the property? If so, check this box since you will not be using a loan."></i>
+                    </h6>
+                    <input id="cashPurchaseIN" type="checkbox">
+                    <span class="checkmark"></span>
+                  </label>
+
+                  <div id="loanInfo">
+
+                    <!-- <div class="mt-2 form-row align-items-center">
+                        <div class="col-auto">
+                          <h6>Down Payment
+                            <i class="fa fa-info-circle" style="color: grey; margin-left: .2em;" aria-hidden="true" data-toggle="tooltip" container:
+                              'body' data-placement="top" data-html="true" title="What is the percentage of the purchase price did you put down on a down payment?"></i>
+                          </h6>
+
+
+
+                        </div>
+                        <div class="col-auto">
+                          <h6>State
+                          </h6>
+                          <input id="stateIN" type="text" class="form-control " placeholder="NY">
+                        </div>
+                      </div> -->
+                    <div class="mt-3 form-row align-items-center">
+                      <div class="col-6">
+                        <h6>Down Payment
+                          <i class="fa fa-info-circle" style="color: grey; margin-left: .2em;" aria-hidden="true" data-toggle="tooltip" container:
+                            'body' data-placement="top" data-html="true" title="What is the percentage of the purchase price did you put down on a down payment?"></i>
                         </h6>
-                        <input id="cityIN" type="text" class="form-control " placeholder="New York">
+                        <div class="input-group">
+                          <select id="downPercentIN" required class="form-control">
+                            <option value="" disabled selected>20</option>
+                            <option value="0.0">0%</option>
+                            <option value="0.03">3%</option>
+                            <option value="0.075">7.5%</option>
+                            <option value="0.10">10%</option>
+                            <option value="0.15">15%</option>
+                            <option value="0.25">25%</option>
+                            <option value="0.30">30%</option>
+                            <option value="0.35">35%</option>
+                            <option value="0.40">40%</option>
+                            <option value="0.45">45%</option>
+                            <option value="0.50">50%</option>
+                            <option value="0.55">55%</option>
+                            <option value="0.60">60%</option>
+                            <option value="0.65">65%</option>
+                            <option value="0.70">70%</option>
+                            <option value="0.75">75%</option>
+                          </select>
+                          <span class="input-group-addon">
+                            <i class="fa fa-percent"></i>
+                          </span>
+                        </div>
 
                       </div>
-                      <div class="col-3">
-                        <h6>State
-
+                      <div class="col-6">
+                        <h6>Loan Interest Rate
+                          <i class="fa fa-info-circle" style="color: grey; margin-left: .2em;" aria-hidden="true" data-toggle="tooltip" container:
+                            'body' data-placement="top" data-html="true" title="What rate do you think you'll get on your loan?"></i>
                         </h6>
-                        <input id="stateIN" type="text" class="form-control " placeholder="NY">
+                        <div class="input-group">
+                          <input id="interestRateIN" type="number" required class="form-control " placeholder="4.25">
+                          <span class="input-group-addon">
+                            <i class="fa fa-percent"></i>
+                          </span>
+                        </div>
                       </div>
                     </div>
 
-                    <div class="mt-2"></div>
-                    <h6>Zip Code
+                    <div class=" mt-2 form-row align-items-center">
+                      <div class="col-6">
+                        <h6>Points Charged
+                          <i class="fa fa-info-circle" style="color: grey; margin-left: .2em;" aria-hidden="true" data-toggle="tooltip" container:
+                            'body' data-placement="top" data-html="true" title="How many points were charged by the lender? Points are fees often charged when you take out a loan. Each point=1% of the loan amount. So if your loan is $100,000 and you are charged 1 point, you will pay $1,000."></i>
+                        </h6>
+                        <input id="pointsChargedIN" type="number"  class="form-control form-control-md" placeholder="2">
+                      </div>
+                      <div class="col-6">
+                        <h6>Other Charges
+                          <i class="fa fa-info-circle" style="color: grey; margin-left: .2em;" aria-hidden="true" data-toggle="tooltip" container:
+                            'body' data-placement="top" data-html="true" title="For any other fees charged by the lender. If none, leave blank."></i>
+                        </h6>
+                        <div class="input-group">
+                          <span class="input-group-addon">
+                            <i class="fa fa-usd"></i>
+                          </span>
+                          <input id="otherLoanIN" type="number"  class="form-control form-control-md" placeholder="500">
+                        </div>
+                      </div>
+                    </div>
 
+                    <div class="mt-3"></div>
+                    <label class="CBcontainer">
+                        <h6>Wrap Loan Fees/Points Into the Loan?
+                          <i class="fa fa-info-circle" style="color: grey; margin-left: .2em;" aria-hidden="true" data-toggle="tooltip" container:
+                            'body' data-placement="top" data-html="true" title="Do you want to include the previous two fees in with the loan? If not checked, you plan to pay those fees out of pocket."></i>
+                        </h6>
+                        <input id="wrapFeesIN"  type="checkbox">
+                        <span class="checkmark"></span>
+                      </label>
+                      <div class="mt-2"></div>
+                      <label class="CBcontainer">
+                          <h6>Interest Only Loan? 
+                            <i class="fa fa-info-circle" style="color: grey; margin-left: .2em;" aria-hidden="true" data-toggle="tooltip" container:
+                              'body' data-placement="top" data-html="true" title="Loans typically consist of two parts, the interest part(profit for lender) and the principal part(the portion you are paying off each month). With interest-only loans, you never pay down the principle of the loan. These are typically offered by hard money lenders. Leave this unchecked if you are unsure."></i>
+                          </h6>
+                          <input id="interestOnlyIN"  type="checkbox">
+                          <span class="checkmark"></span>
+                        </label>
+
+
+                    <div class="mt-3"></div>
+                    <h6>Amortized Over How Many Years?
+                      <i class="fa fa-info-circle" style="color: grey; margin-left: .2em;" aria-hidden="true" data-toggle="tooltip" container:
+                        'body' data-placement="top" data-html="true" title="What is the term length on the loan? This is typically 30 years for residential and 20 or 25 for commercial."></i>
                     </h6>
-                    <input id="zipIN" type="number" min="0" class="form-control form-control-md " placeholder="10019">
-
-                    <div class="mt-2"></div>
-                    <h6>Annual Property Taxes
-
-                    </h6>
-                    <input id="ssdf" type="number" min="00.00" step="any" class="form-control form-control-md " required placeholder="1234.55">
+                    <select id="yearsIN" name="years" required class="form-control form-control-md mt-2">
+                      <option value="" disabled selected>30</option>
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
+                      <option value="5">5</option>
+                      <option value="6">6</option>
+                      <option value="7">7</option>
+                      <option value="8">8</option>
+                      <option value="9">9</option>
+                      <option value="10">10</option>
+                      <option value="11">11</option>
+                      <option value="12">12</option>
+                      <option value="13">13</option>
+                      <option value="14">14</option>
+                      <option value="15">15</option>
+                      <option value="16">16</option>
+                      <option value="17">17</option>
+                      <option value="18">18</option>
+                      <option value="19">19</option>
+                      <option value="20">20</option>
+                      <option value="21">21</option>
+                      <option value="22">22</option>
+                      <option value="23">23</option>
+                      <option value="24">24</option>
+                      <option value="25">25</option>
+                      <option value="26">26</option>
+                      <option value="27">27</option>
+                      <option value="28">28</option>
+                      <option value="29">29</option>
+                      <option value="30">30</option>
+                    </select>
 
                   </div>
 
+                </div>
 
-                  <button type="submit" class="accordion-section-title mt-3" style="text-align: center; padding: 4px; padding-bottom: 8px;  border: 1px solid; border-radius: 3px;"
-                    onclick="purchaseValidate()">Next</button>
-                </form>
-              </div>
-              <!--end .accordion-section-content-->
+
+                <button type="submit" class="accordion-section-title mt-3" style="text-align: center; padding: 4px; padding-bottom: 8px;  border: 1px solid; border-radius: 3px;"
+                  onclick="purchaseValidate()">Next</button>
+              </form>
             </div>
-            <!--end .accordion-section-->
+            <!--end .accordion-section-content-->
           </div>
-          <!--end .accordion-->
-
-          <div class="accordion">
-            <div class="accordion-section">
-              <a id="thirdTab" class="accordion-section-title" href="#accordion-3">Rental Info</a>
-
-              <div id="accordion-3" class="accordion-section-content">
-                <form id="rentalInfo" onsubmit="return Submit()">
-                  <div>
-                    <h6>Street address
-
-                    </h6>
-                    <input id="addressIN" type="text" class="form-control form-control-md" placeholder="745 Seventh Avenue">
-
-                    <div class="mt-2 form-row align-items-center">
-                      <div class="col-9">
-                        <h6>City
-
-                        </h6>
-                        <input id="cityIN" type="text" class="form-control " placeholder="New York">
-
-                      </div>
-                      <div class="col-3">
-                        <h6>State
-
-                        </h6>
-                        <input id="stateIN" type="text" class="form-control " placeholder="NY">
-                      </div>
-                    </div>
-
-                    <div class="mt-2"></div>
-                    <h6>Zip Code
-
-                    </h6>
-                    <input id="zipIN" type="number" min="0" class="form-control form-control-md " placeholder="10019">
-
-                    <div class="mt-2"></div>
-                    <h6>Annual Property Taxes
-
-                    </h6>
-                    <input id="ssdf" type="number" min="00.00" step="any" class="form-control form-control-md " required placeholder="1234.55">
-
-                  </div>
-
-
-                  <button type="submit" class="accordion-section-title mt-3" style="text-align: center; padding: 4px; padding-bottom: 8px;  border: 1px solid; border-radius: 3px;"
-                    onclick="rentalValidate()">Next</button>
-                </form>
-
-              </div>
-              <!--end .accordion-section-content-->
-            </div>
-            <!--end .accordion-section-->
-          </div>
-          <!--end .accordion-->
-
-          <div class="accordion">
-            <div class="accordion-section">
-              <a id="fourthTab" class="accordion-section-title" href="#accordion-4">Results</a>
-
-              <div id="accordion-4" class="accordion-section-content">
-                <p>Mauris interdum fringilla augue vitae tincidunt. Curabitur vitae tortor id eros euismod ultrices. Cum sociis
-                  natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Praesent nulla mi, rutrum ut
-                  feugiat at, vestibulum ut neque? Cras tincidunt enim vel aliquet facilisis. Duis congue ullamcorper vehicula.
-                  Proin nunc lacus, semper sit amet elit sit amet, aliquet pulvinar erat. Nunc pretium quis sapien eu rhoncus.
-                  Suspendisse ornare gravida mi, et placerat tellus tempor vitae.</p>
-              </div>
-              <!--end .accordion-section-content-->
-            </div>
-            <!--end .accordion-section-->
-          </div>
-          <!--end .accordion-->
-
-
+          <!--end .accordion-section-->
         </div>
+        <!--end .accordion-->
+        <!-- END PURCHASE INFO -->
+
+        <!-- RENTAL INFO -->
+        <div class="accordion">
+          <div class="accordion-section">
+            <a id="thirdTab" class="accordion-section-title" href="#accordion-3">Rental Info</a>
+
+            <div id="accordion-3" class="accordion-section-content">
+              <form id="rentalInfo" onsubmit="return Submit()">
+                <div>
+                  <h6>Street address
+
+                  </h6>
+                  <input id="addressIN" type="text" class="form-control form-control-md" placeholder="745 Seventh Avenue">
+
+                  <div class="mt-2 form-row align-items-center">
+                    <div class="col-9">
+                      <h6>City
+
+                      </h6>
+                      <input id="cityIN" type="text" class="form-control " placeholder="New York">
+
+                    </div>
+                    <div class="col-3">
+                      <h6>State
+
+                      </h6>
+                      <input id="stateIN" type="text" class="form-control " placeholder="NY">
+                    </div>
+                  </div>
+
+                  <div class="mt-2"></div>
+                  <h6>Zip Code
+
+                  </h6>
+                  <input id="zipIN" type="number" min="0" class="form-control form-control-md " placeholder="10019">
+
+                  <div class="mt-2"></div>
+                  <h6>Annual Property Taxes
+
+                  </h6>
+                  <input id="ssdf" type="number" min="00.00" step="any" class="form-control form-control-md " required placeholder="1234.55">
+
+                </div>
+
+
+                <button type="submit" class="accordion-section-title mt-3" style="text-align: center; padding: 4px; padding-bottom: 8px;  border: 1px solid; border-radius: 3px;"
+                  onclick="rentalValidate()">Next</button>
+              </form>
+
+            </div>
+            <!--end .accordion-section-content-->
+          </div>
+          <!--end .accordion-section-->
+        </div>
+        <!--end .accordion-->
+
+        <!-- END RENTAL INFO -->
+
+        <div class="accordion">
+          <div class="accordion-section">
+            <a id="fourthTab" class="accordion-section-title" href="#accordion-4">Results</a>
+
+            <div id="accordion-4" class="accordion-section-content">
+              <p>Mauris interdum fringilla augue vitae tincidunt. Curabitur vitae tortor id eros euismod ultrices. Cum sociis
+                natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Praesent nulla mi, rutrum ut feugiat
+                at, vestibulum ut neque? Cras tincidunt enim vel aliquet facilisis. Duis congue ullamcorper vehicula. Proin
+                nunc lacus, semper sit amet elit sit amet, aliquet pulvinar erat. Nunc pretium quis sapien eu rhoncus. Suspendisse
+                ornare gravida mi, et placerat tellus tempor vitae.</p>
+            </div>
+            <!--end .accordion-section-content-->
+          </div>
+          <!--end .accordion-section-->
+        </div>
+        <!--end .accordion-->
+
+
       </div>
     </div>
 
@@ -620,6 +931,22 @@ Author: Deven Swiergiel
         });
       });
       // END switch tabs
+
+
+      // GLOBAL VARS
+      var noLoan; // cash purchase or not. needed to ignore loan input fields if checked.
+
+      // for hiding and displaying the loan section depending on cash purchase or not
+      document.getElementById('cashPurchaseIN').addEventListener('change', function (e) {
+        noLoan = document.getElementById("cashPurchaseIN").checked;
+        if (noLoan) {
+          document.getElementById('loanInfo').style.display = 'none';
+        } else {
+          document.getElementById('loanInfo').style.display = 'block';
+        }
+      });
+
+
     </script>
 
 
