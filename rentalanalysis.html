@@ -32,7 +32,10 @@ Author: Deven Swiergiel
   <script>
     $(function () {
       $('[data-toggle="tooltip"]').tooltip()
-    })</script>
+    })
+  </script>
+
+
   <style>
     /*----- Accordion -----*/
 
@@ -209,9 +212,24 @@ Author: Deven Swiergiel
     }
 
     .col-md-8 {
+      width: 1000px!important;
+      max-width: 100%!important;
       margin-left: auto!important;
       margin-right: auto!important;
     }
+
+    .form-group.left.col-lg-5 {
+      padding-left: 0px;
+      color: black;
+    }
+
+    /* .col-md-3 {
+      display: inline-block;
+      padding-left: 5px;
+      padding-right: 5px;
+      max-width: 124px;
+      text-align: left;
+    } */
 
     #dashed {
       margin-top: 10px;
@@ -237,13 +255,21 @@ Author: Deven Swiergiel
       border-radius: 0;
     }
 
-    .form-group.left.col-md-5 {
-      padding-left: 0px;
-      color: black;
+    .innerOutput {
+      /* min-height: 300px; */
     }
 
+    .outputLabel>h5 {
+      margin-bottom: 3px;
+    }
+
+    .outputText {
+      font-size: 20px;
+    }
+
+
     .form-group {
-      margin-bottom: 0px;;
+      margin-bottom: 0px;
     }
 
     .mobileSubHeader {
@@ -289,25 +315,43 @@ Author: Deven Swiergiel
 
     }
 
-    @media(max-width: 900px) {
+    @media(max-width: 991px) {
 
       .col-md-8 {
-        width: 900px!important;
+        width: 650px!important;
         max-width: 100%!important;
+      }
+      .form-group.left.col-lg-5 {
+        padding-right: 0px;
       }
 
     }
 
     @media(min-width: 768px) and (max-width: 980px) {
 
-      .col-md-5 {
-        /* width: 400px!important; */
+      /* .col-md-5 {
         max-width: 100%!important;
         width: 50vw!important;
       }
       .col-md-7 {
         max-width: 100%!important;
-        width: 37vw!important;
+        width: 39vw!important;
+      } */
+    }
+
+    @media(max-width: 1000px) {
+
+      #innerOutput {
+        justify-content: left;
+      }
+      .outputLabel {
+        float: left!important;
+        text-align: left!important;
+      }
+
+      .col-md-3 {
+        /* min-width: 400px; */
+        margin-bottom: 10px;
       }
 
     }
@@ -321,10 +365,7 @@ Author: Deven Swiergiel
         width: 1000px!important;
         max-width: 100%!important;
       }
-      .col-md-8 {
-        width: 1000px!important;
-        max-width: 100%!important;
-      }
+
 
     }
 
@@ -427,60 +468,95 @@ Author: Deven Swiergiel
       </p>
       <div>
 
-        <div id="output" class="col-md-7 right" style="padding-right: 0px; padding-left: 0px;">
-          <div class="card output ">
-            <div class="mt-2 mb-2 ml-1 mr-1">
-              <div class="mr-2 ml-2">
 
-                <h5>Units per Property:
-                  <div class="right outputMobile" id="numberOfUnitsOUT">0</div>
-                </h5>
+        <div id="output" class="col-lg-7 right" style="padding-right: 0px; padding-left: 0px;">
+          <div style="padding-left: 3px; padding-right: 3px;">
 
-                <h5>Cash Flow per Unit:
-                  <div class="right outputMobile" id="rentPerUnitOUT">0</div>
-                </h5>
+            <div class="card output ">
+              <div class="pl-4 pr-4 pt-3 pb-3">
 
-                <h5>Funds per Year:
-                  <div class="right outputMobile" id="investableFundsOUT">0</div>
-                </h5>
+                <div class="row innerOutput">
+                  <div class="col-md-6 col-sm-6 col-6 outputLabel">
+                    <h5>Monthly Income</h5>
+                    <h5 id="monthlyIncomePANEL" class="outputText mb-3">$1,000,000</h5>
+                    <h5>Monthly Expenses</h5>
+                    <h5 id="monthlyExpensesPANEL" class="outputText mb-3">$1,000,000</h5>
+                    <h5>Total Initial Equity</h5>
+                    <h5 id="initialEquityPANEL" class="outputText ">$1,000,000</h5>
 
-                <h5>Down Payment:
-                  <div class="right outputMobile" id="downPaymentOUT">0</div>
-                </h5>
+                  </div>
+                  <div class="col-md-6 col-sm-6 col-6 outputLabel">
+                    <h5>Total Cash Needed</h5>
+                    <h5 id="cashNeededPANEL" class="outputText mb-3">$1,000,000</h5>
+                    <h5>NOI</h5>
+                    <h5 id="noiPANEL" class="outputText mb-3">$1,000,000</h5>
+                    <h5>Debt Coverage Ratio</h5>
+                    <h5 id="debtCoveragePANEL" class="outputText ">$1,000,000</h5>
+                  </div>
+                  <div class="col-md-6 col-sm-6 col-xs-6">
 
-                <h5>Years:
-                  <div class="right outputMobile" id="yearsOUT">0</div>
-                </h5>
 
+                  </div>
+                </div>
+
+                <div class="clearfix"></div>
                 <hr>
 
-                <h5>Total Units:
-                  <div class="right outputMobile" id="totalNumberOfUnits">0</div>
-                </h5>
 
-                <h5>Total Properties:
-                  <div class="right outputMobile" id="numberOfProperties">0</div>
-                </h5>
 
-                <h5>Total Monthly Profit:
-                  <div class="right outputMobile" id="monthlyRent">0</div>
-                </h5>
-                <h5>Total Yearly Profit:
-                  <div class="right outputMobile" id="yearlyRent">0</div>
-                </h5>
+                <!-- <div class="innerOutput">
+                  <div class="col-md-4 outputLabel">
+                    <h5>Monthly Income</h5>
+                    <h5 id="monthlyIncomePANEL" class="outputText">$1,000,000</h5>
+                  </div>
+                  <div class="col-md-4 outputLabel">
+                    <h5>Monthly Expenses</h5>
+                    <h5 id="monthlyExpensesPANEL" class="outputText">$1,000,000</h5>
+                  </div>
+                  <div class="col-md-4 outputLabel">
+                    <h5>Monthly Cashflow</h5>
+                    <h5 id="monthlyCashflowPANEL" class="outputText">$1,000,000</h5>
+                  </div>
+                  <div class="col-md-4 outputLabel">
+                    <h5>Cash on Cash ROI</h5>
+                    <h5 id="cocPANEL" class="outputText">$1,000,000</h5>
+                  </div>
+                </div>
 
-                <h5 style="margin-bottom: 0px;">Amount Left Over:
-                  <div class="right outputMobile" id="leftOver">0</div>
-                </h5>
+                <div class="clearfix"></div>
+                <hr>
+
+                <div class="innerOutput">
+                  <div class="col-md-3 outputLabel">
+                    <h5>Total Cash Needed</h5>
+                    <h5 id="cashNeededPANEL" class="outputText">$1,000,000</h5>
+                  </div>
+                  <div class="col-md-3 outputLabel">
+                    <h5>NOI</h5>
+                    <h5 id="noiPANEL" class="outputText">$1,000,000</h5>
+                  </div>
+                  <div class="col-md-3 outputLabel">
+                    <h5>Total Initial Equity</h5>
+                    <h5 id="initialEquityPANEL" class="outputText">$1,000,000</h5>
+                  </div>
+                  <div class="col-md-3 outputLabel">
+                    <h5>Debt Coverage Ratio</h5>
+                    <h5 id="debtCoveragePANEL" class="outputText">$1,000,000</h5>
+                  </div>
+                </div> -->
 
               </div>
 
             </div>
+
+            <!--Div that will hold the charts like cost breakdown pie chart and amortization schedule.-->
+
+
           </div>
         </div>
 
         <!-- Input -->
-        <div class="form-group  left col-md-5 ">
+        <div class="form-group  left col-lg-5 ">
 
           <!-- PROPERTY INFO -->
           <div class="accordion">
@@ -738,7 +814,7 @@ Author: Deven Swiergiel
                       <label class="CBcontainer">
                         <h6>Interest Only Loan?
                           <i class="fa fa-info-circle" style="color: grey; margin-left: .2em;" aria-hidden="true" data-toggle="tooltip" container:
-                            'body' data-placement="top" data-html="true" title="Loans typically consist of two parts, the interest part(profit for lender) and the principal part(the portion you are paying off each month). With interest-only loans, you never pay down the principle of the loan. These are typically offered by hard money lenders. Leave this unchecked if you are unsure."></i>
+                            'body' data-placement="top" data-html="true" title="Loans typically consist of two parts, the interest part(profit for lender) and the principal part(the portion of equity you are paying off each month). With interest-only loans, you never pay down the principle of the loan. These are typically offered by hard money lenders. Leave this unchecked if you are unsure."></i>
                         </h6>
                         <input id="interestOnlyIN" type="checkbox">
                         <span class="checkmark"></span>
@@ -872,25 +948,23 @@ Author: Deven Swiergiel
                       <div class="col-6">
                         <h6>Property Taxes
                           <i class="fa fa-info-circle" style="color: grey; margin-left: .2em;" aria-hidden="true" data-toggle="tooltip" container:
-                            'body' data-placement="top" data-html="true" title="How many points were charged by the lender? Points are fees often charged when you take out a loan. Each point=1% of the loan amount. So if your loan is $100,000 and you are charged 1 point, you will pay $1,000."></i>
+                            'body' data-placement="top" data-html="true" title="This is the monthly amount of property taxes owed. This was calculated by dividing the annual property taxes you gave in the Property Info tab. Please change this there if you'd like."></i>
                         </h6>
                         <div class="input-group">
                           <span class="input-group-addon">
                             <i class="fa fa-usd"></i>
                           </span>
-                          <input id="propertyTax" type="number" class="form-control form-control-md" placeholder="500">
+                          <input id="propertyTax" type="number" class="form-control form-control-md" placeholder="271.34">
                         </div>
                       </div>
                       <div class="col-6">
                         <h6>Water & Sewer
-                          <i class="fa fa-info-circle" style="color: grey; margin-left: .2em;" aria-hidden="true" data-toggle="tooltip" container:
-                            'body' data-placement="top" data-html="true" title="How many points were charged by the lender? Points are fees often charged when you take out a loan. Each point=1% of the loan amount. So if your loan is $100,000 and you are charged 1 point, you will pay $1,000."></i>
                         </h6>
                         <div class="input-group">
                           <span class="input-group-addon">
                             <i class="fa fa-usd"></i>
                           </span>
-                          <input id="watersewerIN" type="number" class="form-control form-control-md" placeholder="500">
+                          <input id="watersewerIN" type="number" class="form-control form-control-md" placeholder="68">
                         </div>
                       </div>
                     </div>
@@ -950,38 +1024,32 @@ Author: Deven Swiergiel
                     <div class=" mt-2 form-row align-items-center">
                       <div class="col-4">
                         <h6>Insurance
-                          <i class="fa fa-info-circle" style="color: grey; margin-left: .2em;" aria-hidden="true" data-toggle="tooltip" container:
-                            'body' data-placement="top" data-html="true" title="For any other fees charged by the lender. If none, leave blank."></i>
                         </h6>
                         <div class="input-group">
                           <span class="input-group-addon">
                             <i class="fa fa-usd"></i>
                           </span>
-                          <input id="insuranceIN" type="number" class="form-control form-control-md" placeholder="500">
+                          <input id="insuranceIN" type="number" class="form-control form-control-md" placeholder="65">
                         </div>
                       </div>
                       <div class="col-4">
                         <h6>Electricity
-                          <i class="fa fa-info-circle" style="color: grey; margin-left: .2em;" aria-hidden="true" data-toggle="tooltip" container:
-                            'body' data-placement="top" data-html="true" title="For any other fees charged by the lender. If none, leave blank."></i>
                         </h6>
                         <div class="input-group">
                           <span class="input-group-addon">
                             <i class="fa fa-usd"></i>
                           </span>
-                          <input id="electricityIN" type="number" class="form-control form-control-md" placeholder="500">
+                          <input id="electricityIN" type="number" class="form-control form-control-md" placeholder="43">
                         </div>
                       </div>
                       <div class="col-4">
                         <h6>Garbage
-                          <i class="fa fa-info-circle" style="color: grey; margin-left: .2em;" aria-hidden="true" data-toggle="tooltip" container:
-                            'body' data-placement="top" data-html="true" title="For any other fees charged by the lender. If none, leave blank."></i>
                         </h6>
                         <div class="input-group">
                           <span class="input-group-addon">
                             <i class="fa fa-usd"></i>
                           </span>
-                          <input id="garbageIN" type="number" class="form-control form-control-md" placeholder="500">
+                          <input id="garbageIN" type="number" class="form-control form-control-md" placeholder="50">
                         </div>
                       </div>
                     </div>
@@ -990,37 +1058,35 @@ Author: Deven Swiergiel
                       <div class="col-4">
                         <h6>PMI
                           <i class="fa fa-info-circle" style="color: grey; margin-left: .2em;" aria-hidden="true" data-toggle="tooltip" container:
-                            'body' data-placement="top" data-html="true" title="How many points were charged by the lender? Points are fees often charged when you take out a loan. Each point=1% of the loan amount. So if your loan is $100,000 and you are charged 1 point, you will pay $1,000."></i>
+                            'body' data-placement="top" data-html="true" title="Short of Private Mortgage Insurance, a monthly fee typically added by the bank on loans where the down payment is less than 20%. PMI rate differ but typical range is $45-$65 per $100,000 on the loan."></i>
                         </h6>
                         <div class="input-group">
                           <span class="input-group-addon">
                             <i class="fa fa-usd"></i>
                           </span>
-                          <input id="pmiIN" type="number" class="form-control form-control-md" placeholder="500">
+                          <input id="pmiIN" type="number" class="form-control form-control-md" placeholder="50">
                         </div>
                       </div>
                       <div class="col-4">
                         <h6>HOA
-                          <i class="fa fa-info-circle" style="color: grey; margin-left: .2em;" aria-hidden="true" data-toggle="tooltip" container:
-                            'body' data-placement="top" data-html="true" title="How many points were charged by the lender? Points are fees often charged when you take out a loan. Each point=1% of the loan amount. So if your loan is $100,000 and you are charged 1 point, you will pay $1,000."></i>
                         </h6>
                         <div class="input-group">
                           <span class="input-group-addon">
                             <i class="fa fa-usd"></i>
                           </span>
-                          <input id="hoaIN" type="number" class="form-control form-control-md" placeholder="500">
+                          <input id="hoaIN" type="number" class="form-control form-control-md" placeholder="200">
                         </div>
                       </div>
                       <div class="col-4">
                         <h6>Other
-                          <i class="fa fa-info-circle" style="color: grey; margin-left: .2em;" aria-hidden="true" data-toggle="tooltip" container:
-                            'body' data-placement="top" data-html="true" title="For any other fees charged by the lender. If none, leave blank."></i>
+                            <i class="fa fa-info-circle" style="color: grey; margin-left: .2em;" aria-hidden="true" data-toggle="tooltip" container:
+                            'body' data-placement="top" data-html="true" title="This could be for things like snow removal or landscaping/lawncare."></i>
                         </h6>
                         <div class="input-group">
                           <span class="input-group-addon">
                             <i class="fa fa-usd"></i>
                           </span>
-                          <input id="otherIN" type="number" class="form-control form-control-md" placeholder="500">
+                          <input id="otherIN" type="number" class="form-control form-control-md" placeholder="50">
                         </div>
                       </div>
                     </div>
@@ -1037,10 +1103,10 @@ Author: Deven Swiergiel
                       <div class="col-4">
                         <h6>Vacancy
                           <i class="fa fa-info-circle" style="color: grey; margin-left: .2em;" aria-hidden="true" data-toggle="tooltip" container:
-                            'body' data-placement="top" data-html="true" title="How many points were charged by the lender? Points are fees often charged when you take out a loan. Each point=1% of the loan amount. So if your loan is $100,000 and you are charged 1 point, you will pay $1,000."></i>
+                            'body' data-placement="top" data-html="true" title="Percentage of gross monthly rent to account for vacancy of the unit/property. This is to cover expenses when property is in turnover/vacant. This can vary on the area but typical range is 3%-10%."></i>
                         </h6>
                         <div class="input-group">
-                          <input id="vacancyIN" type="number" class="form-control form-control-md" placeholder="500">
+                          <input id="vacancyIN" type="number" class="form-control form-control-md" placeholder="6%">
                           <span class="input-group-addon">
                             <i class="fa fa-percent"></i>
                           </span>
@@ -1049,10 +1115,10 @@ Author: Deven Swiergiel
                       <div class="col-8">
                         <h6>Repairs/Maintenance
                           <i class="fa fa-info-circle" style="color: grey; margin-left: .2em;" aria-hidden="true" data-toggle="tooltip" container:
-                            'body' data-placement="top" data-html="true" title="For any other fees charged by the lender. If none, leave blank."></i>
+                            'body' data-placement="top" data-html="true" title="This is for the ongoing minor maintenance of the property accounting for when things need to be repaired or replaced. Typical range is 5%-15% of the gross monthly rent."></i>
                         </h6>
                         <div class="input-group">
-                          <input id="repairsIN" type="number" class="form-control form-control-md" placeholder="500">
+                          <input id="repairsIN" type="number" class="form-control form-control-md" placeholder="8%">
                           <span class="input-group-addon">
                             <i class="fa fa-percent"></i>
                           </span>
@@ -1062,12 +1128,12 @@ Author: Deven Swiergiel
 
                     <div class=" mt-2 form-row align-items-center">
                       <div class="col-4">
-                        <h6>CAPEX
+                        <h6>CapEx
                           <i class="fa fa-info-circle" style="color: grey; margin-left: .2em;" aria-hidden="true" data-toggle="tooltip" container:
-                            'body' data-placement="top" data-html="true" title="How many points were charged by the lender? Points are fees often charged when you take out a loan. Each point=1% of the loan amount. So if your loan is $100,000 and you are charged 1 point, you will pay $1,000."></i>
+                            'body' data-placement="top" data-html="true" title="Short for Capital Expenditures, are the major repairs that are needed over time like new roof, foundation, siding, parking lot, or appliances. Typical range is 8%-20% of gross monthly rent depending on various things like age, location, etc."></i>
                         </h6>
                         <div class="input-group">
-                          <input id="vacancyIN" type="number" class="form-control form-control-md" placeholder="500">
+                          <input id="vacancyIN" type="number" class="form-control form-control-md" placeholder="10%">
                           <span class="input-group-addon">
                             <i class="fa fa-percent"></i>
                           </span>
@@ -1076,10 +1142,10 @@ Author: Deven Swiergiel
                       <div class="col-8">
                         <h6>Management Fees
                           <i class="fa fa-info-circle" style="color: grey; margin-left: .2em;" aria-hidden="true" data-toggle="tooltip" container:
-                            'body' data-placement="top" data-html="true" title="For any other fees charged by the lender. If none, leave blank."></i>
+                            'body' data-placement="top" data-html="true" title="If using third party management, the typical fee ranges 7%-12% of the gross monthly rent."></i>
                         </h6>
                         <div class="input-group">
-                          <input id="repairsIN" type="number" class="form-control form-control-md" placeholder="500">
+                          <input id="repairsIN" type="number" class="form-control form-control-md" placeholder="9%">
                           <span class="input-group-addon">
                             <i class="fa fa-percent"></i>
                           </span>
@@ -1091,7 +1157,7 @@ Author: Deven Swiergiel
                     <label class="CBcontainer">
                       <h6>Future Assumptions?
                         <i class="fa fa-info-circle" style="color: grey; margin-left: .2em;" aria-hidden="true" data-toggle="tooltip" container:
-                          'body' data-placement="top" data-html="true" title="Do you plan on paying in all cash for the property? If so, check this box since you will not be using a loan."></i>
+                          'body' data-placement="top" data-html="true" title="This can help project how the numbers look in the future. These are fairly speculative with the possible exception of future rent increases so use with a grain of salt."></i>
                       </h6>
                       <input id="futureAssumptionsIN" type="checkbox">
                       <span class="checkmark"></span>
@@ -1106,10 +1172,10 @@ Author: Deven Swiergiel
                       <div class=" mt-2 "></div>
                       <h6>Annual Rent Increase
                         <i class="fa fa-info-circle" style="color: grey; margin-left: .2em;" aria-hidden="true" data-toggle="tooltip" container:
-                          'body' data-placement="top" data-html="true" title="How many points were charged by the lender? Points are fees often charged when you take out a loan. Each point=1% of the loan amount. So if your loan is $100,000 and you are charged 1 point, you will pay $1,000."></i>
+                          'body' data-placement="top" data-html="true" title="What percentage of growth do you expect the gross monthly rent to see? This could be by the market, or how much you plan to increase it."></i>
                       </h6>
                       <div class="input-group">
-                        <input id="vacancyIN" type="number" class="form-control form-control-md" placeholder="500">
+                        <input id="vacancyIN" type="number" class="form-control form-control-md" placeholder="3%">
                         <span class="input-group-addon">
                           <i class="fa fa-percent"></i>
                         </span>
@@ -1118,10 +1184,10 @@ Author: Deven Swiergiel
                       <div class=" mt-2 "></div>
                       <h6>Annual Appreciation
                         <i class="fa fa-info-circle" style="color: grey; margin-left: .2em;" aria-hidden="true" data-toggle="tooltip" container:
-                          'body' data-placement="top" data-html="true" title="For any other fees charged by the lender. If none, leave blank."></i>
+                          'body' data-placement="top" data-html="true" title="A percentage of possible appreciation of the property."></i>
                       </h6>
                       <div class="input-group">
-                        <input id="vacancyIN" type="number" class="form-control form-control-md" placeholder="500">
+                        <input id="vacancyIN" type="number" class="form-control form-control-md" placeholder="1%">
                         <span class="input-group-addon">
                           <i class="fa fa-percent"></i>
                         </span>
@@ -1130,10 +1196,10 @@ Author: Deven Swiergiel
                       <div class=" mt-2 "></div>
                       <h6>Annual Expense Increase
                         <i class="fa fa-info-circle" style="color: grey; margin-left: .2em;" aria-hidden="true" data-toggle="tooltip" container:
-                          'body' data-placement="top" data-html="true" title="How many points were charged by the lender? Points are fees often charged when you take out a loan. Each point=1% of the loan amount. So if your loan is $100,000 and you are charged 1 point, you will pay $1,000."></i>
+                          'body' data-placement="top" data-html="true" title="What percentage of growth do you expect expenses to increase by? As inflation increases, typically so do expense costs."></i>
                       </h6>
                       <div class="input-group">
-                        <input id="vacancyIN" type="number" class="form-control form-control-md" placeholder="500">
+                        <input id="vacancyIN" type="number" class="form-control form-control-md" placeholder="1%">
                         <span class="input-group-addon">
                           <i class="fa fa-percent"></i>
                         </span>
@@ -1163,11 +1229,60 @@ Author: Deven Swiergiel
               <a id="fourthTab" class="accordion-section-title" href="#accordion-4">Results</a>
 
               <div id="accordion-4" class="accordion-section-content">
-                <p>Mauris interdum fringilla augue vitae tincidunt. Curabitur vitae tortor id eros euismod ultrices. Cum sociis
-                  natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Praesent nulla mi, rutrum ut
-                  feugiat at, vestibulum ut neque? Cras tincidunt enim vel aliquet facilisis. Duis congue ullamcorper vehicula.
-                  Proin nunc lacus, semper sit amet elit sit amet, aliquet pulvinar erat. Nunc pretium quis sapien eu rhoncus.
-                  Suspendisse ornare gravida mi, et placerat tellus tempor vitae.</p>
+
+
+                <h5>Purchase Price
+                  <div class="right outputMobile" id="purchasePriceRESULTS">0</div>
+                </h5>
+
+                <h5>
+                  Purchase Closing Costs
+                  <div class="right outputMobile" id="closingCostRESULTS">0</div>
+                </h5>
+
+                <h5>Estimated Repairs
+                  <div class="right outputMobile" id="repairsRESULTS">0</div>
+                </h5>
+
+                <h5>Total Project Cost
+                  <div class="right outputMobile" id="totalProjectCostRESULTS">0</div>
+                </h5>
+
+                <h5>After Repair Value (ARV)
+                  <div class="right outputMobile" id="arvRESULTS">0</div>
+                </h5>
+
+                <hr>
+
+                <h5>
+                  Down Payment
+                  <div class="right outputMobile" id="downPaymentRESULTS">0</div>
+                </h5>
+
+                <h5>Loan Amount
+                  <div class="right outputMobile" id="loanAmountRESULTS">0</div>
+                </h5>
+
+                <h5>Loan Points
+                  <div class="right outputMobile" id="loanPointsRESULTS">0</div>
+                </h5>
+                <h5>Amortized Over
+                  <div class="right outputMobile" id="amortizationLengthRESULTS">0</div>
+                </h5>
+                <h5>Loan Interest Rate
+                  <div class="right outputMobile" id="loanRateRESULTS">0</div>
+                </h5>
+                <h5>Monthly P&I
+                  <div class="right outputMobile" id="pmiRESULTS">0</div>
+                </h5>
+
+                <h5 style="margin-bottom: 0px;">Total Cash Needed
+                  <div class="right outputMobile" id="totalCashNeededRESULTS">0</div>
+                </h5>
+
+
+
+
               </div>
               <!--end .accordion-section-content-->
             </div>
