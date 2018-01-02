@@ -462,7 +462,7 @@ Author: Deven Swiergiel
       <h1 class="display-4 text-center mobileHeader">Rental Property Analysis Calculator</h1>
       <h2 class="lead text-center " style="margin-bottom: 20px; font-size: 21px">Created by Deven Swiergiel</h2>
       <p class="lead text-center mobileSubHeader">This tool will allow you to quickly analyze potential rental property investments to help you determine whether or
-        not it's a good deal.
+        not it's a good candidate as a buy and hold investment.
       </p>
       <div>
 
@@ -475,21 +475,26 @@ Author: Deven Swiergiel
 
                 <div class="row innerOutput">
                   <div class="col-md-6 col-sm-6 col-6 outputLabel">
-                    <h5>Monthly Income</h5>
-                    <h5 id="monthlyIncomePANEL" class="outputText mb-3">$1,000,000</h5>
+
                     <h5>Monthly Expenses</h5>
                     <h5 id="monthlyExpensesPANEL" class="outputText mb-3">$1,000,000</h5>
-                    <h5>Total Initial Equity</h5>
-                    <h5 id="initialEquityPANEL" class="outputText ">$1,000,000</h5>
-
-                  </div>
-                  <div class="col-md-6 col-sm-6 col-6 outputLabel">
-                    <h5>Total Cash Needed</h5>
-                    <h5 id="cashNeededPANEL" class="outputText mb-3">$1,000,000</h5>
                     <h5>NOI</h5>
                     <h5 id="noiPANEL" class="outputText mb-3">$1,000,000</h5>
                     <h5>Debt Coverage Ratio</h5>
-                    <h5 id="debtCoveragePANEL" class="outputText ">$1,000,000</h5>
+                    <h5 id="debtCoveragePANEL" class="outputText mb-3">$1,000,000</h5>
+                    <h5>Total Cash Needed</h5>
+                    <h5 id="cashNeededPANEL" class="outputText ">$1,000,000</h5>
+
+                  </div>
+                  <div class="col-md-6 col-sm-6 col-6 outputLabel">
+                    <h5>Monthly Income</h5>
+                    <h5 id="monthlyIncomePANEL" class="outputText mb-3">$1,000,000</h5>
+                    <h5>Monthly Cashflow</h5>
+                    <h5 id="cashflowPANEL" class="outputText mb-3">$1,000,000</h5>
+                    <h5>Cash On Cash ROI</h5>
+                    <h5 id="cocPANEL" class="outputText mb-3">$1,000,000</h5>
+                    <h5>Total Initial Equity</h5>
+                    <h5 id="initialEquityPANEL" class="outputText ">$1,000,000</h5>
                   </div>
                   <div class="col-md-6 col-sm-6 col-xs-6">
 
@@ -756,6 +761,7 @@ Author: Deven Swiergiel
                               <option value="0.65">65%</option>
                               <option value="0.70">70%</option>
                               <option value="0.75">75%</option>
+                              <option value="1.00">100%</option>
                             </select>
                             <span class="input-group-addon">
                               <i class="fa fa-percent"></i>
@@ -794,7 +800,7 @@ Author: Deven Swiergiel
                             <span class="input-group-addon">
                               <i class="fa fa-usd"></i>
                             </span>
-                            <input id="otherLoanIN" type="number" class="form-control form-control-md" placeholder="500">
+                            <input id="otherChargesIN" type="number" class="form-control form-control-md" placeholder="500">
                           </div>
                         </div>
                       </div>
@@ -826,6 +832,7 @@ Author: Deven Swiergiel
                       </h6>
                       <select id="yearsIN" name="years" required class="form-control form-control-md mt-2">
                         <option value="" disabled selected>30</option>
+                        <option value="0">0</option>
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
@@ -908,7 +915,7 @@ Author: Deven Swiergiel
                           <span class="input-group-addon">
                             <i class="fa fa-usd"></i>
                           </span>
-                          <input id="otherIncomeIN" type="number" required class="form-control form-control-md" placeholder="100">
+                          <input id="otherIncomeIN" type="number" class="form-control form-control-md" placeholder="100">
                         </div>
 
                       </div>
@@ -952,7 +959,7 @@ Author: Deven Swiergiel
                           <span class="input-group-addon">
                             <i class="fa fa-usd"></i>
                           </span>
-                          <input id="propertyTax" type="number" class="form-control form-control-md" placeholder="271.34">
+                          <input id="monthlyPropertyTax" type="number" readonly class="form-control form-control-md" placeholder="271.34">
                         </div>
                       </div>
                       <div class="col-6">
@@ -1077,7 +1084,7 @@ Author: Deven Swiergiel
                       </div>
                       <div class="col-4">
                         <h6>Other
-                            <i class="fa fa-info-circle" style="color: grey; margin-left: .2em;" aria-hidden="true" data-toggle="tooltip" container:
+                          <i class="fa fa-info-circle" style="color: grey; margin-left: .2em;" aria-hidden="true" data-toggle="tooltip" container:
                             'body' data-placement="top" data-html="true" title="This could be for things like snow removal or landscaping/lawncare."></i>
                         </h6>
                         <div class="input-group">
@@ -1129,7 +1136,7 @@ Author: Deven Swiergiel
                             'body' data-placement="top" data-html="true" title="Short for Capital Expenditures, are the major repairs that are needed over time like new roof, foundation, siding, parking lot, or appliances. Typical range is 8%-20% of gross monthly rent depending on various things like age, location, etc."></i>
                         </h6>
                         <div class="input-group">
-                          <input id="vacancyIN" type="number" class="form-control form-control-md" placeholder="10%">
+                          <input id="capExIN" type="number" class="form-control form-control-md" placeholder="10%">
                           <span class="input-group-addon">
                             <i class="fa fa-percent"></i>
                           </span>
@@ -1141,7 +1148,7 @@ Author: Deven Swiergiel
                             'body' data-placement="top" data-html="true" title="If using third party management, the typical fee ranges 7%-12% of the gross monthly rent."></i>
                         </h6>
                         <div class="input-group">
-                          <input id="repairsIN" type="number" class="form-control form-control-md" placeholder="9%">
+                          <input id="managementFeesIN" type="number" class="form-control form-control-md" placeholder="9%">
                           <span class="input-group-addon">
                             <i class="fa fa-percent"></i>
                           </span>
@@ -1171,7 +1178,7 @@ Author: Deven Swiergiel
                           'body' data-placement="top" data-html="true" title="What percentage of growth do you expect the gross monthly rent to see? This could be by the market, or how much you plan to increase it."></i>
                       </h6>
                       <div class="input-group">
-                        <input id="vacancyIN" type="number" class="form-control form-control-md" placeholder="3%">
+                        <input id="rentIncreaseIN" type="number" class="form-control form-control-md" placeholder="3%">
                         <span class="input-group-addon">
                           <i class="fa fa-percent"></i>
                         </span>
@@ -1183,7 +1190,7 @@ Author: Deven Swiergiel
                           'body' data-placement="top" data-html="true" title="A percentage of possible appreciation of the property."></i>
                       </h6>
                       <div class="input-group">
-                        <input id="vacancyIN" type="number" class="form-control form-control-md" placeholder="1%">
+                        <input id="appreciationIN" type="number" class="form-control form-control-md" placeholder="1%">
                         <span class="input-group-addon">
                           <i class="fa fa-percent"></i>
                         </span>
@@ -1195,7 +1202,7 @@ Author: Deven Swiergiel
                           'body' data-placement="top" data-html="true" title="What percentage of growth do you expect expenses to increase by? As inflation increases, typically so do expense costs."></i>
                       </h6>
                       <div class="input-group">
-                        <input id="vacancyIN" type="number" class="form-control form-control-md" placeholder="1%">
+                        <input id="expenseIncreaseIN" type="number" class="form-control form-control-md" placeholder="1%">
                         <span class="input-group-addon">
                           <i class="fa fa-percent"></i>
                         </span>
@@ -1290,6 +1297,213 @@ Author: Deven Swiergiel
 
 
     <script>
+      // GLOBAL VARS
+
+      // PROPERTY VARS
+      // optional vars, equals "" if empty
+      var address;
+      var city;
+      var state;
+      var zip;
+
+      // required vars
+      var yearlyTaxes;
+
+
+      // PURCHASE VARS
+      // optional vars
+      var closingCost;
+      var repairCost;
+      var pointsCharged;
+      var otherCharges;
+
+      // required vars
+      var purchasePrice;
+      var ARV;
+      var downPayment;
+      var loanRate;
+      var yearsAmortized;
+
+      // checkboxes/booleans
+      var cashPurchaseCheck; // cash purchase or not. needed to ignore loan input fields if checked.
+      var wrapFeesCheck;
+      var interestOnlyCheck;
+
+
+      // RENTAL VARS
+      // optional vars
+      var otherIncome;
+      var monthlyPropertyTaxes;
+      var waterSewer;
+      var insurance;
+      var electricity;
+      var garbage;
+      var PMI;
+      var HOA;
+      var otherExpenses;
+
+      // variable(percentages)
+      var vacancy;
+      var maintenance;
+      var capEx;
+      var managementFees
+      var rentIncrease;
+      var appreciation;
+      var expenseIncrease;
+
+      // required vars
+      var monthlyRentalIncome;
+
+      // checkboxes/booleans
+      var futureAssumptionsCheck; // anticipate things like appreciation and inflation? 
+
+
+      function getPropertyInfo() {
+
+        // optional vars, equals "" if empty
+        address = document.getElementById('addressIN').value;
+        city = document.getElementById('cityIN').value;
+        state = document.getElementById('stateIN').value;
+        zip = document.getElementById('zipIN').value;
+
+        // required vars
+        annualTaxes = +document.getElementById('taxesIN').value;
+        monthlyPropertyTaxes = (annualTaxes / 12).toFixed(2);
+        document.getElementById('monthlyPropertyTax').value = monthlyPropertyTaxes;
+
+        if (address != "") {
+          console.log("address " + address);
+        }
+        console.log("address " + address);
+        console.log("city " + city);
+        console.log("state " + state);
+        console.log("zip " + zip);
+        console.log("yearlyTaxes " + annualTaxes);
+        console.log("");
+
+      }
+
+      function getPurchaseInfo() {
+
+        closingCost = +document.getElementById('closingCostIN').value;
+        repairCost = +document.getElementById('repairCostIN').value;
+        pointsCharged = +document.getElementById('pointsChargedIN').value;
+        otherCharges = +document.getElementById('otherChargesIN').value;
+
+        // required vars
+        purchasePrice = +document.getElementById('purchasePriceIN').value;
+        ARV = +document.getElementById('arvIN').value;
+        downPayment = +document.getElementById('downPercentIN').value;
+        loanRate = +document.getElementById('closingCostIN').value;
+        yearsAmortized = +document.getElementById('closingCostIN').value;
+
+        // checkboxes/booleans
+        cashPurchaseCheck = document.getElementById("cashPurchaseIN").checked;
+        wrapFeesCheck = document.getElementById("wrapFeesIN").checked;
+        interestOnlyCheck = document.getElementById("interestOnlyIN").checked;
+
+        console.log("closing cost: " + closingCost);
+        console.log("repairCost: " + repairCost);
+        console.log("pointsCharged: " + pointsCharged);
+        console.log("otherCharges: " + otherCharges);
+        console.log("purchasePrice: " + purchasePrice);
+        console.log("ARV: " + ARV);
+        console.log("downPayment: " + downPayment);
+        console.log("loanRate: " + loanRate);
+        console.log("yearsAmortized: " + yearsAmortized);
+        console.log("cashPurchaseCheck: " + cashPurchaseCheck);
+        console.log("wrapFeesCheck: " + wrapFeesCheck);
+        console.log("interestOnlyCheck: " + interestOnlyCheck);
+        console.log("");
+
+      }
+
+      function getRentalInfo() {
+
+        otherIncome = +document.getElementById('otherIncomeIN').value;
+
+        waterSewer = +document.getElementById('watersewerIN').value;
+        insurance = +document.getElementById('insuranceIN').value;
+        electricity = +document.getElementById('electricityIN').value;
+        garbage = +document.getElementById('garbageIN').value;
+        PMI = +document.getElementById('pmiIN').value;
+        HOA = +document.getElementById('hoaIN').value;
+        otherExpenses = +document.getElementById('otherIN').value;
+
+        // variable(percentages)
+        vacancy = +document.getElementById('vacancyIN').value;
+        maintenance = +document.getElementById('repairsIN').value;
+        capEx = +document.getElementById('capExIN').value;
+        managementFees = +document.getElementById('managementFeesIN').value;
+        rentIncrease = +document.getElementById('rentIncreaseIN').value;
+        appreciation = +document.getElementById('appreciationIN').value;
+        expenseIncrease = +document.getElementById('expenseIncreaseIN').value;
+
+        // required vars
+        monthlyRentalIncome = +document.getElementById('monthlyRentIN').value;
+
+        // checkboxes/booleans
+        futureAssumptionsCheck = document.getElementById("futureAssumptionsIN").checked;
+
+        console.log("otherIncome " + otherIncome);
+        console.log("waterSewer " + waterSewer);
+        console.log("insurance " + insurance);
+        console.log("electricity " + electricity);
+        console.log("garbage " + garbage);
+        console.log("PMI " + PMI);
+        console.log("HOA " + HOA);
+        console.log("otherExpenses " + otherExpenses);
+        console.log("vacancy " + vacancy);
+        console.log("maintenance " + maintenance);
+        console.log("capEx " + capEx);
+        console.log("managementFees " + managementFees);
+        console.log("rentIncrease " + rentIncrease);
+        console.log("appreciation " + appreciation);
+        console.log("expenseIncrease " + expenseIncrease);
+        console.log("monthlyRentalIncome " + monthlyRentalIncome);
+        console.log("futureAssumptionsCheck " + futureAssumptionsCheck);
+        console.log("");
+
+      }
+
+      // calculate everything with given inputs for the output and results panels.
+      function calculate() {
+
+        totalProjectCost = purchasePrice + closingCost + repairCost
+
+        // populate results panel
+        document.getElementById('purchasePriceRESULTS').innerHTML = "$" + parseFloat(purchasePrice).toFixed(0).replace(/./g, function (c, i, a) {
+          return i && c !== "." && ((a.length - i) % 3 === 0) ? ',' + c : c;
+        });
+        document.getElementById('closingCostRESULTS').innerHTML = "$" + parseFloat(closingCost).toFixed(0).replace(/./g, function (c, i, a) {
+          return i && c !== "." && ((a.length - i) % 3 === 0) ? ',' + c : c;
+        });
+        document.getElementById('repairsRESULTS').innerHTML = "$" + parseFloat(repairCost).toFixed(0).replace(/./g, function (c, i, a) {
+          return i && c !== "." && ((a.length - i) % 3 === 0) ? ',' + c : c;
+        });
+        document.getElementById('totalProjectCostRESULTS').innerHTML = "$" + parseFloat(purchasePrice).toFixed(0).replace(/./g, function (c, i, a) {
+          return i && c !== "." && ((a.length - i) % 3 === 0) ? ',' + c : c;
+        });
+        document.getElementById('purchasePriceRESULTS').innerHTML = "$" + parseFloat(purchasePrice).toFixed(0).replace(/./g, function (c, i, a) {
+          return i && c !== "." && ((a.length - i) % 3 === 0) ? ',' + c : c;
+        });
+        document.getElementById('purchasePriceRESULTS').innerHTML = "$" + parseFloat(purchasePrice).toFixed(0).replace(/./g, function (c, i, a) {
+          return i && c !== "." && ((a.length - i) % 3 === 0) ? ',' + c : c;
+        });
+        document.getElementById('purchasePriceRESULTS').innerHTML = "$" + parseFloat(purchasePrice).toFixed(0).replace(/./g, function (c, i, a) {
+          return i && c !== "." && ((a.length - i) % 3 === 0) ? ',' + c : c;
+        });
+        document.getElementById('purchasePriceRESULTS').innerHTML = "$" + parseFloat(purchasePrice).toFixed(0).replace(/./g, function (c, i, a) {
+          return i && c !== "." && ((a.length - i) % 3 === 0) ? ',' + c : c;
+        });
+        document.getElementById('purchasePriceRESULTS').innerHTML = "$" + parseFloat(purchasePrice).toFixed(0).replace(/./g, function (c, i, a) {
+          return i && c !== "." && ((a.length - i) % 3 === 0) ? ',' + c : c;
+        });
+
+      }
+
+
+      // UI changes
 
       // Form validation
       var justValidate = false //flag that indicates is validate or submit
@@ -1308,7 +1522,9 @@ Author: Deven Swiergiel
         if (propertyInfo.checkValidity()) {
 
           $('#secondTab').trigger('click');
+
           // function to send input to output
+          getPropertyInfo();
         }
 
       }
@@ -1318,6 +1534,7 @@ Author: Deven Swiergiel
 
           $('#thirdTab').trigger('click');
           // function to send input to output
+          getPurchaseInfo();
         }
       }
 
@@ -1326,6 +1543,8 @@ Author: Deven Swiergiel
         if (rentalInfo.checkValidity()) {
           $('#fourthTab').trigger('click');
           // calculate
+          getRentalInfo();
+          calculate();
         }
       }
       // END Form validation
@@ -1359,24 +1578,30 @@ Author: Deven Swiergiel
       });
       // END switch tabs
 
-
-      // GLOBAL VARS
-      var noLoan; // cash purchase or not. needed to ignore loan input fields if checked.
-      var noFutureAssumptions; // anticipate things like appreciation and inflation? 
-
       // for hiding and displaying the loan section depending on cash purchase or not
       document.getElementById('cashPurchaseIN').addEventListener('change', function (e) {
-        noLoan = document.getElementById("cashPurchaseIN").checked;
-        if (noLoan) {
+        cashPurchaseCheck = document.getElementById("cashPurchaseIN").checked;
+        if (cashPurchaseCheck) {
           document.getElementById('loanInfo').style.display = 'none';
+
+          // give values to required fields in order to pass form validation
+          document.getElementById('downPercentIN').value = "1.00";
+          document.getElementById('interestRateIN').value = 0.0;
+          document.getElementById('yearsIN').value = "0";
+
         } else {
           document.getElementById('loanInfo').style.display = 'block';
+
+          // set them back to empty so user does not miss them
+          document.getElementById('downPercentIN').value = "";
+          document.getElementById('interestRateIN').value = "";
+          document.getElementById('yearsIN').value = "";
         }
       });
 
       document.getElementById('futureAssumptionsIN').addEventListener('change', function (e) {
-        noFutureAssumptions = document.getElementById("futureAssumptionsIN").checked;
-        if (noFutureAssumptions == false) {
+        futureAssumptionsCheck = document.getElementById("futureAssumptionsIN").checked;
+        if (futureAssumptionsCheck == false) {
           document.getElementById('futureAssumptions').style.display = 'none';
         } else {
           document.getElementById('futureAssumptions').style.display = 'block';
@@ -1385,131 +1610,16 @@ Author: Deven Swiergiel
 
       // hide future assumptions by default
       window.addEventListener('load', function (e) {
-        noFutureAssumptions = document.getElementById("futureAssumptionsIN").checked;
+        futureAssumptionsCheck = document.getElementById("futureAssumptionsIN").checked;
 
-        if (noFutureAssumptions == false) {
+        if (futureAssumptionsCheck == false) {
           document.getElementById('futureAssumptions').style.display = 'none';
         } else {
           document.getElementById('futureAssumptions').style.display = 'block';
         }
       });
 
-
     </script>
-
-
-
-
-    <!-- <script>
-
-    // Whenever there is a change run this function
-    document.getElementById('inputs').addEventListener('change', function (e) {
-
-      // get the inputs
-      var rentPerUnit = document.getElementById("rentPerUnitIN").value;
-      var unitsPerProperty = document.getElementById("numberOfUnitsIN").value;
-      var fundsPerYear = document.getElementById("investableFundsIN").value;
-      var downPayment = document.getElementById("downPaymentIN").value;
-      var years = document.getElementById("yearsIN").value;
-
-      // other vars 
-      var totalProperty = 0;
-      var totalUnits = 0;
-      var totalMoney = 0;
-      var leftOver = 0;
-      var monthlyProfit = 0;
-
-      // if (rentPerUnit != 0 && unitsPerProperty != 0 && fundsPerYear != 0 && downPayment != 0 && years != 0) {
-
-
-
-        // sums though the years
-        for (let i = 0; i < years; i++) {
-
-          // TESTING
-          // for annual raises of x amount.
-          // fundsPerYear = +fundsPerYear + 1000;
-          // for increasing property prices
-          downPayment = +downPayment + 500;
-          // for increasing rent each year
-          rentPerUnit = +rentPerUnit + 5;
-
-          //END TESTING
-
-          totalMoney += (+monthlyProfit * 12) + +fundsPerYear;
-
-          if (+totalMoney >= +downPayment) {
-
-            // for storing how many properties were purchased
-            let purchased = 0;
-
-            purchased = parseInt(Math.floor(+totalMoney / +downPayment));
-
-            // adds all of the properties purchased to total property
-            totalProperty += +purchased;
-
-            // remove money spent on property from totalMoney
-            totalMoney -= (+downPayment * +purchased);
-
-          }
-
-          totalUnits = parseInt(+totalProperty * +unitsPerProperty);
-          monthlyProfit = parseInt(+totalUnits * +rentPerUnit);
-
-          // TESTING
-          // income taxes(worst case, no deductions)
-          monthlyProfit = +monthlyProfit - (+monthlyProfit*.39);
-          // END TESTING
-        }
-      // }
-
-      // update the fields as user inputs data
-      if (unitsPerProperty != 0) {
-        document.getElementById('numberOfUnitsOUT').innerHTML = unitsPerProperty;
-      }
-
-      if (years != 0) {
-        document.getElementById('yearsOUT').innerHTML = years;
-      }
-
-      if (rentPerUnit != 0) {
-        document.getElementById('rentPerUnitOUT').innerHTML = "$" + parseFloat(rentPerUnit).toFixed(0).replace(/./g, function (c, i, a) {
-          return i && c !== "." && ((a.length - i) % 3 === 0) ? ',' + c : c;
-        });
-      }
-
-      if (fundsPerYear != 0) {
-        document.getElementById('investableFundsOUT').innerHTML = "$" + parseFloat(fundsPerYear).toFixed(0).replace(/./g, function (c, i, a) {
-          return i && c !== "." && ((a.length - i) % 3 === 0) ? ',' + c : c;
-        });
-      }
-
-      if (downPayment != 0) {
-        document.getElementById('downPaymentOUT').innerHTML = "$" + parseFloat(downPayment).toFixed(0).replace(/./g, function (c, i, a) {
-          return i && c !== "." && ((a.length - i) % 3 === 0) ? ',' + c : c;
-        });
-      }
-
-      document.getElementById('totalNumberOfUnits').innerHTML = totalUnits;
-      document.getElementById('numberOfProperties').innerHTML = totalProperty;
-
-
-      // fomats each with dollar signs and coma's
-      document.getElementById('monthlyRent').innerHTML = "$" + parseFloat(monthlyProfit).toFixed(0).replace(/./g, function (c, i, a) {
-        return i && c !== "." && ((a.length - i) % 3 === 0) ? ',' + c : c;
-      });
-
-      document.getElementById('yearlyRent').innerHTML = "$" + parseFloat(+monthlyProfit * +12).toFixed(0).replace(/./g, function (c, i, a) {
-        return i && c !== "." && ((a.length - i) % 3 === 0) ? ',' + c : c;
-      });
-
-      document.getElementById('leftOver').innerHTML = "$" + parseFloat(totalMoney).toFixed(0).replace(/./g, function (c, i, a) {
-        return i && c !== "." && ((a.length - i) % 3 === 0) ? ',' + c : c;
-      });
-
-
-    });
-  </script> -->
 
 </body>
 
