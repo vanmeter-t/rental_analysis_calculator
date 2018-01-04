@@ -27,6 +27,12 @@ Author: Deven Swiergiel
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
     crossorigin="anonymous"></script>
 
+  <script src="https://code.highcharts.com/highcharts.js"></script>
+  <!-- <script src="https://code.highcharts.com/modules/exporting.js"></script> -->
+
+
+
+
   <script>
     $(function () {
       $('[data-toggle="tooltip"]').tooltip()
@@ -188,7 +194,7 @@ Author: Deven Swiergiel
     }
 
     h5 {
-      font-size: 17px;
+      font-size: 15px;
     }
 
     .subHeader {
@@ -204,10 +210,7 @@ Author: Deven Swiergiel
     }
 
 
-    #panel {
-      background-color: #333;
-      padding: 30px 10px 30px 10px;
-    }
+
 
     .col-md-8 {
       width: 1000px!important;
@@ -246,6 +249,15 @@ Author: Deven Swiergiel
       -webkit-appearance: none;
     }
 
+    #panel {
+      background-color: #333;
+      padding: 30px 10px 30px 10px;
+    }
+
+    .outPanel {
+      padding: 20px 20px 20px 20px;
+    }
+
     .output {
       margin-top: 3px;
       background-color: #eee;
@@ -258,11 +270,13 @@ Author: Deven Swiergiel
     }
 
     .outputLabel>h5 {
-      margin-bottom: 3px;
+      margin-bottom: 0px;
+      /* padding-left: 35px!important; */
     }
 
+
     .outputText {
-      font-size: 20px;
+      font-size: 18px;
     }
 
 
@@ -321,8 +335,13 @@ Author: Deven Swiergiel
       .form-group.left.col-lg-5 {
         padding-right: 0px;
       }
-
+      /* .outputLabel>h5 {
+      margin-bottom: 0px;
+      padding-left: 55px!important;
+       */
     }
+
+
 
     @media(max-width: 1000px) {
 
@@ -379,6 +398,11 @@ Author: Deven Swiergiel
       .form-group.left.col-md-5 {
         padding-right: 0px;
       }
+      /* .outputLabel>h5 {
+      margin-bottom: 0px;
+      padding-left: 0px!important;
+      
+    } */
     }
 
     @media(max-width: 450px) {
@@ -458,36 +482,57 @@ Author: Deven Swiergiel
           <div style="padding-left: 3px; padding-right: 3px;">
 
             <div class="card output ">
-              <div class="pl-4 pr-4 pt-3 pb-3">
+              <div class=" outPanel">
 
-                <div class="row innerOutput">
+                <!-- <div class="row innerOutput">
                   <div class="col-md-6 col-sm-6 col-6 outputLabel">
                     <h5>Monthly Cashflow</h5>
-                    <h5 id="cashflowPANEL" class="outputText mb-3">$1,000,000</h5>
-
-                    <h5>Monthly Expenses</h5>
-                    <h5 id="monthlyExpensesPANEL" class="outputText mb-3">$1,000,000</h5>
-                    <!-- <h5>NOI</h5>
-                    <h5 id="noiPANEL" class="outputText mb-3">$1,000,000</h5>
-                    <h5>Debt Coverage Ratio</h5>
-                    <h5 id="debtCoveragePANEL" class="outputText mb-3">$1,000,000</h5> -->
-                    <!-- <h5>Total Cash Needed</h5>
-                    <h5 id="cashNeededPANEL" class="outputText ">$1,000,000</h5> -->
+                    <h5 id="cashflowPANEL" class="outputText mb-2">$1,000,000</h5>
+                    <h5>Monthly Income</h5>
+                    <h5 id="monthlyIncomePANEL" class="outputText mb-2">$1,000,000</h5>
+                    <h5>NOI</h5>
+                    <h5 id="noiPANEL" class="outputText mb-2">$1,000,000</h5>
+                    <h5>Total Cash Needed</h5>
+                    <h5 id="cashNeededPANEL" class="outputText ">$1,000,000</h5>
 
                   </div>
                   <div class="col-md-6 col-sm-6 col-6 outputLabel">
                     <h5>Cash On Cash ROI</h5>
-                    <h5 id="cocPANEL" class="outputText mb-3">$1,000,000</h5>
-                    <!-- <h5>Monthly Income</h5>
-                    <h5 id="monthlyIncomePANEL" class="outputText mb-3">$1,000,000</h5> -->
-                    <!-- <h5>Monthly Cashflow</h5>
-                    <h5 id="cashflowPANEL" class="outputText mb-3">$1,000,000</h5> -->
-                    <!-- <h5>Cash On Cash ROI</h5>
-                    <h5 id="cocPANEL" class="outputText mb-3">$1,000,000</h5> -->
+                    <h5 id="cocPANEL" class="outputText mb-2">$1,000,000</h5>
+                    <h5>Monthly Expenses</h5>
+                    <h5 id="monthlyExpensesPANEL" class="outputText mb-2">$1,000,000</h5>
+                    <h5>Debt Coverage Ratio</h5>
+                    <h5 id="debtCoveragePANEL" class="outputText mb-2">$1,000,000</h5>
                     <h5>Total Initial Equity</h5>
                     <h5 id="initialEquityPANEL" class="outputText ">$1,000,000</h5>
                   </div>
+                </div> -->
 
+                <div class="row innerOutput">
+                  <div class="col-md-4 col-sm-4 col-6 outputLabel">
+                    <h5>Monthly Income</h5>
+                    <h5 id="monthlyIncomePANEL" class="outputText mb-2">$0.00</h5>
+                    <h5>Total Cash Needed</h5>
+                    <h5 id="totalCashNeededPANEL" class="outputText mb-2">$0.00</h5>
+                    <h5>Cap Rate</h5>
+                    <h5 id="capRatedPANEL" class="outputText ">0.00%</h5>
+                  </div>
+                  <div class="col-md-4 col-sm-4 col-6 outputLabel">
+                    <h5>Monthly Expenses</h5>
+                    <h5 id="monthlyExpensesPANEL" class="outputText mb-2">$0.00</h5>
+                    <h5>Total Initial Equity</h5>
+                    <h5 id="initialEquityPANEL" class="outputText mb-2">$0.00</h5>
+                    <h5>Debt Coverage Ratio</h5>
+                    <h5 id="debtCoveragePANEL" class="outputText mb-2">0.00%</h5>
+                  </div>
+                  <div class="col-md-4 col-sm-4 col-6 outputLabel">
+                    <h5>Monthly Cashflow</h5>
+                    <h5 id="cashflowPANEL" class="outputText mb-2">$0.00</h5>
+                    <h5>NOI</h5>
+                    <h5 id="noiPANEL" class="outputText mb-2">$0.00</h5>
+                    <h5>Cash On Cash ROI</h5>
+                    <h5 id="cocPANEL" class="outputText mb-2">0.00%</h5>
+                  </div>
                 </div>
 
                 <div class="clearfix"></div>
@@ -536,22 +581,144 @@ Author: Deven Swiergiel
                   </div>
                 </div> -->
                 <!-- <div class="row justify-content-md-center mb-2" style="max-width: 285px; margin: 0 auto"> -->
-                <div class="row justify-content-md-center mb-2">
-                  <div class="btn-group btn-group-md" role="group" aria-label="Basic example">                    
-                    <button type="button" class="btn btn-secondary">Expenses</button>
-                    <button type="button" class="btn btn-secondary">Income</button>
-                    <button type="button" class="btn btn-secondary">More Metrics</button>
+                <div class="row justify-content-md-center justify-content-center mb-2">
+                  <div class="btn-group-sm justify-content-md-center justify-content-center" role="group" aria-label="Basic example">
+                    <button id="expenseBtn" type="button" class="btn btn-secondary">Expenses</button>
+                    <button id="incomeBtn" type="button" class="btn btn-secondary">Income</button>
+                    <button id="amortizationBtn" type="button" class="btn btn-secondary">Amortization</button>
+                    <button id="moreMetricsBtn" type="button" class="btn btn-secondary">More Metrics</button>
                   </div>
 
-                 
+                  <div id="expenseChart">
+                    <div id="container" style="min-width: 320px; height: 350px; margin: 0 auto"></div>
+                    <!-- <div id="container"></div> -->
+                    <!-- <div id="container" style="min-width: 290px; height: 300px; max-width: 320px; margin: 0 auto; "></div> -->
+
+                  </div>
+                  <div id="incomeChart">
+                  </div>
+                  <div id="amortizationChart">
+                  </div>
+                  <div id="moreMetrics">
+                  </div>
+
                 </div>
 
 
+                <script>
+                  
+                  // Build the chart
+                  Highcharts.chart('container', {
+                    chart: {
+                      plotBackgroundColor: null,
+                      backgroundColor: null,
+                      plotBorderWidth: null,
+                      plotShadow: false,
+                      type: 'pie'
+                      
+                    },
+                    credits:{
+                      enabled: false
+                    },
+                    title: {
+                      text: null
+                    },
+                    tooltip: {
+                      pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+                    },
+                    plotOptions: {
+                      pie: {
+                        size: 175
+                      }
+                    },
+                    series: [{
+                      type: 'pie',
+                      dataLabels: {
+                        enabled: false
+                      },
+                      showInLegend: true,
+                      allowPointSelect: true,
+                      keys: ['name', 'y'],
+                      data: [
+                        ['Firefox', 45.0],
+                        ['IE', 70],
+                        ['Chrome', 12.8],
+                        ['Safari', 8.5],
+                        ['Opera', 6.2],
+                        ['Others', 0.7]
+                      ]
+                    }],
+                    legend: {
+                      // labelFormat: '{name} ({percentage:.1f}%)',
+                      labelFormat: '{name}: ${y:.2f} ({percentage:.1f}%)',
+                      layout: 'horizontal',
+                      align: 'center',
+                      verticalAlign: 'bottom'
+                    },
+                  });
+                  // window.chart = new Highcharts.Chart({
+
+                  //   chart: {
+                  //     renderTo: 'container',
+                  //     type: 'pie'
+                  //   },
+                  //   legend: {
+                  //     labelFormat: '{name} ({percentage:.1f}%)',
+                  //     layout: 'vertical',
+                  //     align: 'right',
+                  //     verticalAlign: 'middle'
+                  //   },
+                  //   plotOptions: {
+                  //     pie: {
+                  //       allowPointSelect: true,
+                  //       cursor: 'pointer',
+                  //       dataLabels: {
+                  //         enabled: false
+                  //       },
+                  //       showInLegend: true
+                  //     }
+                  //   },
+                  //   series: [{
+                  //     type: 'pie',
+                  //     name: 'Browser share',
+                  //     data: [
+                  //       ['Firefox', 45.0],
+                  //       ['IE', 26.8],
+                  //       ['Chrome', 12.8],
+                  //       ['Safari', 8.5],
+                  //       ['Opera', 6.2],
+                  //       ['Others', 0.7]
+                  //     ]
+                  //   }],
+                  //   responsive: {
+                  //     rules: [{
+                  //       condition: {
+                  //         maxWidth: 300
+                  //       },
+                  //       chartOptions: {
+                  //         legend: {
+                  //           align: 'center',
+                  //           verticalAlign: 'bottom',
+                  //           layout: 'horizontal'
+                  //         },
+
+                  //         subtitle: {
+                  //           text: null
+                  //         },
+                  //         credits: {
+                  //           enabled: false
+                  //         }
+                  //       }
+                  //     }]
+                  //   }
+                  // });
 
 
-                <div id="container" style="min-width: 290px; height: 300px; max-width: 320px; margin: 0 auto"></div>
 
-                <div id="piechart"></div>
+                </script>
+
+
+
               </div>
 
             </div>
@@ -1330,6 +1497,13 @@ Author: Deven Swiergiel
 
 
     <script>
+
+
+
+
+
+
+
       // GLOBAL VARS
 
       // PROPERTY VARS
@@ -1340,22 +1514,22 @@ Author: Deven Swiergiel
       var zip;
 
       // required vars
-      var yearlyTaxes;
+      var annualTaxes = 0;
 
 
       // PURCHASE VARS
       // optional vars
-      var closingCost;
-      var repairCost;
-      var pointsCharged;
-      var otherCharges;
+      var closingCost = 0;
+      var repairCost = 0;
+      var pointsCharged = 0;
+      var otherCharges = 0;
 
       // required vars
-      var purchasePrice;
-      var ARV;
-      var downPaymentPercent;
-      var loanRate;
-      var yearsAmortized;
+      var purchasePrice = 0;
+      var ARV = 0;
+      var downPaymentPercent = 0;
+      var loanRate = 0;
+      var yearsAmortized = 0;
 
       // checkboxes/booleans
       var cashPurchaseCheck; // cash purchase or not. needed to ignore loan input fields if checked.
@@ -1365,42 +1539,44 @@ Author: Deven Swiergiel
 
       // RENTAL VARS
       // optional vars
-      var otherIncome;
-      var monthlyPropertyTaxes;
-      var waterSewer;
-      var insurance;
-      var electricity;
-      var garbage;
-      var PMI;
-      var HOA;
-      var otherExpenses;
+      var otherIncome = 0;
+      var monthlyPropertyTaxes = 0;
+      var waterSewer = 0;
+      var insurance = 0;
+      var electricity = 0;
+      var garbage = 0;
+      var PMI = 0;
+      var HOA = 0;
+      var otherExpenses = 0;
 
       // variable(percentages)
-      var vacancy;
-      var maintenance;
-      var capEx;
-      var managementFees
-      var rentIncrease;
-      var appreciation;
-      var expenseIncrease;
+      var vacancy = 0;
+      var maintenance = 0;
+      var capEx = 0;
+      var managementFees = 0;
+      var rentIncrease = 0;
+      var appreciation = 0;
+      var expenseIncrease = 0;
 
       // required vars
-      var monthlyRentalIncome;
+      var monthlyRentalIncome = 0;
 
       // checkboxes/booleans
       var futureAssumptionsCheck; // anticipate things like appreciation and inflation? 
 
       //calculated vars
-      var downPayment;
-      var loanAmount;
-      var pointsToDollars;
-      var totalCashNeeded;
-      var paymentsAndInterest;
-      var monthlyCashflow;
-      var cocROI;
-      var grossMonthlyIncome;
-      var grossMonthlyExpenses;
-      var totalInitialEquity;
+      var downPayment = 0;
+      var loanAmount = 0;
+      var pointsToDollars = 0;
+      var totalCashNeeded = 0;
+      var paymentsAndInterest = 0;
+      var monthlyCashflow = 0;
+      var cocROI = 0;
+      var grossMonthlyIncome = 0;
+      var grossMonthlyExpenses = 0;
+      var totalInitialEquity = 0;
+      var NOI = 0;
+      var capRate = 0;
 
 
 
@@ -1529,12 +1705,19 @@ Author: Deven Swiergiel
           loanAmount = (purchasePrice - downPayment);
           totalCashNeeded = downPayment + repairCost + closingCost + pointsToDollars + otherCharges;
         }
+        if (loanAmount != 0) {
+          paymentsAndInterest = pmt();
+        } else {
+          paymentsAndInterest = 0;
+        }
 
-        paymentsAndInterest = pmt();
         monthlyCashflow = cashflow();
         cocROI = ((monthlyCashflow * 12) / totalCashNeeded) * 100;
-
         totalInitialEquity = downPayment + (ARV - purchasePrice);
+        NOI = grossMonthlyIncome * 12 - (grossMonthlyExpenses - paymentsAndInterest) * 12;
+        capRate = (NOI / purchasePrice) * 100;
+
+        createCharts();
 
         // populate results panel
         document.getElementById('purchasePriceRESULTS').innerHTML = "$" + parseFloat(purchasePrice).toFixed(2).replace(/./g, function (c, i, a) {
@@ -1578,10 +1761,20 @@ Author: Deven Swiergiel
         document.getElementById('monthlyExpensesPANEL').innerHTML = "$" + parseFloat(grossMonthlyExpenses).toFixed(2).replace(/./g, function (c, i, a) {
           return i && c !== "." && ((a.length - i) % 3 === 0) ? ',' + c : c;
         });
+        document.getElementById('monthlyIncomePANEL').innerHTML = "$" + parseFloat(grossMonthlyIncome).toFixed(2).replace(/./g, function (c, i, a) {
+          return i && c !== "." && ((a.length - i) % 3 === 0) ? ',' + c : c;
+        });
         document.getElementById('initialEquityPANEL').innerHTML = "$" + parseFloat(totalInitialEquity).toFixed(2).replace(/./g, function (c, i, a) {
           return i && c !== "." && ((a.length - i) % 3 === 0) ? ',' + c : c;
         });
+        document.getElementById('noiPANEL').innerHTML = "$" + parseFloat(NOI).toFixed(2).replace(/./g, function (c, i, a) {
+          return i && c !== "." && ((a.length - i) % 3 === 0) ? ',' + c : c;
+        });
+        document.getElementById('totalCashNeededPANEL').innerHTML = "$" + parseFloat(totalCashNeeded).toFixed(2).replace(/./g, function (c, i, a) {
+          return i && c !== "." && ((a.length - i) % 3 === 0) ? ',' + c : c;
+        });
         document.getElementById('cocPANEL').innerHTML = parseFloat(cocROI).toFixed(3) + "%";
+        document.getElementById('capRatedPANEL').innerHTML = parseFloat(capRate).toFixed(3) + "%";
       }
 
       // mortgage payment and interest function
@@ -1606,6 +1799,53 @@ Author: Deven Swiergiel
         cashflow = +grossMonthlyIncome - +grossMonthlyExpenses;
 
         return cashflow;
+      }
+      function createCharts() {
+
+
+        Highcharts.chart('expenseChart', {
+
+          title: {
+            text: null
+          },
+
+          legend: {
+            labelFormat: '{name}: ${point.y.2f} ({percentage:.1f}%)',
+            layout: 'vertical',
+            align: 'right',
+            verticalAlign: 'middle'
+          },
+          plotOptions: {
+            pie: {
+              size: 150
+            }
+          },
+
+
+          series: [{
+            type: 'pie',
+            dataLabels: {
+              enabled: false
+            },
+            showInLegend: true,
+            allowPointSelect: true,
+            keys: ['name', 'y', 'selected', 'sliced'],
+            data: [
+              ['Property Taxes', +monthlyPropertyTaxes, false],
+              ['Water & Sewer', +waterSewer, false],
+              ['Insurance', +insurance, false],
+              ['Electricity', +electricity, false],
+              ['Garbage', +garbage, false],
+              ['PMI', +PMI, false],
+              ['HOA', +HOA, false],
+              ['Other', +otherExpenses, false],
+              ['Vacancy', grossMonthlyIncome * +vacancy, false],
+              ['Maintenance', grossMonthlyIncome * +maintenance, false],
+              ['CapEx', grossMonthlyIncome * +capEx, false],
+              ['Management', grossMonthlyIncome * +managementFees, false]
+            ],
+          }]
+        });
       }
 
       // UI changes
@@ -1658,6 +1898,32 @@ Author: Deven Swiergiel
       }
 
       // END Form validation
+
+      // swtich charts
+      document.getElementById('expenseBtn').onclick = function () {
+        document.getElementById('expenseChart').style.display = 'inline-block';
+        document.getElementById('incomeChart').style.display = 'none';
+        document.getElementById('amortizationChart').style.display = 'none';
+        document.getElementById('moreMetrics').style.display = 'none';
+      };
+      document.getElementById('incomeBtn').onclick = function () {
+        document.getElementById('incomeChart').style.display = 'inline-block';
+        document.getElementById('expenseChart').style.display = 'none';
+        document.getElementById('amortizationChart').style.display = 'none';
+        document.getElementById('moreMetrics').style.display = 'none';
+      };
+      document.getElementById('amortizationBtn').onclick = function () {
+        document.getElementById('amortizationChart').style.display = 'inline-block';
+        document.getElementById('incomeChart').style.display = 'none';
+        document.getElementById('expenseChart').style.display = 'none';
+        document.getElementById('moreMetrics').style.display = 'none';
+      };
+      document.getElementById('moreMetricsBtn').onclick = function () {
+        document.getElementById('moreMetrics').style.display = 'inline-block';
+        document.getElementById('incomeChart').style.display = 'none';
+        document.getElementById('amortizationChart').style.display = 'none';
+        document.getElementById('expenseChart').style.display = 'none';
+      };
 
       // switch tabs
       $(document).ready(function () {
@@ -1732,66 +1998,43 @@ Author: Deven Swiergiel
     </script>
 
 
-    <script src="https://code.highcharts.com/highcharts.js"></script>
-    <script src="https://code.highcharts.com/modules/exporting.js"></script>
 
-    <script>
-      monthlyCashflow = 234;
-      test = 356;
+    <!-- <script src="https://code.highcharts.com/js/modules/exporting.js"></script> -->
 
-      // Build the chart
-      Highcharts.chart('container', {
-        chart: {
-          plotBackgroundColor: '#eee',
-          backgroundColor: '#eee',
-          plotBorderWidth: null,
-          plotShadow: false,
-          type: 'pie'
-        },
-        title: {
-          text: null
-        },
-        tooltip: {
-          pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
-        },
-        plotOptions: {
-          pie: {
-            allowPointSelect: true,
-            cursor: 'pointer',
-            dataLabels: {
-              enabled: false
-            },
-            showInLegend: true
-          }
-        },
-        series: [{
-          name: 'Brands',
-          colorByPoint: true,
-          data: [{
-            name: 'Microsoft Internet Explorer',
-            y: monthlyCashflow
-          }, {
-            name: 'Chrome',
-            y: test,
-            sliced: true,
-            selected: true
-          }, {
-            name: 'Firefox',
-            y: test
-          }, {
-            name: 'Safari',
-            y: 4.77
-          }, {
-            name: 'Opera',
-            y: 0.91
-          }, {
-            name: 'Proprietary or Undetectable',
-            y: 0.2
-          }]
-        }]
-      });
+    <!-- <style>
+      @import 'https://code.highcharts.com/css/highcharts.css';
 
-    </script>
+      #expenseChart {
+        min-width: 290px;
+        height: 300px;
+        max-width: 500px;
+        margin: 0 auto;
+
+      }
+
+      .highcharts-background {
+        fill: transparent;
+      }
+
+      .highcharts-pie-series .highcharts-point {
+        stroke: #EDE;
+        stroke-width: 2px;
+
+      }
+
+      text.highcharts-credits {
+        display: none;
+      }
+
+      .highcharts-pie-series .highcharts-data-label-connector {
+        stroke: silver;
+        stroke-dasharray: 2, 2;
+        stroke-width: 2px;
+      }
+    </style> -->
+
+
+
 
 
 
