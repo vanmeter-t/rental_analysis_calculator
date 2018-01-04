@@ -324,18 +324,6 @@ Author: Deven Swiergiel
 
     }
 
-    @media(min-width: 768px) and (max-width: 980px) {
-
-      /* .col-md-5 {
-        max-width: 100%!important;
-        width: 50vw!important;
-      }
-      .col-md-7 {
-        max-width: 100%!important;
-        width: 39vw!important;
-      } */
-    }
-
     @media(max-width: 1000px) {
 
       #innerOutput {
@@ -547,18 +535,21 @@ Author: Deven Swiergiel
                     <h5 id="debtCoveragePANEL" class="outputText">$1,000,000</h5>
                   </div>
                 </div> -->
-                <div class="row justify-content-md-center">
-                  <div class="btn-group" role="group" aria-label="Basic example">
+                <!-- <div class="row justify-content-md-center mb-2" style="max-width: 285px; margin: 0 auto"> -->
+                <div class="row justify-content-md-center mb-2">
+                  <div class="btn-group btn-group-md" role="group" aria-label="Basic example">                    
                     <button type="button" class="btn btn-secondary">Expenses</button>
                     <button type="button" class="btn btn-secondary">Income</button>
                     <button type="button" class="btn btn-secondary">More Metrics</button>
                   </div>
+
+                 
                 </div>
 
 
 
 
-                <div id="container" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
+                <div id="container" style="min-width: 290px; height: 300px; max-width: 320px; margin: 0 auto"></div>
 
                 <div id="piechart"></div>
               </div>
@@ -1545,10 +1536,6 @@ Author: Deven Swiergiel
 
         totalInitialEquity = downPayment + (ARV - purchasePrice);
 
-
-
-
-
         // populate results panel
         document.getElementById('purchasePriceRESULTS').innerHTML = "$" + parseFloat(purchasePrice).toFixed(2).replace(/./g, function (c, i, a) {
           return i && c !== "." && ((a.length - i) % 3 === 0) ? ',' + c : c;
@@ -1743,71 +1730,74 @@ Author: Deven Swiergiel
       });
 
     </script>
+
+
     <script src="https://code.highcharts.com/highcharts.js"></script>
     <script src="https://code.highcharts.com/modules/exporting.js"></script>
 
     <script>
-monthlyCashflow = 234;
-test  = 356;
-      
-    // Build the chart
-Highcharts.chart('container', {
-    chart: {
-        plotBackgroundColor: null,
-        plotBorderWidth: null,
-        plotShadow: false,
-        type: 'pie'
-    },
-    title: {
-        text: 'Browser market shares January, 2015 to May, 2015'
-    },
-    tooltip: {
-        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
-    },
-    plotOptions: {
-        pie: {
+      monthlyCashflow = 234;
+      test = 356;
+
+      // Build the chart
+      Highcharts.chart('container', {
+        chart: {
+          plotBackgroundColor: '#eee',
+          backgroundColor: '#eee',
+          plotBorderWidth: null,
+          plotShadow: false,
+          type: 'pie'
+        },
+        title: {
+          text: null
+        },
+        tooltip: {
+          pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+        },
+        plotOptions: {
+          pie: {
             allowPointSelect: true,
             cursor: 'pointer',
             dataLabels: {
-                enabled: false
+              enabled: false
             },
             showInLegend: true
-        }
-    },
-    series: [{
-        name: 'Brands',
-        colorByPoint: true,
-        data: [{
+          }
+        },
+        series: [{
+          name: 'Brands',
+          colorByPoint: true,
+          data: [{
             name: 'Microsoft Internet Explorer',
             y: monthlyCashflow
-        }, {
+          }, {
             name: 'Chrome',
             y: test,
             sliced: true,
             selected: true
-        }, {
+          }, {
             name: 'Firefox',
-            y: 10.38
-        }, {
+            y: test
+          }, {
             name: 'Safari',
             y: 4.77
-        }, {
+          }, {
             name: 'Opera',
             y: 0.91
-        }, {
+          }, {
             name: 'Proprietary or Undetectable',
             y: 0.2
+          }]
         }]
-    }]
-});
+      });
 
-</script>
-
+    </script>
 
 
-<!-- 
 
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+
+    <!-- <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
       google.charts.load('current', { 'packages': ['corechart'] });
       google.charts.setOnLoadCallback(drawChart);
