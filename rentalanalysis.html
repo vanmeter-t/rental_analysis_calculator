@@ -308,6 +308,10 @@ Author: Deven Swiergiel
       float: right;
     }
 
+    .btn {
+      margin-top: 5px;
+    }
+
     .arrow {
       visibility: hidden;
     }
@@ -462,6 +466,10 @@ Author: Deven Swiergiel
         height: 150px;
         margin: 0 auto
       }
+      .chartButtons{
+        margin-left: auto;
+        margin-right: auto;
+      }
     }
 
 
@@ -570,31 +578,37 @@ Author: Deven Swiergiel
                   <div class="col-md-4 col-sm-4 col-6 outputLabel">
                     <h5>Monthly Income</h5>
                     <h5 id="monthlyIncomePANEL" class="outputText mb-2">$0.00</h5>
-                    <h5>Total Cash Needed</h5>
-                    <h5 id="totalCashNeededPANEL" class="outputText mb-2">$0.00</h5>
-                    <h5>Cap Rate</h5>
-                    <h5 id="capRatedPANEL" class="outputText ">0.00%</h5>
+                    <h5>Total Initial Equity</h5>
+                    <h5 id="initialEquityPANEL" class="outputText mb-2">$0.00</h5>
+                    <h5>NOI</h5>
+                    <h5 id="noiPANEL" class="outputText mb-2">$0.00</h5>
+                    <!-- <h5>Cap Rate</h5>
+                    <h5 id="capRatedPANEL" class="outputText ">0.00%</h5> -->
                   </div>
                   <div class="col-md-4 col-sm-4 col-6 outputLabel">
                     <h5>Monthly Expenses</h5>
                     <h5 id="monthlyExpensesPANEL" class="outputText mb-2">$0.00</h5>
-                    <h5>Total Initial Equity</h5>
-                    <h5 id="initialEquityPANEL" class="outputText mb-2">$0.00</h5>
-                    <h5>Debt Coverage Ratio</h5>
-                    <h5 id="debtCoveragePANEL" class="outputText mb-2">0.00%</h5>
+                    <h5>Total Cash Needed</h5>
+                    <h5 id="totalCashNeededPANEL" class="outputText mb-2">$0.00</h5>
+                    <h5>Cap Rate</h5>
+                    <h5 id="capRatedPANEL" class="outputText mb-2">0.00%</h5>
+                    <!-- <h5>Debt Coverage Ratio</h5>
+                    <h5 id="debtCoveragePANEL" class="outputText mb-2">0.00%</h5> -->
                   </div>
                   <div class="col-md-4 col-sm-4 col-6 outputLabel">
                     <h5>Monthly Cashflow</h5>
                     <h5 id="cashflowPANEL" class="outputText mb-2">$0.00</h5>
-                    <h5>NOI</h5>
-                    <h5 id="noiPANEL" class="outputText mb-2">$0.00</h5>
+                    <h5>Annual Cashflow</h5>
+                    <h5 id="annualCashflowPANEL" class="outputText mb-2">0.00%</h5>
+                    <!-- <h5>NOI</h5>
+                    <h5 id="noiPANEL" class="outputText mb-2">$0.00</h5> -->
                     <h5>Cash On Cash ROI</h5>
                     <h5 id="cocPANEL" class="outputText mb-2">0.00%</h5>
                   </div>
                 </div>
 
                 <div class="clearfix"></div>
-                <hr>
+                <hr style="margin-top:7px; margin-bottom: 10px;">
 
 
 
@@ -639,7 +653,7 @@ Author: Deven Swiergiel
                   </div>
                 </div> -->
                 <!-- <div class="row justify-content-md-center mb-2" style="max-width: 285px; margin: 0 auto"> -->
-                <div class="row justify-content-md-center justify-content-center mb-2">
+                <div class="chartButtons row justify-content-md-center justify-content-center mb-2">
                   <div class="btn-group-sm justify-content-md-center justify-content-center" role="group" aria-label="Basic example">
                     <button id="expenseBtn" type="button" class="btn btn-secondary">Expenses</button>
                     <button id="incomeBtn" type="button" class="btn btn-secondary">Income</button>
@@ -1833,6 +1847,9 @@ Author: Deven Swiergiel
         document.getElementById('totalCashNeededPANEL').innerHTML = "$" + parseFloat(totalCashNeeded).toFixed(2).replace(/./g, function (c, i, a) {
           return i && c !== "." && ((a.length - i) % 3 === 0) ? ',' + c : c;
         });
+        document.getElementById('annualCashflowPANEL').innerHTML = "$" + parseFloat(monthlyCashflow*12).toFixed(2).replace(/./g, function (c, i, a) {
+          return i && c !== "." && ((a.length - i) % 3 === 0) ? ',' + c : c;
+        });
         document.getElementById('cocPANEL').innerHTML = parseFloat(cocROI).toFixed(3) + "%";
         document.getElementById('capRatedPANEL').innerHTML = parseFloat(capRate).toFixed(3) + "%";
       }
@@ -1913,7 +1930,7 @@ Author: Deven Swiergiel
                 // format: '<b>{point.name}</b>: ${point.y}',
                 formatter: function () {
                   if (this.y > 0) {
-                    return this.point.name + ": $" + this.y;
+                    return this.point.name + ": $" + this.y.toFixed(0);
                   }
 
                 },
@@ -1926,6 +1943,7 @@ Author: Deven Swiergiel
               keys: ['name', 'y', 'selected', 'sliced'],
               data: [
                 ['Property Taxes', +monthlyPropertyTaxes, false],
+                ['P&I', +paymentsAndInterest, false],
                 ['Water & Sewer', +waterSewer, false],
                 ['Insurance', +insurance, false],
                 ['Electricity', +electricity, false],
@@ -1980,7 +1998,7 @@ Author: Deven Swiergiel
                 // format: '<b>{point.name}</b>: ${point.y}',
                 formatter: function () {
                   if (this.y > 0) {
-                    return this.point.name + ": $" + this.y;
+                    return this.point.name + ": $" + this.y.toFixed(0);
                   }
                 },
 
@@ -1992,6 +2010,7 @@ Author: Deven Swiergiel
               keys: ['name', 'y', 'selected', 'sliced'],
               data: [
                 ['Property Taxes', +monthlyPropertyTaxes, false],
+                ['P&I', +paymentsAndInterest, false],
                 ['Water & Sewer', +waterSewer, false],
                 ['Insurance', +insurance, false],
                 ['Electricity', +electricity, false],
