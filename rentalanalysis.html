@@ -183,6 +183,16 @@ Author: Deven Swiergiel
 
     /*----- END Checkbox----- */
 
+    .chart {
+
+      min-width: 460px;
+      height: 310px;
+      margin: 0 auto
+    }
+
+
+
+
     body {
       margin-top: 50px;
       background: #2c3e50;
@@ -403,7 +413,22 @@ Author: Deven Swiergiel
       padding-left: 0px!important;
       
     } */
+      .chart {
+
+        min-width: 400px;
+        height: 250px;
+      }
     }
+
+    @media(max-width: 480px) {
+      .chart {
+
+        min-width: 300px;
+        height: 150px;
+        margin: 0 auto
+      }
+    }
+
 
     @media(max-width: 450px) {
       .mobileHeader {
@@ -590,7 +615,7 @@ Author: Deven Swiergiel
                   </div>
 
                   <div id="expenseChart">
-                    <div id="container" style="min-width: 320px; height: 350px; margin: 0 auto"></div>
+                    <div id="container" class="chart"></div>
                     <!-- <div id="container"></div> -->
                     <!-- <div id="container" style="min-width: 290px; height: 300px; max-width: 320px; margin: 0 auto; "></div> -->
 
@@ -606,56 +631,58 @@ Author: Deven Swiergiel
 
 
                 <script>
-                  
+
+
+
                   // Build the chart
-                  Highcharts.chart('container', {
-                    chart: {
-                      plotBackgroundColor: null,
-                      backgroundColor: null,
-                      plotBorderWidth: null,
-                      plotShadow: false,
-                      type: 'pie'
-                      
-                    },
-                    credits:{
-                      enabled: false
-                    },
-                    title: {
-                      text: null
-                    },
-                    tooltip: {
-                      pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
-                    },
-                    plotOptions: {
-                      pie: {
-                        size: 175
-                      }
-                    },
-                    series: [{
-                      type: 'pie',
-                      dataLabels: {
-                        enabled: false
-                      },
-                      showInLegend: true,
-                      allowPointSelect: true,
-                      keys: ['name', 'y'],
-                      data: [
-                        ['Firefox', 45.0],
-                        ['IE', 70],
-                        ['Chrome', 12.8],
-                        ['Safari', 8.5],
-                        ['Opera', 6.2],
-                        ['Others', 0.7]
-                      ]
-                    }],
-                    legend: {
-                      // labelFormat: '{name} ({percentage:.1f}%)',
-                      labelFormat: '{name}: ${y:.2f} ({percentage:.1f}%)',
-                      layout: 'horizontal',
-                      align: 'center',
-                      verticalAlign: 'bottom'
-                    },
-                  });
+                  // Highcharts.chart('container', {
+                  //   chart: {
+                  //     plotBackgroundColor: null,
+                  //     backgroundColor: null,
+                  //     plotBorderWidth: null,
+                  //     plotShadow: false,
+                  //     type: 'pie'
+
+                  //   },
+                  //   credits:{
+                  //     enabled: false
+                  //   },
+                  //   title: {
+                  //     text: null
+                  //   },
+                  //   tooltip: {
+                  //     pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+                  //   },
+                  //   plotOptions: {
+                  //     pie: {
+                  //       size: 175
+                  //     }
+                  //   },
+                  //   series: [{
+                  //     type: 'pie',
+                  //     dataLabels: {
+                  //       enabled: false
+                  //     },
+                  //     showInLegend: true,
+                  //     allowPointSelect: true,
+                  //     keys: ['name', 'y'],
+                  //     data: [
+                  //       ['Firefox', 45.0],
+                  //       ['IE', 70],
+                  //       ['Chrome', 12.8],
+                  //       ['Safari', 8.5],
+                  //       ['Opera', 6.2],
+                  //       ['Others', 0.7]
+                  //     ]
+                  //   }],
+                  //   legend: {
+                  //     // labelFormat: '{name} ({percentage:.1f}%)',
+                  //     labelFormat: '{name}: ${y:.2f} ({percentage:.1f}%)',
+                  //     layout: 'horizontal',
+                  //     align: 'center',
+                  //     verticalAlign: 'bottom'
+                  //   },
+                  // });
                   // window.chart = new Highcharts.Chart({
 
                   //   chart: {
@@ -1803,49 +1830,263 @@ Author: Deven Swiergiel
       function createCharts() {
 
 
-        Highcharts.chart('expenseChart', {
+        var w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
 
-          title: {
-            text: null
-          },
+        if (w < 500) {
+          // var monthlyPropertyTaxes = 86;
+          // var waterSewer = 50;
+          // var insurance = 60;
+          // var electricity = 0;
+          // var garbage = 60;
+          // var PMI = 0;
+          // var HOA = null;
+          // var otherExpenses = 0;
 
-          legend: {
-            labelFormat: '{name}: ${point.y.2f} ({percentage:.1f}%)',
-            layout: 'vertical',
-            align: 'right',
-            verticalAlign: 'middle'
-          },
-          plotOptions: {
-            pie: {
-              size: 150
-            }
-          },
+          // var grossMonthlyIncome = 1800;
+
+          // // variable(percentages)
+          // var vacancy = .05;
+          // var maintenance = .05;
+          // var capEx = .05;
+          // var managementFees = .09;
+
+          var chart = Highcharts.chart('container', {
+            chart: {
+              plotBackgroundColor: null,
+              backgroundColor: null,
+              plotBorderWidth: null,
+              plotShadow: false,
+              type: 'pie'
 
 
-          series: [{
-            type: 'pie',
-            dataLabels: {
+            },
+            credits: {
               enabled: false
             },
-            showInLegend: true,
-            allowPointSelect: true,
-            keys: ['name', 'y', 'selected', 'sliced'],
-            data: [
-              ['Property Taxes', +monthlyPropertyTaxes, false],
-              ['Water & Sewer', +waterSewer, false],
-              ['Insurance', +insurance, false],
-              ['Electricity', +electricity, false],
-              ['Garbage', +garbage, false],
-              ['PMI', +PMI, false],
-              ['HOA', +HOA, false],
-              ['Other', +otherExpenses, false],
-              ['Vacancy', grossMonthlyIncome * +vacancy, false],
-              ['Maintenance', grossMonthlyIncome * +maintenance, false],
-              ['CapEx', grossMonthlyIncome * +capEx, false],
-              ['Management', grossMonthlyIncome * +managementFees, false]
-            ],
-          }]
-        });
+            title: {
+              text: null
+            },
+
+            plotOptions: {
+              pie: {
+                // size: 175
+              }
+            },
+            series: [{
+              type: 'pie',
+              dataLabels: {
+                enabled: true,
+                distance: 5,
+                // format: '<b>{point.name}</b>: ${point.y}',
+                formatter: function () {
+                  if (this.y > 0) {
+                    return this.point.name + ": $" + this.y;
+                  }
+
+                },
+
+                style: {
+                  color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+                }
+              },
+              allowPointSelect: true,
+              keys: ['name', 'y', 'selected', 'sliced'],
+              data: [
+                ['Property Taxes', +monthlyPropertyTaxes, false],
+                ['Water & Sewer', +waterSewer, false],
+                ['Insurance', +insurance, false],
+                ['Electricity', +electricity, false],
+                ['Garbage', +garbage, false],
+                ['PMI', +PMI, false],
+                ['HOA', +HOA, false],
+                ['Other', +otherExpenses, false],
+                ['Vacancy', grossMonthlyIncome * +vacancy, false],
+                ['Maintenance', grossMonthlyIncome * +maintenance, false],
+                ['CapEx', grossMonthlyIncome * +capEx, false],
+                ['Management', grossMonthlyIncome * +managementFees, false]
+              ]
+            }],
+            tooltip: {
+              pointFormat: '<b>${point.y:2f} ({point.percentage:.1f}%)</b>'
+            },
+            showInLegend: false,
+            legend: {
+              // labelFormat: '{name} ({percentage:.1f}%)',
+              labelFormat: '{name}: ${y:.2f} ({percentage:.1f}%)',
+              layout: 'verticle',
+              align: 'right',
+              verticalAlign: 'right'
+            },
+          });
+        } else {
+
+          var chart = Highcharts.chart('container', {
+            chart: {
+              plotBackgroundColor: null,
+              backgroundColor: null,
+              plotBorderWidth: null,
+              plotShadow: false,
+              type: 'pie'
+            },
+            credits: {
+              enabled: false
+            },
+            title: {
+              text: null
+            },
+
+            plotOptions: {
+              pie: {
+                // size: 175
+              }
+            },
+            series: [{
+              type: 'pie',
+              dataLabels: {
+                enabled: true,
+                // format: '<b>{point.name}</b>: ${point.y}',
+                formatter: function () {
+                  if (this.y > 0) {
+                    return this.point.name + ": $" + this.y;
+                  }
+                },
+
+                style: {
+                  color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+                }
+              },
+              allowPointSelect: true,
+              keys: ['name', 'y', 'selected', 'sliced'],
+              data: [
+                ['Property Taxes', +monthlyPropertyTaxes, false],
+                ['Water & Sewer', +waterSewer, false],
+                ['Insurance', +insurance, false],
+                ['Electricity', +electricity, false],
+                ['Garbage', +garbage, false],
+                ['PMI', +PMI, false],
+                ['HOA', +HOA, false],
+                ['Other', +otherExpenses, false],
+                ['Vacancy', grossMonthlyIncome * +vacancy, false],
+                ['Maintenance', grossMonthlyIncome * +maintenance, false],
+                ['CapEx', grossMonthlyIncome * +capEx, false],
+                ['Management', grossMonthlyIncome * +managementFees, false]
+              ]
+            }],
+
+            tooltip: {
+              pointFormat: '<b>${point.y:2f} ({point.percentage:.1f}%)</b>'
+            },
+            showInLegend: false,
+            legend: {
+              // labelFormat: '{name} ({percentage:.1f}%)',
+              labelFormat: '{name}: ${y:.2f} ({percentage:.1f}%)',
+              layout: 'verticle',
+              align: 'right',
+              verticalAlign: 'right'
+            },
+          });
+        }
+
+        // //Build the chart
+        // Highcharts.chart('container', {
+        //   chart: {
+        //     plotBackgroundColor: null,
+        //     backgroundColor: null,
+        //     plotBorderWidth: null,
+        //     plotShadow: false,
+        //     type: 'pie'
+
+        //   },
+        //   credits: {
+        //     enabled: false
+        //   },
+        //   title: {
+        //     text: null
+        //   },
+        //   tooltip: {
+        //     pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+        //   },
+        //   plotOptions: {
+        //     pie: {
+        //       size: 275
+        //     }
+        //   },
+        //   series: [{
+        //     type: 'pie',
+        //     dataLabels: {
+        //       enabled: true,
+        //       // distance: -40,
+        //     },
+        //     showInLegend: true,
+        //     allowPointSelect: true,
+        //     keys: ['name', 'y', 'selected', 'sliced'],
+        //     data: [
+        //       ['Property Taxes', +monthlyPropertyTaxes, false],
+        //       ['Water & Sewer', +waterSewer, false],
+        //       ['Insurance', +insurance, false],
+        //       ['Electricity', +electricity, false],
+        //       ['Garbage', +garbage, false],
+        //       ['PMI', +PMI, false],
+        //       ['HOA', +HOA, false],
+        //       ['Other', +otherExpenses, false],
+        //       ['Vacancy', grossMonthlyIncome * +vacancy, false],
+        //       ['Maintenance', grossMonthlyIncome * +maintenance, false],
+        //       ['CapEx', grossMonthlyIncome * +capEx, false],
+        //       ['Management', grossMonthlyIncome * +managementFees, false]
+        //     ]
+        //   }],
+        //   legend: {
+        //     // labelFormat: '{name} ({percentage:.1f}%)',
+        //     labelFormat: '{name}: ${y:.2f} ({percentage:.1f}%)',
+        //     layout: 'horizontal',
+        //     align: 'center',
+        //     verticalAlign: 'bottom'
+        //   },
+        // });
+
+        // Highcharts.chart('expenseChart', {
+
+        //   title: {
+        //     text: null
+        //   },
+
+        //   legend: {
+        //     labelFormat: '{name}: ${point.y.2f} ({percentage:.1f}%)',
+        //     layout: 'vertical',
+        //     align: 'right',
+        //     verticalAlign: 'middle'
+        //   },
+        //   plotOptions: {
+        //     pie: {
+        //       size: 150
+        //     }
+        //   },
+
+
+        //   series: [{
+        //     type: 'pie',
+        //     dataLabels: {
+        //       enabled: false
+        //     },
+        //     showInLegend: true,
+        //     allowPointSelect: true,
+        //     keys: ['name', 'y', 'selected', 'sliced'],
+        //     data: [
+        //       ['Property Taxes', +monthlyPropertyTaxes, false],
+        //       ['Water & Sewer', +waterSewer, false],
+        //       ['Insurance', +insurance, false],
+        //       ['Electricity', +electricity, false],
+        //       ['Garbage', +garbage, false],
+        //       ['PMI', +PMI, false],
+        //       ['HOA', +HOA, false],
+        //       ['Other', +otherExpenses, false],
+        //       ['Vacancy', grossMonthlyIncome * +vacancy, false],
+        //       ['Maintenance', grossMonthlyIncome * +maintenance, false],
+        //       ['CapEx', grossMonthlyIncome * +capEx, false],
+        //       ['Management', grossMonthlyIncome * +managementFees, false]
+        //     ],
+        //   }]
+        // });
       }
 
       // UI changes
