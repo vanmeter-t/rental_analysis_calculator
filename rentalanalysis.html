@@ -30,16 +30,6 @@ Author: Deven Swiergiel
   <script src="https://code.highcharts.com/highcharts.js"></script>
   <!-- <script src="https://code.highcharts.com/modules/exporting.js"></script> -->
 
-
-
-
-  <script>
-    $(function () {
-      $('[data-toggle="tooltip"]').tooltip()
-    })
-  </script>
-
-
   <style>
     /*----- Accordion -----*/
 
@@ -365,7 +355,7 @@ Author: Deven Swiergiel
       #panel {
         padding: 15px;
       }
-      .outPanel{
+      .outPanel {
         padding: 10px 18px 10px 18px;
       }
       .mobileHeader {
@@ -388,7 +378,6 @@ Author: Deven Swiergiel
         padding: 10px;
         display: none;
       } */
-
     }
 
 
@@ -466,7 +455,7 @@ Author: Deven Swiergiel
         height: 150px;
         margin: 0 auto
       }
-      .chartButtons{
+      .chartButtons {
         margin-left: auto;
         margin-right: auto;
       }
@@ -532,7 +521,7 @@ Author: Deven Swiergiel
   </style>
 </head>
 
-<body class="container" onload="">
+<body class="container" onload="setOutputOrientation()">
   <div id="panel" class="col-md-8 card">
     <title>Rental Analysis Calculator</title>
     <div class="col-md-8">
@@ -573,8 +562,35 @@ Author: Deven Swiergiel
                     <h5 id="initialEquityPANEL" class="outputText ">$1,000,000</h5>
                   </div>
                 </div> -->
+                <div id="smallPanel" class="row innerOutput" style="display: none">
+                  <div class="col-md-6 col-sm-6 col-6 outputLabel">
+                    <h5>Monthly Income</h5>
+                    <h5 id="monthlyIncomePANEL" class="outputText mb-2">$0.00</h5>
+                    <h5>Total Initial Equity</h5>
+                    <h5 id="initialEquityPANEL" class="outputText mb-2">$0.00</h5>
+                    <h5>Monthly Cashflow</h5>
+                    <h5 id="cashflowPANEL" class="outputText mb-2">$0.00</h5>
+                    <h5>Annual Cashflow</h5>
+                    <h5 id="annualCashflowPANEL" class="outputText mb-2">0.00%</h5>
+                    <h5>NOI</h5>
+                    <h5 id="noiPANEL" class="outputText mb-2">$0.00</h5>
+                    <!-- <h5>Cap Rate</h5>
+                    <h5 id="capRatedPANEL" class="outputText ">0.00%</h5> -->
 
-                <div class="row innerOutput">
+                  </div>
+                  <div class="col-md-6 col-sm-6 col-6 outputLabel">
+                    <h5>Monthly Expenses</h5>
+                    <h5 id="monthlyExpensesPANEL" class="outputText mb-2">$0.00</h5>
+                    <h5>Total Cash Needed</h5>
+                    <h5 id="totalCashNeededPANEL" class="outputText mb-2">$0.00</h5>
+                    <h5>Cash On Cash ROI</h5>
+                    <h5 id="cocPANEL" class="outputText mb-2">0.00%</h5>
+                    <h5>Cap Rate</h5>
+                    <h5 id="capRatedPANEL" class="outputText mb-2">0.00%</h5>
+                  </div>
+                </div>
+
+                <div id="largePanel" class="row innerOutput">
                   <div class="col-md-4 col-sm-4 col-6 outputLabel">
                     <h5>Monthly Income</h5>
                     <h5 id="monthlyIncomePANEL" class="outputText mb-2">$0.00</h5>
@@ -796,9 +812,6 @@ Author: Deven Swiergiel
               </div>
 
             </div>
-
-            <!--Div that will hold the charts like cost breakdown pie chart and amortization schedule.-->
-
           </div>
         </div>
 
@@ -900,29 +913,6 @@ Author: Deven Swiergiel
                       </div>
                     </div>
 
-                    <!-- <h6>Purchase Price
-                      <i class="fa fa-info-circle" style="color: grey; margin-left: .2em;" aria-hidden="true" data-toggle="tooltip" container:
-                        'body' data-placement="top" data-html="true" title="What is the purchase price you plan to pay for the property. If unsure, estimate what you can get the property for."></i>
-                    </h6>
-                    <div class="input-group">
-                      <span class="input-group-addon">
-                        <i class="fa fa-usd"></i>
-                      </span>
-                      <input id="purchasePriceIN" type="number" required class="form-control form-control-md" placeholder="185,000">
-                    </div>
-
-                    <div class="mt-2"></div>
-                    <h6>After Repair Value
-                      <i class="fa fa-info-circle" style="color: grey; margin-left: .2em;" aria-hidden="true" data-toggle="tooltip" container:
-                        'body' data-placement="top" data-html="true" title="This is what you estimate the property to be worth after all repairs. This metric is used for many calculations so make sure to be as close and conservative as possible for best results."></i>
-                    </h6>
-                    <div class="input-group">
-                      <span class="input-group-addon">
-                        <i class="fa fa-usd"></i>
-                      </span>
-                      <input id="arvIN" type="number" required class="form-control form-control-md" placeholder="204,000">
-                    </div> -->
-
                     <div class="mt-2"></div>
                     <h6>Purchase Closing Cost
                       <i class="fa fa-info-circle" style="color: grey; margin-left: .2em;" aria-hidden="true" data-toggle="tooltip" container:
@@ -964,22 +954,6 @@ Author: Deven Swiergiel
 
                     <div id="loanInfo">
 
-                      <!-- <div class="mt-2 form-row align-items-center">
-                        <div class="col-auto">
-                          <h6>Down Payment
-                            <i class="fa fa-info-circle" style="color: grey; margin-left: .2em;" aria-hidden="true" data-toggle="tooltip" container:
-                              'body' data-placement="top" data-html="true" title="What is the percentage of the purchase price did you put down on a down payment?"></i>
-                          </h6>
-
-
-
-                        </div>
-                        <div class="col-auto">
-                          <h6>State
-                          </h6>
-                          <input id="stateIN" type="text" class="form-control " placeholder="NY">
-                        </div>
-                      </div> -->
                       <div class="mt-3 form-row align-items-center">
                         <div class="col-6">
                           <h6>Down Payment
@@ -1167,28 +1141,6 @@ Author: Deven Swiergiel
 
                       </div>
                     </div>
-                    <!-- <h6>Gross Monthly Rent
-                    <i class="fa fa-info-circle" style="color: grey; margin-left: .2em;" aria-hidden="true" data-toggle="tooltip" container:
-                      'body' data-placement="top" data-html="true" title="How much rent do you expect to receive each month from the property?"></i>
-                  </h6>
-                  <div class="input-group">
-                    <span class="input-group-addon">
-                      <i class="fa fa-usd"></i>
-                    </span>
-                    <input id="grossMonthlyRentIN" type="number" required class="form-control form-control-md" placeholder="1600">
-                  </div>
-
-                  <div class="mt-2"></div>
-                  <h6>Other Monthly Income
-                    <i class="fa fa-info-circle" style="color: grey; margin-left: .2em;" aria-hidden="true" data-toggle="tooltip" container:
-                      'body' data-placement="top" data-html="true" title="Any other monthly income expected to come from the property. Typically this would come from extra storage or laundry."></i>
-                  </h6>
-                  <div class="input-group">
-                    <span class="input-group-addon">
-                      <i class="fa fa-usd"></i>
-                    </span>
-                    <input id="otherMonthlyIncomeIN" type="number" required class="form-control form-control-md" placeholder="100">
-                  </div> -->
 
                     <hr>
 
@@ -1220,58 +1172,6 @@ Author: Deven Swiergiel
                         </div>
                       </div>
                     </div>
-                    <!-- <div class=" mt-2 form-row align-items-center">
-                    <div class="col-6">
-                      <h6>PMI
-                        <i class="fa fa-info-circle" style="color: grey; margin-left: .2em;" aria-hidden="true" data-toggle="tooltip" container:
-                          'body' data-placement="top" data-html="true" title="How many points were charged by the lender? Points are fees often charged when you take out a loan. Each point=1% of the loan amount. So if your loan is $100,000 and you are charged 1 point, you will pay $1,000."></i>
-                      </h6>
-                      <div class="input-group">
-                        <span class="input-group-addon">
-                          <i class="fa fa-usd"></i>
-                        </span>
-                        <input id="pmiIN" type="number" class="form-control form-control-md" placeholder="500">
-                      </div>
-                    </div>
-                    <div class="col-6">
-                      <h6>Electricity
-                        <i class="fa fa-info-circle" style="color: grey; margin-left: .2em;" aria-hidden="true" data-toggle="tooltip" container:
-                          'body' data-placement="top" data-html="true" title="For any other fees charged by the lender. If none, leave blank."></i>
-                      </h6>
-                      <div class="input-group">
-                        <span class="input-group-addon">
-                          <i class="fa fa-usd"></i>
-                        </span>
-                        <input id="electricityIN" type="number" class="form-control form-control-md" placeholder="500">
-                      </div>
-                    </div>
-                  </div> -->
-                    <!-- <div class=" mt-2 form-row align-items-center">
-                    <div class="col-6">
-                      <h6>Water & Sewer
-                        <i class="fa fa-info-circle" style="color: grey; margin-left: .2em;" aria-hidden="true" data-toggle="tooltip" container:
-                          'body' data-placement="top" data-html="true" title="How many points were charged by the lender? Points are fees often charged when you take out a loan. Each point=1% of the loan amount. So if your loan is $100,000 and you are charged 1 point, you will pay $1,000."></i>
-                      </h6>
-                      <div class="input-group">
-                        <span class="input-group-addon">
-                          <i class="fa fa-usd"></i>
-                        </span>
-                        <input id="watersewerIN" type="number" class="form-control form-control-md" placeholder="500">
-                      </div>
-                    </div>
-                    <div class="col-6">
-                      <h6>Garbage
-                        <i class="fa fa-info-circle" style="color: grey; margin-left: .2em;" aria-hidden="true" data-toggle="tooltip" container:
-                          'body' data-placement="top" data-html="true" title="For any other fees charged by the lender. If none, leave blank."></i>
-                      </h6>
-                      <div class="input-group">
-                        <span class="input-group-addon">
-                          <i class="fa fa-usd"></i>
-                        </span>
-                        <input id="garbageIN" type="number" class="form-control form-control-md" placeholder="500">
-                      </div>
-                    </div>
-                  </div> -->
 
                     <div class=" mt-2 form-row align-items-center">
                       <div class="col-4">
@@ -1489,7 +1389,7 @@ Author: Deven Swiergiel
                   </div>
 
                   <button type="submit" class="accordion-section-title mt-3" style="text-align: center; padding: 4px; padding-bottom: 8px;  border: 1px solid; border-radius: 3px;"
-                    onclick="rentalValidate()">Next</button>
+                    onclick="rentalValidate()">Calculate</button>
                 </form>
 
               </div>
@@ -1572,12 +1472,6 @@ Author: Deven Swiergiel
 
     <script>
 
-
-
-
-
-
-
       // GLOBAL VARS
 
       // PROPERTY VARS
@@ -1651,7 +1545,20 @@ Author: Deven Swiergiel
       var totalInitialEquity = 0;
       var NOI = 0;
       var capRate = 0;
+      var w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
 
+
+      // sets whether to show 3 column or 2 column output panel depending on screen width
+      function setOutputOrientation() {
+        if (w <= 576) {
+          document.getElementById('smallPanel').style.visibility = 'visible';
+          document.getElementById('smallPanel').style.display = 'inline-block';
+          document.getElementById('largePanel').style.display = 'none';
+        } else {
+          document.getElementById('largePanel').style.visibility = 'visible';
+          document.getElementById('smallPanel').style.display = 'none';
+        }
+      }
 
 
       function getPropertyInfo() {
@@ -1847,7 +1754,7 @@ Author: Deven Swiergiel
         document.getElementById('totalCashNeededPANEL').innerHTML = "$" + parseFloat(totalCashNeeded).toFixed(2).replace(/./g, function (c, i, a) {
           return i && c !== "." && ((a.length - i) % 3 === 0) ? ',' + c : c;
         });
-        document.getElementById('annualCashflowPANEL').innerHTML = "$" + parseFloat(monthlyCashflow*12).toFixed(2).replace(/./g, function (c, i, a) {
+        document.getElementById('annualCashflowPANEL').innerHTML = "$" + parseFloat(monthlyCashflow * 12).toFixed(2).replace(/./g, function (c, i, a) {
           return i && c !== "." && ((a.length - i) % 3 === 0) ? ',' + c : c;
         });
         document.getElementById('cocPANEL').innerHTML = parseFloat(cocROI).toFixed(3) + "%";
@@ -1879,8 +1786,7 @@ Author: Deven Swiergiel
       }
       function createCharts() {
 
-
-        var w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+        // var w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
 
         if (w < 500) {
           // var monthlyPropertyTaxes = 86;
@@ -1970,7 +1876,6 @@ Author: Deven Swiergiel
             },
           });
         } else {
-
           var chart = Highcharts.chart('container', {
             chart: {
               plotBackgroundColor: null,
@@ -2290,78 +2195,11 @@ Author: Deven Swiergiel
 
     </script>
 
-
-
-    <!-- <script src="https://code.highcharts.com/js/modules/exporting.js"></script> -->
-
-    <!-- <style>
-      @import 'https://code.highcharts.com/css/highcharts.css';
-
-      #expenseChart {
-        min-width: 290px;
-        height: 300px;
-        max-width: 500px;
-        margin: 0 auto;
-
-      }
-
-      .highcharts-background {
-        fill: transparent;
-      }
-
-      .highcharts-pie-series .highcharts-point {
-        stroke: #EDE;
-        stroke-width: 2px;
-
-      }
-
-      text.highcharts-credits {
-        display: none;
-      }
-
-      .highcharts-pie-series .highcharts-data-label-connector {
-        stroke: silver;
-        stroke-dasharray: 2, 2;
-        stroke-width: 2px;
-      }
-    </style> -->
-
-
-
-
-
-
-
-
-    <!-- <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <script type="text/javascript">
-      google.charts.load('current', { 'packages': ['corechart'] });
-      google.charts.setOnLoadCallback(drawChart);
-
-      function drawChart() {
-
-        var data = google.visualization.arrayToDataTable([
-          ['Task', 'Hours per Day'],
-          ['Work', 90],
-          ['Eat', 90],
-          ['Commute', 90],
-          ['Watch TV', 2],
-          ['Sleep', 7]
-        ]);
-
-        var options = {
-          title: 'Monthly Expenses',
-          height: 240,
-          width: 400,
-          colors: ['#4286f4', '#3563ad', '#2d5596', '#2555a3', '#5075af'],
-          backgroundColor: '#eee'
-        };
-
-        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
-
-        chart.draw(data, options);
-      }
-    </script> -->
+    <script>
+      $(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+      })
+    </script>
 
 </body>
 
