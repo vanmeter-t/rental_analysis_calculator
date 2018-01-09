@@ -331,6 +331,10 @@ Author: Deven Swiergiel
 
     }
 
+    .table-responsive {
+      width: 90%;
+    }
+
     @media(max-width: 991px) {
 
       .col-md-8 {
@@ -458,6 +462,9 @@ Author: Deven Swiergiel
       .chartButtons {
         margin-left: auto;
         margin-right: auto;
+      }
+      .table-responsive {
+        width: 100%;
       }
     }
 
@@ -671,14 +678,14 @@ Author: Deven Swiergiel
                     <button id="expenseBtn" type="button" class="btn btn-secondary">Expenses</button>
                     <button id="incomeBtn" type="button" class="btn btn-secondary">Income</button>
                     <button id="amortizationBtn" type="button" class="btn btn-secondary">Amortization</button>
-                    <button id="overTimeBtn" type="button" class="btn btn-secondary">Over Time</button>
+                    <button id="futureBtn" type="button" class="btn btn-secondary">Future Outlook</button>
                   </div>
 
                   <div id="expense" style="display: none;">
                     <div id="expenseChart" class="chart"></div>
                     <div style="width:300px;margin-left: auto; margin-right: auto; text-align: center;">
 
-                      <h5 style="margin-bottom: 0px;">Total operating expenses:
+                      <h5 style="margin-bottom: 0px;">Operating expenses:
                         <div class=" outputMobile" style="display: inline-block;" id="totalOppExpenses">$0.00</div>
                       </h5>
                       <h5 style="margin-bottom: 0px;">Mortgage expenses:
@@ -694,10 +701,163 @@ Author: Deven Swiergiel
                     <div id="amortizationChart" class="chart">
                     </div>
                   </div>
-                  <div id="overTime" style="display: none">
-                    <div id="overTimeTable" class="chart">
-                    </div>
+                  <div id="future" class="table-responsive" style="display: none; padding-top: 10px; ">
+                    <table class="table table-sm table-hover table-striped" style="padding: 20px;">
+                      <thead>
+                        <tr>
+                          <th id="tYears" scope="col">Years</th>
+                          <!-- <th scope="col">1</th>
+                          <th scope="col">2</th>
+                          <th scope="col">5</th>
+                          <th scope="col">10</th>
+                          <th scope="col">15</th>
+                          <th scope="col">20</th>
+                          <th scope="col">30</th> -->
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <th id="tExpenses" scope="row">Expenses</th>
+
+                          <!-- <td>$100,000</td>
+                          <td>$100,000</td>
+                          <td>$100,000</td>
+                          <td>$100,000</td>
+                          <td>$100,000</td>
+                          <td>$100,000</td>
+                          <td>$100,000</td> -->
+                        </tr>
+                        <tr>
+                          <th id="tIncome" scope="row">Income</th>
+                          <!-- <td>$100,000</td>
+                          <td>$100,000</td>
+                          <td>$100,000</td>
+                          <td>$100,000</td>
+                          <td>$100,000</td>
+                          <td>$100,000</td>
+                          <td>$100,000</td> -->
+                        </tr>
+                        <tr>
+                          <th id="tCashflow" scope="row">Cashflow</th>
+                          <!-- <td>$100,000</td>
+                          <td>$100,000</td>
+                          <td>$100,000</td>
+                          <td>$100,000</td>
+                          <td>$100,000</td>
+                          <td>$100,000</td>
+                          <td>$100,000</td> -->
+                        </tr>
+                        <tr>
+                          <th id="tROI" scope="row">ROI</th>
+                          <!-- <td>$100,000</td>
+                          <td>$100,000</td>
+                          <td>$100,000</td>
+                          <td>$100,000</td>
+                          <td>$100,000</td>
+                          <td>$100,000</td>
+                          <td>$100,000</td> -->
+                        </tr>
+                        <tr>
+                          <th id="tPV" scope="row">Property Value</th>
+                          <!-- <td>$100,000</td>
+                          <td>$100,000</td>
+                          <td>$100,000</td>
+                          <td>$100,000</td>
+                          <td>$100,000</td>
+                          <td>$100,000</td>
+                          <td>$100,000</td> -->
+                        </tr>
+                        <tr>
+                          <th id="tLoanBalance" scope="row">Loan Balance</th>
+                          <!-- <td>$100,000</td>
+                          <td>$100,000</td>
+                          <td>$100,000</td>
+                          <td>$100,000</td>
+                          <td>$100,000</td>
+                          <td>$100,000</td>
+                          <td>$100,000</td> -->
+                        </tr>
+                      </tbody>
+                    </table>
                   </div>
+                  <!-- <script>
+                    for (let i = 30; i > 0; i--) {
+
+                      // if(i > 2){
+                      //   i += 3;
+                      // }
+
+                      var td = document.createElement("th");
+                      var content = document.createTextNode(i);
+                      td.appendChild(content);
+                      // para.appendChild(document.createElement("br"));
+                      var element = document.getElementById("tYears");
+                      element.insertAdjacentElement('afterend', td);
+
+                      var td = document.createElement("td");
+                      var content = document.createTextNode(i);
+                      td.appendChild(content);
+                      // para.appendChild(document.createElement("br"));
+                      var element = document.getElementById("tExpenses");
+                      element.insertAdjacentElement('afterend', td);
+
+                      var td = document.createElement("td");
+                      var content = document.createTextNode(i);
+                      td.appendChild(content);
+                      // para.appendChild(document.createElement("br"));
+                      var element = document.getElementById("tIncome");
+                      element.insertAdjacentElement('afterend', td);
+
+                      var td = document.createElement("td");
+                      var content = document.createTextNode(i);
+                      td.appendChild(content);
+                      // para.appendChild(document.createElement("br"));
+                      var element = document.getElementById("tCashflow");
+                      element.insertAdjacentElement('afterend', td);
+
+                      var td = document.createElement("td");
+                      var content = document.createTextNode(i);
+                      td.appendChild(content);
+                      // para.appendChild(document.createElement("br"));
+                      var element = document.getElementById("tROI");
+                      element.insertAdjacentElement('afterend', td);
+
+                      var td = document.createElement("td");
+                      var content = document.createTextNode(i);
+                      td.appendChild(content);
+                      // para.appendChild(document.createElement("br"));
+                      var element = document.getElementById("tPV");
+                      element.insertAdjacentElement('afterend', td);
+
+                      var td = document.createElement("td");
+                      var content = document.createTextNode(i);
+                      td.appendChild(content);
+                      // para.appendChild(document.createElement("br"));
+                      var element = document.getElementById("tLoanBalance");
+                      element.insertAdjacentElement('afterend', td);
+
+                        if(i >= 30){
+                          i = 21;
+                        } 
+                        else if(i > 21){
+                          i = 21;
+                        }
+                         else if(i > 16){
+                          i = 16;
+                        }
+                        else if(i > 11){
+                          i = 11;
+                        }
+                        else if(i > 6){
+                          i = 6;
+                        }
+                        else if(i > 3){
+                          i = 3;
+                        }
+                        
+                    }
+
+                  </script> -->
 
 
                 </div>
@@ -1438,6 +1598,15 @@ Author: Deven Swiergiel
       var totalInitialEquity = 0;
       var NOI = 0;
       var capRate = 0;
+      var annualIncomeArray = [];
+      var annualExpenseArray = [];
+      var annualCashflowArray = [];
+      var annualROIArray = [];
+      var propertyValueArray = [];
+      var equityArray = [];
+      var loanBalanceArray = [];
+      var profitIfSoldArray = [];
+      var totalAnnualReturnArray = []; // total return (cashflow, tenant equity paydown, possible appreciation )  
       var w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
 
 
@@ -1593,7 +1762,7 @@ Author: Deven Swiergiel
 
         // expenseChart();
         document.getElementById("expenseBtn").click();
-        calculateOverTime();
+        calculateFuture();
 
         // populate results panel
         document.getElementById('purchasePriceRESULTS').innerHTML = "$" + parseFloat(purchasePrice).toFixed(2).replace(/./g, function (c, i, a) {
@@ -1706,6 +1875,16 @@ Author: Deven Swiergiel
 
         return mPmt;
       }
+      // function ppmt(rate, per, nper, pv, fv, type) {
+
+
+      //   if (per < 1 || (per >= nper + 1)) return null;
+      //   var pmt = this.PMT(rate, nper, pv, fv, type);
+      //   var ipmt = this.IPMT(pv, pmt, rate, per - 1);
+      //   return pmt - ipmt;
+      // }
+
+
       function cashflow() {
         var cashflow;
 
@@ -1715,12 +1894,34 @@ Author: Deven Swiergiel
 
         return cashflow;
       }
-      function calculateOverTime() {
-
+      function calculateFuture() {
+        var monthlyExpense = grossMonthlyExpenses;
+        var monthlyIncome = grossMonthlyIncome
+        var pv = ARV;
+        var cashflow;
+        var loanBalance = loanAmount;
         for (let i = 0; i < yearsAmortized; i++) {
-          grossMonthlyExpenses = +(grossMonthlyExpenses * +expenseIncrease) + +grossMonthlyExpenses;// for future assumptions
-          grossMonthlyIncome = +(grossMonthlyIncome * +rentIncrease) + +grossMonthlyIncome; // for future assumptions
 
+          monthlyExpense = +(monthlyExpense * +expenseIncrease) + +monthlyExpense;// for future assumptions
+          monthlyIncome = +(monthlyIncome * +rentIncrease) + +monthlyIncome; // for future assumptions
+          cashflow = +monthlyIncome - +monthlyExpense;
+          pv = +(pv * +appreciation) + +pv;
+
+          // loanBalance needs to be calculated with principle paydown, not payments and interest.
+          if (loanBalance > 0) {
+            // loanBalance = +loanBalance - +paymentsAndInterest * 12; 
+          } else {
+            loanBalance = 0;
+            cashflow = cashflow + paymentsAndInterest;
+          }
+
+
+          annualExpenseArray[i] = (monthlyExpense * 12).toFixed(2);
+          annualIncomeArray[i] = monthlyIncome * 12;
+          annualCashflowArray[i] = cashflow * 12;
+          annualROIArray[i] = (annualCashflowArray[i] / totalCashNeeded) * 100;
+          propertyValueArray[i] = pv;
+          loanBalanceArray[i] = loanBalance;
         }
 
       }
@@ -2040,7 +2241,85 @@ Author: Deven Swiergiel
       function amortizationChart() {
 
       }
-      function overTime() {
+      function futureOutlook() {
+
+
+        // for building the table according to the term length(how many years amortized)
+        for (let i = yearsAmortized; i > 0; i--) {
+
+          var td = document.createElement("th");
+          var content = document.createTextNode(i);
+          td.appendChild(content);
+          var element = document.getElementById("tYears");
+          element.insertAdjacentElement('afterend', td);
+
+          td = document.createElement("td");
+          content = document.createTextNode("$" + parseFloat(annualExpenseArray[i - 1]).toFixed(2).replace(/./g, function (c, y, a) {
+            return y && c !== "." && ((a.length - y) % 3 === 0) ? ',' + c : c;
+          }));
+          td.appendChild(content);
+          element = document.getElementById("tExpenses");
+          element.insertAdjacentElement('afterend', td);
+
+          td = document.createElement("td");
+          content = document.createTextNode("$" + parseFloat(annualIncomeArray[i - 1]).toFixed(2).replace(/./g, function (c, y, a) {
+            return y && c !== "." && ((a.length - y) % 3 === 0) ? ',' + c : c;
+          }));
+          td.appendChild(content);
+          element = document.getElementById("tIncome");
+          element.insertAdjacentElement('afterend', td);
+
+          td = document.createElement("td");
+          content = document.createTextNode("$" + parseFloat(annualCashflowArray[i - 1]).toFixed(2).replace(/./g, function (c, y, a) {
+            return y && c !== "." && ((a.length - y) % 3 === 0) ? ',' + c : c;
+          }));
+          td.appendChild(content);
+          element = document.getElementById("tCashflow");
+          element.insertAdjacentElement('afterend', td);
+
+          td = document.createElement("td");
+          content = document.createTextNode("$" + parseFloat(annualROIArray[i - 1]).toFixed(3) + "%");
+          td.appendChild(content);
+          element = document.getElementById("tROI");
+          element.insertAdjacentElement('afterend', td);
+
+          td = document.createElement("td");
+          content = document.createTextNode("$" + parseFloat(propertyValueArray[i - 1]).toFixed(2).replace(/./g, function (c, y, a) {
+            return y && c !== "." && ((a.length - y) % 3 === 0) ? ',' + c : c;
+          }));
+          td.appendChild(content);
+          element = document.getElementById("tPV");
+          element.insertAdjacentElement('afterend', td);
+
+          td = document.createElement("td");
+          content = document.createTextNode("$" + parseFloat(loanBalanceArray[i - 1]).toFixed(2).replace(/./g, function (c, y, a) {
+            return y && c !== "." && ((a.length - y) % 3 === 0) ? ',' + c : c;
+          }));
+          td.appendChild(content);
+          element = document.getElementById("tLoanBalance");
+          element.insertAdjacentElement('afterend', td);
+
+          if (i >= 30) {
+            i = 21;
+          }
+          else if (i > 21) {
+            i = 21;
+          }
+          else if (i > 16) {
+            i = 16;
+          }
+          else if (i > 11) {
+            i = 11;
+          }
+          else if (i > 6) {
+            i = 6;
+          }
+          else if (i > 3) {
+            i = 3;
+          }
+
+        }
+
 
       }
 
@@ -2101,25 +2380,25 @@ Author: Deven Swiergiel
         document.getElementById('expense').style.display = 'inline-block';
         document.getElementById('income').style.display = 'none';
         document.getElementById('amortization').style.display = 'none';
-        document.getElementById('overTime').style.display = 'none';
+        document.getElementById('future').style.display = 'none';
       };
       document.getElementById('incomeBtn').onclick = function () {
         incomeChart();
         document.getElementById('income').style.display = 'inline-block';
         document.getElementById('expense').style.display = 'none';
         document.getElementById('amortization').style.display = 'none';
-        document.getElementById('overTime').style.display = 'none';
+        document.getElementById('future').style.display = 'none';
       };
       document.getElementById('amortizationBtn').onclick = function () {
         amortizationChart();
         document.getElementById('amortization').style.display = 'inline-block';
         document.getElementById('income').style.display = 'none';
         document.getElementById('expense').style.display = 'none';
-        document.getElementById('overTime').style.display = 'none';
+        document.getElementById('future').style.display = 'none';
       };
-      document.getElementById('overTimeBtn').onclick = function () {
-        overTime();
-        document.getElementById('overTime').style.display = 'inline-block';
+      document.getElementById('futureBtn').onclick = function () {
+        futureOutlook();
+        document.getElementById('future').style.display = 'inline-block';
         document.getElementById('income').style.display = 'none';
         document.getElementById('amortization').style.display = 'none';
         document.getElementById('expense').style.display = 'none';
