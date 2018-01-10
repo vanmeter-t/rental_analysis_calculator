@@ -1606,7 +1606,8 @@ Author: Deven Swiergiel
       var equityArray = [];
       var loanBalanceArray = [];
       var profitIfSoldArray = [];
-      var totalAnnualReturnArray = []; // total return (cashflow, tenant equity paydown, possible appreciation )  
+      var totalAnnualReturnArray = []; // total return (cashflow, tenant equity paydown, possible appreciation )
+      var monthlyPrinciplePayments = [];// the P(principal payment) portion of P&I
       var w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
 
 
@@ -1762,7 +1763,7 @@ Author: Deven Swiergiel
 
         // expenseChart();
         document.getElementById("expenseBtn").click();
-        
+
 
         // populate results panel
         document.getElementById('purchasePriceRESULTS').innerHTML = "$" + parseFloat(purchasePrice).toFixed(2).replace(/./g, function (c, i, a) {
@@ -1860,6 +1861,7 @@ Author: Deven Swiergiel
         });
 
 
+
       }
 
       // mortgage payment and interest function
@@ -1875,14 +1877,89 @@ Author: Deven Swiergiel
 
         return mPmt;
       }
-      // function ppmt(rate, per, nper, pv, fv, type) {
 
 
-      //   if (per < 1 || (per >= nper + 1)) return null;
-      //   var pmt = this.PMT(rate, nper, pv, fv, type);
-      //   var ipmt = this.IPMT(pv, pmt, rate, per - 1);
-      //   return pmt - ipmt;
+
+      // amount: the initial loan amount.
+      // rate: interest rate for the loan.
+      // totalTerm: length of the loan in months(eg: 30 years = 360 months)
+      // amortizeTerm: the month for which you would like to view the loan at.
+      // function remainingLoanBalance(amount, rate, totalTerm, amortizeTerm, principalPayment) {
+      //   var periodInt,
+      //     monthlyPayment,
+      //     summedInterest = 0,
+      //     summedPrincipal = 0,
+      //     monthlyIntPaid,
+      //     monthlyPrincPaid,
+      //     principalPayment = (!!principalPayment) ? parseInt(principalPayment, 10) : 0;
+
+      //   // Calculate monthly interest rate and monthly payment
+      //   periodInt = (rate / 12);
+      //   monthlyPayment = amount * (periodInt / (1 - Math.pow(1 + periodInt, -(totalTerm))));
+      //   // If zero or NaN is returned (i.e. if the rate is 0) calculate the payment without interest
+      //   monthlyPayment = monthlyPayment || amount / totalTerm;
+
+      //   // Calculate the interest, principal, and remaining balance for each period
+      //   var i = 0;
+      //   while (i < amortizeTerm) {
+      //     if (amount < 0)
+      //       break;
+      //     monthlyIntPaid = amount * periodInt;
+      //     monthlyPrincPaid = monthlyPayment - monthlyIntPaid + principalPayment;
+      //     summedInterest = summedInterest + monthlyIntPaid;
+      //     summedPrincipal = summedPrincipal + monthlyPrincPaid;
+      //     amount = amount - monthlyPrincPaid;
+      //     i += 1;
+      //   }
+
+      //   console.log("summedPrincipal " + summedPrincipal.toFixed(2));
+      //   return summedPrincipal;
+
       // }
+
+
+      function ePMT(rate, nper, pv, fv, type) {
+        if (!fv) fv = 0;
+        if (!type) type = 0;
+
+        if (rate == 0) return -(pv + fv) / nper;
+
+        var pvif = Math.pow(1 + rate, nper);
+        var pmt = rate / (pvif - 1) * -(pv * pvif + fv);
+
+        if (type == 1) {
+          pmt /= (1 + rate);
+        };
+
+        return pmt;
+      }
+
+      function IPMT(pv, pmt, rate, per) {
+        var tmp = Math.pow(1 + rate, per);
+        return 0 - (pv * tmp * rate + pmt * (tmp - 1));
+      }
+
+      // rate: interest rate/12
+      // per: the month for which you want to observe the principle payment for
+      // nper: length of the loan in months
+      // pv: present value of the loan. How much is the loan for?
+      // fv: future value of the loan, optional
+      // type: 1 or 0, payments made in the beginning or the end of the month. optional
+      function ppmt(rate, per, nper, pv, fv, type) {
+        console.log("rate: " + rate);
+        console.log("per: " + per);
+        console.log("nper: " + nper);
+        console.log("pv: " + pv);
+
+        if (per < 1 || (per >= nper + 1)) return null;
+        var pmt = ePMT(rate, nper, pv, fv, type);
+        var ipmt = IPMT(pv, pmt, rate, per - 1);
+
+        console.log("pmt: " + pmt);
+        console.log("ipmt: " + ipmt);
+        return pmt - ipmt;
+      }
+
 
 
       function cashflow() {
@@ -1900,6 +1977,14 @@ Author: Deven Swiergiel
         var pv = ARV;
         var cashflow;
         var loanBalance = loanAmount;
+
+        // calculates the loan balance at each month. Used for amortization schedule and future projections
+        for (let i = 1; i <= yearsAmortized * 12; i++) {
+          monthlyPrinciplePayments[i - 1] = +ppmt((+loanRate)/12, i, +yearsAmortized * 12, +loanAmount).toFixed(2);
+
+          console.log("monthlyPrinciplePayments" + +monthlyPrinciplePayments[i]);
+          loanBalanceArray[i - 1] = loanBalanceArray[i - 1] - monthlyPrinciplePayments[i - 1] 
+        }
         for (let i = 0; i < yearsAmortized; i++) {
 
           monthlyExpense = +(monthlyExpense * +expenseIncrease) + +monthlyExpense;// for future assumptions
@@ -1921,7 +2006,7 @@ Author: Deven Swiergiel
           annualCashflowArray[i] = cashflow * 12;
           annualROIArray[i] = (annualCashflowArray[i] / totalCashNeeded) * 100;
           propertyValueArray[i] = pv;
-          loanBalanceArray[i] = loanBalance;
+          // loanBalanceArray[i] = loanBalance;
         }
 
       }
@@ -2245,8 +2330,8 @@ Author: Deven Swiergiel
 
         calculateFuture();
 
-        $( "td" ).remove();
-        $( ".yearTH" ).remove();
+        $("td").remove();
+        $(".yearTH").remove();
         // for building the table according to the term length(how many years amortized)
         for (let i = yearsAmortized; i > 0; i--) {
 
@@ -2296,7 +2381,7 @@ Author: Deven Swiergiel
           element.insertAdjacentElement('afterend', td);
 
           td = document.createElement("td");
-          content = document.createTextNode("$" + parseFloat(loanBalanceArray[i - 1]).toFixed(2).replace(/./g, function (c, y, a) {
+          content = document.createTextNode("$" + parseFloat(loanBalanceArray[(i - 1) * 12]).toFixed(2).replace(/./g, function (c, y, a) {
             return y && c !== "." && ((a.length - y) % 3 === 0) ? ',' + c : c;
           }));
           td.appendChild(content);
