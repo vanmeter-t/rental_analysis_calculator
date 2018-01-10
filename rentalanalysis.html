@@ -1762,7 +1762,7 @@ Author: Deven Swiergiel
 
         // expenseChart();
         document.getElementById("expenseBtn").click();
-        calculateFuture();
+        
 
         // populate results panel
         document.getElementById('purchasePriceRESULTS').innerHTML = "$" + parseFloat(purchasePrice).toFixed(2).replace(/./g, function (c, i, a) {
@@ -2243,11 +2243,15 @@ Author: Deven Swiergiel
       }
       function futureOutlook() {
 
+        calculateFuture();
 
+        $( "td" ).remove();
+        $( ".yearTH" ).remove();
         // for building the table according to the term length(how many years amortized)
         for (let i = yearsAmortized; i > 0; i--) {
 
           var td = document.createElement("th");
+          td.setAttribute("class", "yearTH");
           var content = document.createTextNode(i);
           td.appendChild(content);
           var element = document.getElementById("tYears");
