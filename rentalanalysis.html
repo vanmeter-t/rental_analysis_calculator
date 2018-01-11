@@ -698,7 +698,7 @@ Author: Deven Swiergiel
                     </div>
                   </div>
                   <div id="amortization" style="display: none">
-                    <div id="amortizationChart" class="chart">
+                    <div id="amortizationChart" style="margin-top: 10px; padding: 15px;"class="chart">
                     </div>
                   </div>
                   <div id="future" class="table-responsive" style="display: none; padding-top: 10px; ">
@@ -774,6 +774,27 @@ Author: Deven Swiergiel
                           <th id="tLoanBalance" style="position:absolute; width: 125px;background-color: #eee;" scope="row">Loan Balance</th>
 
                           <!-- <td>$100,000</td>
+                          <td>$100,000</td>
+                          <td>$100,000</td>
+                          <td>$100,000</td>
+                          <td>$100,000</td>
+                          <td>$100,000</td>
+                          <td>$100,000</td> -->
+                        </tr>
+                        <tr>
+                          <th id="tEquity" style="position:absolute; width: 125px;background-color: rgb(226, 226, 226);" scope="row">Equity</th>
+
+                          <!-- <td>$100,000</td>
+                            <td>$100,000</td>
+                            <td>$100,000</td>
+                            <td>$100,000</td>
+                            <td>$100,000</td>
+                            <td>$100,000</td>
+                            <td>$100,000</td> -->
+                        </tr>
+                        <th id="tEquityPercentage" style="position:absolute; width: 125px;background-color: #eee;" scope="row">Equity %</th>
+
+                        <!-- <td>$100,000</td>
                           <td>$100,000</td>
                           <td>$100,000</td>
                           <td>$100,000</td>
@@ -1098,9 +1119,9 @@ Author: Deven Swiergiel
                       <label class="CBcontainer">
                         <h6>Interest Only Loan?
                           <i class="fa fa-info-circle" style="color: grey; margin-left: .2em;" aria-hidden="true" data-toggle="tooltip" container:
-                            'body' data-placement="top" data-html="true" title="Loans typically consist of two parts, the interest part(profit for lender) and the principal part(the portion of equity you are paying off each month). With interest-only loans, you never pay down the principle of the loan. These are typically offered by hard money lenders. Leave this unchecked if you are unsure."></i>
+                            'body' data-placement="top" data-html="true" title="*Feature Coming Soon* <br><br>Loans typically consist of two parts, the interest part(profit for lender) and the principal part(the portion of equity you are paying off each month). With interest-only loans, you never pay down the principle of the loan. These are typically offered by hard money lenders. Leave this unchecked if you are unsure."></i>
                         </h6>
-                        <input id="interestOnlyIN" type="checkbox">
+                        <input id="interestOnlyIN" disabled type="checkbox">
                         <span class="checkmark"></span>
                       </label>
 
@@ -1770,7 +1791,6 @@ Author: Deven Swiergiel
         // expenseChart();
         document.getElementById("expenseBtn").click();
 
-
         // populate results panel
         document.getElementById('purchasePriceRESULTS').innerHTML = "$" + parseFloat(purchasePrice).toFixed(2).replace(/./g, function (c, i, a) {
           return i && c !== "." && ((a.length - i) % 3 === 0) ? ',' + c : c;
@@ -1923,8 +1943,8 @@ Author: Deven Swiergiel
       function cashflow() {
         var cashflow;
 
-        grossMonthlyIncome = +(monthlyRentalIncome + otherIncome) + +(monthlyRentalIncome + otherIncome) * rentIncrease;
-        grossMonthlyExpenses = +(+paymentsAndInterest + +monthlyPropertyTaxes + +waterSewer + +insurance + +electricity + +garbage + +PMI + +HOA + +otherExpenses) + +(grossMonthlyIncome * +vacancy + grossMonthlyIncome * +maintenance + grossMonthlyIncome * +capEx + grossMonthlyIncome * +managementFees);
+        grossMonthlyIncome = +(monthlyRentalIncome + otherIncome);
+        grossMonthlyExpenses = +(+paymentsAndInterest + +monthlyPropertyTaxes + +waterSewer + +insurance + +electricity + +garbage + +PMI + +HOA + +otherExpenses);
         cashflow = +grossMonthlyIncome - +grossMonthlyExpenses;
 
         return cashflow;
@@ -1935,12 +1955,17 @@ Author: Deven Swiergiel
         var pv = ARV;
         var cashflow;
         loanBalanceArray[0] = loanAmount;
+        equityArray[0] = downPayment;
 
         // calculates the loan balance at each month. Used for amortization schedule and future projections
-        for (let i = 1; i <= yearsAmortized * 12; i++) {
-          monthlyPrinciplePayments[i - 1] = +ppmt((+loanRate) / 1200, +i, +yearsAmortized * 12, +loanAmount).toFixed(2);
+        for (let i = 1; i <= 30 * 12; i++) {
+          monthlyPrinciplePayments[i - 1] = +ppmt((+loanRate) / 1200, +i, +yearsAmortized * 12, +loanAmount)
 
-          loanBalanceArray[i] = +loanBalanceArray[i - 1] - +monthlyPrinciplePayments[i - 1];
+          if(i> yearsAmortized * 12){
+            loanBalanceArray[i] = 0;
+          } else {
+            loanBalanceArray[i] = +loanBalanceArray[i - 1] - +monthlyPrinciplePayments[i - 1];
+          }
         }
         for (let i = 0; i < 30; i++) {
 
@@ -1952,6 +1977,10 @@ Author: Deven Swiergiel
           // loanBalance needs to be calculated with principle paydown, not payments and interest.
           if (i > yearsAmortized) {
             cashflow = cashflow + paymentsAndInterest;
+            equityArray[i] = pv;
+          } else {
+            equityArray[i] = pv - loanBalanceArray[(i + 1) * 12];
+
           }
 
 
@@ -2278,6 +2307,75 @@ Author: Deven Swiergiel
 
 
       function amortizationChart() {
+        calculateFuture();
+
+        Highcharts.chart('amortizationChart', {
+          chart: {
+            plotBackgroundColor: null,
+              backgroundColor: null,
+            type: 'area'
+          },
+          title: {
+            text: null
+          },
+          credits: {
+              enabled: false
+            },
+          // subtitle: {
+          //   text: 'Source: <a href="http://thebulletin.metapress.com/content/c4120650912x74k7/fulltext.pdf">' +
+          //     'thebulletin.metapress.com</a>'
+          // },
+          xAxis: {
+            allowDecimals: false,
+            title: {
+              text: 'Years'
+            },
+            labels: {
+              formatter: function () {
+                return this.value; // clean, unformatted number for year
+              }
+            }
+          },
+          yAxis: {
+            title: {
+              text: null
+            },
+            labels: {
+              formatter: function () {
+                return this.value / 1000 + 'k';
+              }
+            }
+          },
+          tooltip: {
+            pointFormat: '{series.name}: <b>${point.y:,.0f}</b><br>'
+          },
+          plotOptions: {
+            area: {
+              pointStart: 1,
+              marker: {
+                enabled: false,
+                symbol: 'circle',
+                radius: 2,
+                states: {
+                  hover: {
+                    enabled: true
+                  }
+                }
+              }
+            }
+          },
+          series: [{
+            name: 'Equity',
+            data: [equityArray[0],equityArray[1],equityArray[2],equityArray[3],equityArray[4],equityArray[5],equityArray[6],equityArray[7],equityArray[8],equityArray[9],equityArray[10],
+            equityArray[11],equityArray[12],equityArray[13],equityArray[14],equityArray[15],equityArray[16],equityArray[17],equityArray[18],equityArray[19],equityArray[20],
+            equityArray[21],equityArray[22],equityArray[23],equityArray[24],equityArray[25],equityArray[26],equityArray[27],equityArray[28],equityArray[29]]
+          },{
+            name: 'Loan Balance',
+            data: [loanBalanceArray[1*12],loanBalanceArray[2*12],loanBalanceArray[3*12],loanBalanceArray[4*12],loanBalanceArray[5*12],loanBalanceArray[6*12],loanBalanceArray[7*12],loanBalanceArray[8*12],loanBalanceArray[9*12],loanBalanceArray[10*12],
+            loanBalanceArray[11*12],loanBalanceArray[12*12],loanBalanceArray[13*12],loanBalanceArray[14*12],loanBalanceArray[15*12],loanBalanceArray[16*12],loanBalanceArray[17*12],loanBalanceArray[18*12],loanBalanceArray[19*12],loanBalanceArray[20*12],
+            loanBalanceArray[21*12],loanBalanceArray[22*12],loanBalanceArray[23*12],loanBalanceArray[24*12],loanBalanceArray[25*12],loanBalanceArray[26*12],loanBalanceArray[27*12],loanBalanceArray[28*12],loanBalanceArray[29*12],loanBalanceArray[30*12]]
+          }]
+        });
 
       }
       function futureOutlook() {
@@ -2345,10 +2443,22 @@ Author: Deven Swiergiel
               return y && c !== "." && ((a.length - y) % 3 === 0) ? ',' + c : c;
             }));
           }
-
-
           td.appendChild(content);
           element = document.getElementById("tLoanBalance");
+          element.insertAdjacentElement('afterend', td);
+
+          td = document.createElement("td");
+          content = document.createTextNode("$" + parseFloat(equityArray[i - 1]).toFixed(2).replace(/./g, function (c, y, a) {
+            return y && c !== "." && ((a.length - y) % 3 === 0) ? ',' + c : c;
+          }));
+          td.appendChild(content);
+          element = document.getElementById("tEquity");
+          element.insertAdjacentElement('afterend', td);
+
+          td = document.createElement("td");
+          content = document.createTextNode(parseFloat((equityArray[i - 1] / propertyValueArray[i - 1]) * 100).toFixed(3) + "%");
+          td.appendChild(content);
+          element = document.getElementById("tEquityPercentage");
           element.insertAdjacentElement('afterend', td);
 
           if (i >= 30) {
