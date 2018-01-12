@@ -30,6 +30,13 @@ Author: Deven Swiergiel
   <script src="https://code.highcharts.com/highcharts.js"></script>
   <!-- <script src="https://code.highcharts.com/modules/exporting.js"></script> -->
 
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({
+      google_ad_client: "ca-pub-9823825251368211",
+      enable_page_level_ads: true
+    });
+  </script>
   <style>
     /*----- Accordion -----*/
 
@@ -537,7 +544,7 @@ Author: Deven Swiergiel
   </style>
 </head>
 
-<body class="container" onload="setOutputOrientation()">
+<body class="container">
   <div id="panel" class="col-md-8 card">
     <title>Rental Analysis Calculator</title>
     <div class="col-md-8">
@@ -638,9 +645,20 @@ Author: Deven Swiergiel
 
                 <div class="clearfix"></div>
                 <hr style="margin-top:7px; margin-bottom: 3px;">
-
-
-
+                <script>
+                  // sets whether to show 3 column or 2 column output panel depending on screen width
+                  !function () {
+                    let w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+                    if (w <= 576) {
+                      document.getElementById('smallPanel').style.visibility = 'visible';
+                      document.getElementById('smallPanel').style.display = 'inline-block';
+                      document.getElementById('largePanel').style.display = 'none';
+                    } else {
+                      document.getElementById('largePanel').style.visibility = 'visible';
+                      document.getElementById('smallPanel').style.display = 'none';
+                    }
+                  }()
+                </script>
                 <!-- <div class="innerOutput">
                   <div class="col-md-4 outputLabel">
                     <h5>Monthly Income</h5>
@@ -658,29 +676,29 @@ Author: Deven Swiergiel
                     <h5>Cash on Cash ROI</h5>
                     <h5 id="cocPANEL" class="outputText">$1,000,000</h5>
                   </div>
+              </div>
+
+              <div class="clearfix"></div>
+              <hr>
+
+              <div class="innerOutput">
+                <div class="col-md-3 outputLabel">
+                  <h5>Total Cash Needed</h5>
+                  <h5 id="cashNeededPANEL" class="outputText">$1,000,000</h5>
                 </div>
-
-                <div class="clearfix"></div>
-                <hr>
-
-                <div class="innerOutput">
-                  <div class="col-md-3 outputLabel">
-                    <h5>Total Cash Needed</h5>
-                    <h5 id="cashNeededPANEL" class="outputText">$1,000,000</h5>
-                  </div>
-                  <div class="col-md-3 outputLabel">
-                    <h5>NOI</h5>
-                    <h5 id="noiPANEL" class="outputText">$1,000,000</h5>
-                  </div>
-                  <div class="col-md-3 outputLabel">
-                    <h5>Total Initial Equity</h5>
-                    <h5 id="initialEquityPANEL" class="outputText">$1,000,000</h5>
-                  </div>
-                  <div class="col-md-3 outputLabel">
-                    <h5>Debt Coverage Ratio</h5>
-                    <h5 id="debtCoveragePANEL" class="outputText">$1,000,000</h5>
-                  </div>
-                </div> -->
+                <div class="col-md-3 outputLabel">
+                  <h5>NOI</h5>
+                  <h5 id="noiPANEL" class="outputText">$1,000,000</h5>
+                </div>
+                <div class="col-md-3 outputLabel">
+                  <h5>Total Initial Equity</h5>
+                  <h5 id="initialEquityPANEL" class="outputText">$1,000,000</h5>
+                </div>
+                <div class="col-md-3 outputLabel">
+                  <h5>Debt Coverage Ratio</h5>
+                  <h5 id="debtCoveragePANEL" class="outputText">$1,000,000</h5>
+                </div>
+              </div> -->
                 <!-- <div class="row justify-content-md-center mb-2" style="max-width: 285px; margin: 0 auto"> -->
                 <div class="chartButtons row justify-content-md-center justify-content-center mb-2">
                   <div class="btn-group-sm justify-content-md-center justify-content-center" role="group" aria-label="Basic example">
@@ -816,86 +834,6 @@ Author: Deven Swiergiel
                       </tbody>
                     </table>
                   </div>
-                  <!-- <script>
-                    for (let i = 30; i > 0; i--) {
-
-                      // if(i > 2){
-                      //   i += 3;
-                      // }
-
-                      var td = document.createElement("th");
-                      var content = document.createTextNode(i);
-                      td.appendChild(content);
-                      // para.appendChild(document.createElement("br"));
-                      var element = document.getElementById("tYears");
-                      element.insertAdjacentElement('afterend', td);
-
-                      var td = document.createElement("td");
-                      var content = document.createTextNode(i);
-                      td.appendChild(content);
-                      // para.appendChild(document.createElement("br"));
-                      var element = document.getElementById("tExpenses");
-                      element.insertAdjacentElement('afterend', td);
-
-                      var td = document.createElement("td");
-                      var content = document.createTextNode(i);
-                      td.appendChild(content);
-                      // para.appendChild(document.createElement("br"));
-                      var element = document.getElementById("tIncome");
-                      element.insertAdjacentElement('afterend', td);
-
-                      var td = document.createElement("td");
-                      var content = document.createTextNode(i);
-                      td.appendChild(content);
-                      // para.appendChild(document.createElement("br"));
-                      var element = document.getElementById("tCashflow");
-                      element.insertAdjacentElement('afterend', td);
-
-                      var td = document.createElement("td");
-                      var content = document.createTextNode(i);
-                      td.appendChild(content);
-                      // para.appendChild(document.createElement("br"));
-                      var element = document.getElementById("tROI");
-                      element.insertAdjacentElement('afterend', td);
-
-                      var td = document.createElement("td");
-                      var content = document.createTextNode(i);
-                      td.appendChild(content);
-                      // para.appendChild(document.createElement("br"));
-                      var element = document.getElementById("tPV");
-                      element.insertAdjacentElement('afterend', td);
-
-                      var td = document.createElement("td");
-                      var content = document.createTextNode(i);
-                      td.appendChild(content);
-                      // para.appendChild(document.createElement("br"));
-                      var element = document.getElementById("tLoanBalance");
-                      element.insertAdjacentElement('afterend', td);
-
-                        if(i >= 30){
-                          i = 21;
-                        } 
-                        else if(i > 21){
-                          i = 21;
-                        }
-                         else if(i > 16){
-                          i = 16;
-                        }
-                        else if(i > 11){
-                          i = 11;
-                        }
-                        else if(i > 6){
-                          i = 6;
-                        }
-                        else if(i > 3){
-                          i = 3;
-                        }
-                        
-                    }
-
-                  </script> -->
-
-
                 </div>
 
                 <div id="outputPanelAD">
@@ -903,7 +841,7 @@ Author: Deven Swiergiel
                   <ins class="adsbygoogle" style="display:block" data-ad-format="fluid" data-ad-layout-key="-8q+1x-ds+e7+g1" data-ad-client="ca-pub-9823825251368211"
                     data-ad-slot="7801509185"></ins>
                   <script>
-                    (adsbygoogle = window.adsbygoogle || []).push({});
+                      (adsbygoogle = window.adsbygoogle || []).push({});
                   </script>
                 </div>
 
@@ -1487,7 +1425,6 @@ Author: Deven Swiergiel
 
 
                   </div>
-
                   <button type="submit" class="accordion-section-title mt-3" style="text-align: center; padding: 4px; padding-bottom: 8px;  border: 1px solid; border-radius: 3px;"
                     onclick="rentalValidate()">Calculate</button>
                 </form>
@@ -1657,20 +1594,6 @@ Author: Deven Swiergiel
       var monthlyPrinciplePayments = [];// the P(principal payment) portion of P&I
       var totalCashflow = [];
       var w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
-
-
-      // sets whether to show 3 column or 2 column output panel depending on screen width
-      function setOutputOrientation() {
-        if (w <= 576) {
-          document.getElementById('smallPanel').style.visibility = 'visible';
-          document.getElementById('smallPanel').style.display = 'inline-block';
-          document.getElementById('largePanel').style.display = 'none';
-        } else {
-          document.getElementById('largePanel').style.visibility = 'visible';
-          document.getElementById('smallPanel').style.display = 'none';
-        }
-      }
-
 
       function getPropertyInfo() {
 
