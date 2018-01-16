@@ -1922,7 +1922,7 @@ Author: Deven Swiergiel
           pv = +(pv * +appreciation) + +pv;
 
           // loanBalance needs to be calculated with principle paydown, not payments and interest.
-          if (i > yearsAmortized) {
+          if (i + 1 > yearsAmortized) {
             cashflow = cashflow + paymentsAndInterest;
             equityArray[i] = pv;
           } else {
@@ -1940,6 +1940,7 @@ Author: Deven Swiergiel
           console.log("totalCashflow: " + totalCashflow[i]);
           console.log("annualCashflowArray: " + annualCashflowArray[i]);
           annualROIArray[i] = (annualCashflowArray[i] / totalCashNeeded) * 100;
+          console.log("annualROIArray: " + annualROIArray[i]);
           propertyValueArray[i] = pv;
           // loanBalanceArray[i] = loanBalance;
         }
