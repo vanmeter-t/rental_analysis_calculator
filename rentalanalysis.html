@@ -2667,6 +2667,9 @@ Author: Deven Swiergiel
         futureAssumptionsCheck = document.getElementById("futureAssumptionsIN").checked;
         if (futureAssumptionsCheck == false) {
           document.getElementById('futureAssumptions').style.display = 'none';
+          document.getElementById('rentIncreaseIN').value = "";
+          document.getElementById('appreciationIN').value = "";
+          document.getElementById('expenseIncreaseIN').value = "";
         } else {
           document.getElementById('futureAssumptions').style.display = 'block';
         }
