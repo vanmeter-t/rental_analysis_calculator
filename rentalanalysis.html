@@ -296,11 +296,13 @@ Author: Deven Swiergiel
     .form-group {
       margin-bottom: 0px;
     }
+
     .form-control {
       border-radius: 0px!important;
-      
+
     }
-    .input-group-addon{
+
+    .input-group-addon {
       border-radius: 0px!important;
     }
 
@@ -402,7 +404,7 @@ Author: Deven Swiergiel
       .col-md-8 {
         padding: 0px;
       }
-      #outputPanelAD{
+      #outputPanelAD {
         padding-left: 32px;
         padding-right: 32px;
       }
@@ -831,9 +833,10 @@ Author: Deven Swiergiel
                             <td>$100,000</td>
                             <td>$100,000</td> -->
                         </tr>
-                        <th id="tEquityPercentage" style="position:absolute; width: 125px;background-color: #eee;" scope="row">Equity %</th>
+                        <tr>
+                          <th id="tEquityPercentage" style="position:absolute; width: 125px;background-color: #eee;" scope="row">Equity %</th>
 
-                        <!-- <td>$100,000</td>
+                          <!-- <td>$100,000</td>
                           <td>$100,000</td>
                           <td>$100,000</td>
                           <td>$100,000</td>
@@ -841,6 +844,35 @@ Author: Deven Swiergiel
                           <td>$100,000</td>
                           <td>$100,000</td> -->
                         </tr>
+                        <tr>
+                          <th id="tEquityCashflowROI" style="position:absolute; width: 125px; background-color: rgb(226, 226, 226);" scope="row">Total ROI
+                            <i class="fa fa-info-circle" style="color: grey; margin-left: .2em;" aria-hidden="true" data-toggle="tooltip" container:
+                              'body' data-placement="top" data-html="true" title="Total ROI is the percentage of return on total upfront money calculated by annual cashflow + annual equity gained from the tenant(s) paying down the mortgage all divided by the total upfront money needed."></i>
+                          </th>
+
+                          <!-- <td>$100,000</td>
+                          <td>$100,000</td>
+                          <td>$100,000</td>
+                          <td>$100,000</td>
+                          <td>$100,000</td>
+                          <td>$100,000</td>
+                          <td>$100,000</td> -->
+                        </tr>
+                        <tr>
+                          <th id="tEquityCashflow" style="position:absolute; width: 125px; background-color: #eee;" scope="row">Total Return
+                            <i class="fa fa-info-circle" style="color: grey; margin-left: .2em;" aria-hidden="true" data-toggle="tooltip" container:
+                              'body' data-placement="top" data-html="true" title="Total Return is the annual cashflow + annual equity gained from tenant(s) paying down the mortgage."></i>
+                          </th>
+                          <!-- <td>$100,000</td>
+                          <td>$100,000</td>
+                          <td>$100,000</td>
+                          <td>$100,000</td>
+                          <td>$100,000</td>
+                          <td>$100,000</td>
+                          <td>$100,000</td> -->
+                        </tr>
+
+
                         <tr style="display: block; width: 125px; height: 0px;"></tr>
                         <!-- <th style="display: block; width: 125px; height: 0px;"></th> -->
                       </tbody>
@@ -1598,6 +1630,7 @@ Author: Deven Swiergiel
       var annualExpenseArray = [];
       var annualCashflowArray = [];
       var annualROIArray = [];
+      var annualEquity = [];
       var propertyValueArray = [];
       var equityArray = [];
       var loanBalanceArray = [];
@@ -1913,7 +1946,8 @@ Author: Deven Swiergiel
         var pv = ARV;
         var cashflow;
         loanBalanceArray[0] = loanAmount;
-        equityArray[0] = downPayment;
+        equityArray[0] = +downPayment;
+
 
 
         // calculates the loan balance at each month. Used for amortization schedule and future projections
@@ -1939,9 +1973,11 @@ Author: Deven Swiergiel
             equityArray[i] = pv;
           } else {
             equityArray[i] = pv - loanBalanceArray[(i + 1) * 12];
+            annualEquity[i] = equityArray[i] -  equityArray[i - 1];
           }
           if (i == 0) {
             totalCashflow[0] = +0;
+            annualEquity[0] = +pv - loanBalanceArray[(i + 1) * 12] - +downPayment;
           }
 
 
@@ -2506,6 +2542,20 @@ Author: Deven Swiergiel
           content = document.createTextNode(parseFloat((equityArray[i - 1] / propertyValueArray[i - 1]) * 100).toFixed(3) + "%");
           td.appendChild(content);
           element = document.getElementById("tEquityPercentage");
+          element.insertAdjacentElement('afterend', td);
+
+          td = document.createElement("td");
+          content = document.createTextNode(parseFloat((annualCashflowArray[i - 1] + (annualEquity[i - 1])) / +totalCashNeeded * 100).toFixed(3) + "%");
+          td.appendChild(content);
+          element = document.getElementById("tEquityCashflowROI");
+          element.insertAdjacentElement('afterend', td);
+
+          td = document.createElement("td");
+          content = document.createTextNode("$" + parseFloat(annualCashflowArray[i - 1] + (annualEquity[i - 1])).toFixed(2).replace(/./g, function (c, y, a) {
+            return y && c !== "." && ((a.length - y) % 3 === 0) ? ',' + c : c;
+          }));
+          td.appendChild(content);
+          element = document.getElementById("tEquityCashflow");
           element.insertAdjacentElement('afterend', td);
 
           if (i >= 30) {
