@@ -30,13 +30,22 @@ Author: Deven Swiergiel
   <script src="https://code.highcharts.com/highcharts.js"></script>
   <!-- <script src="https://code.highcharts.com/modules/exporting.js"></script> -->
 
-  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <!-- <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
   <script>
     (adsbygoogle = window.adsbygoogle || []).push({
       google_ad_client: "ca-pub-9823825251368211",
       enable_page_level_ads: true
     });
+  </script> -->
+
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <script>
+       (adsbygoogle = window.adsbygoogle || []).push({
+            google_ad_client: "ca-pub-9823825251368211",
+            enable_page_level_ads: true
+       });
   </script>
+
   <style>
     /*----- Accordion -----*/
 
@@ -73,7 +82,7 @@ margin-top: 4px;
       text-align: center;
       display: inline-block;
       position: relative;
-      background: #eee;
+      /* background: rgb(163, 163, 163); */
       transition: all linear 0.15s;
       /* Type */
       font-size: 1.200em;
@@ -85,7 +94,8 @@ margin-top: 4px;
 
     .accordion-section-title.active,
     .accordion-section-title:hover {
-      background: #eee;
+      background: #40739e;
+      color: #eee;
       /* Type */
       text-decoration: none;
 
@@ -198,7 +208,8 @@ margin-top: 4px;
     body {
       /* margin-top: 50px; */
       padding: 50px 10px 50px 10px;
-      background: #d8d8d8;
+      /* background: #d8d8d8; */
+      background-color: #222f3e;
   color: black!important;
       
       /* color: rgb(214, 214, 214); */
@@ -269,9 +280,11 @@ margin-top: 4px;
     }
 
     .btn{
-      box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
-     background-color: #868e96;
-     color: white;
+      /* box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23); */
+      /* background-color: #40739e!important; */
+      /* background-color: #222f3e; */
+     /* background-color: buttonface; */
+     color: #eee;
     }
 
     #yearsIN {
@@ -280,7 +293,8 @@ margin-top: 4px;
     }
 
     #panel {
-      background-color: #ffffff;
+      /* background-color: #ffffff; */
+      background-color: #eee;
       padding: 30px 10px 30px 10px;
       border-top: none!important;
 
@@ -293,7 +307,7 @@ margin-top: 4px;
 
     .output {
       margin-top: 3px;
-      background-color: #eee;
+      background-color: white;
       color: rgb(63, 63, 63);
       border-radius: 0;
     }
