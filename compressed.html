@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+<meta charset=UTF-8>
+<meta name=viewport content="width=device-width, initial-scale=1.0">
+<meta http-equiv=X-UA-Compatible content="ie=edge">
+<meta name=keywords content="Deven Swiergiel, Devin Swiergiel, Devin Sweirgile, Devon Sweirgiel, Devon Swiergiel, Devin Sweirgiel, Deven, Swiergiel, deven swiergile, devin, devon, deven swiergel, 
+  swiergel, swiergile, scotia, ny, ualbany, University at Albany, albany, albany ny, devenswiergiel.com, devin swiergiel, Personal Website, Mobile, Responsive, Bootstrap,  
+    Smartphone Compatible, web, rental unit calculator, rental unit estimator, exponential rental unit, exponential, 
+    real estate, real estate invesments, real estate investor, real estate investor calculator, real estate calculator,
+    retierment calculator, retirement, retirement calculator, RE investing, real estate investing, rental, holding, property" />
+<link rel=stylesheet href=https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css integrity=sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb crossorigin=anonymous>
+<link href=https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css rel=stylesheet integrity=sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN crossorigin=anonymous>
+<script src=https://code.jquery.com/jquery-3.2.1.min.js integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin=anonymous></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js integrity=sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh crossorigin=anonymous></script>
+<script src=https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js integrity=sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ crossorigin=anonymous></script>
+<script src=https://code.highcharts.com/highcharts.js></script>
+<script async src=//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js></script>
+<script>(adsbygoogle=window.adsbygoogle||[]).push({google_ad_client:"ca-pub-9823825251368211",enable_page_level_ads:true});</script>
+<style>.accordion,.accordion *{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;position:relative}.accordion{overflow:hidden;border:solid none;margin-top:4px;margin-bottom:5px;position:relative;background:#fff;box-shadow:0 10px 20px rgba(0,0,0,0.19),0 6px 6px rgba(0,0,0,0.23)}.accordion-section-title{width:100%;padding:10px;text-align:center;display:inline-block;position:relative;transition:all linear .15s;font-size:1.200em;color:#333}.accordion-section-title.active,.accordion-section-title:hover{background:#40739e;color:#eee;text-decoration:none}.accordion-section:last-child .accordion-section-title{border-bottom:0}.accordion-section-content{padding:15px;display:none}.CBcontainer{display:block;position:relative;padding-left:30px;margin-bottom:0;cursor:pointer;font-size:1.2em;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.CBcontainer input{position:absolute;opacity:0}.checkmark{position:absolute;top:0;left:0;height:20px;width:20px;background-color:rgba(165,165,165,0);border:1px solid;border-radius:2px}.CBcontainer:hover input~.checkmark{background-color:#ccc}.CBcontainer input:checked~.checkmark{background-color:#2a445a}.checkmark:after{content:"";position:absolute;display:none}.CBcontainer input:checked~.checkmark:after{display:block}.CBcontainer .checkmark:after{left:7px;top:3px;width:5px;height:10px;border:solid white;border-width:0 3px 3px 0;-webkit-transform:rotate(45deg);-ms-transform:rotate(45deg);transform:rotate(45deg)}.chart{min-width:460px;height:310px;margin:0 auto 0 auto}body{padding:50px 10px 50px 10px;background-color:#222f3e;color:black!important}h6{margin-bottom:4px}h5{font-size:15px}.subHeader{width:100%;text-align:center;display:inline-block;position:relative;transition:all linear .15s;font-size:1.200em;color:#333}.card{box-shadow:0 10px 20px rgba(0,0,0,0.19),0 6px 6px rgba(0,0,0,0.23)}.col-md-8{width:1000px!important;max-width:100%!important;margin-left:auto!important;margin-right:auto!important}.form-group.left.col-lg-5{padding-left:0;color:black}#dashed{margin-top:10px;margin-bottom:10px;border-width:2px}.form-control{border-radius:5;-webkit-appearance:none}button{box-shadow:0 3px 6px rgba(0,0,0,0.16),0 3px 6px rgba(0,0,0,0.23);border:none!important}.btn{color:#eee}#yearsIN{border-radius:5;-webkit-appearance:none}#panel{background-color:#eee;padding:30px 10px 30px 10px;border-top:none!important}.outPanel{padding:12px 20px 0 20px}.output{margin-top:3px;background-color:white;color:#3f3f3f;border-radius:0}.outputLabel>h5{margin-bottom:0}.outputText{font-size:18px}#outputPanelAD{padding-left:10px;padding-right:10px}.form-group{margin-bottom:0}.form-control{border-radius:0!important}.input-group-addon{border-radius:0!important}.mobileSubHeader{margin-bottom:30px;font-size:22px}.left{float:left}.right{float:right}.btn{margin-top:5px;border-radius:0!important}.arrow{visibility:hidden}.tooltip{max-width:300px;background-color:white;border-radius:3px;border-width:1px;border-color:#686868;border-style:solid;left:10px!important;top:-5px!important;right:10px!important}.tooltip-inner{background-color:white;color:black;font-size:15px;text-align:center;max-width:300px}.table-responsive{width:90%}@media(max-width:991px){.col-md-8{width:650px!important;max-width:100%!important}.form-group.left.col-lg-5{padding-right:0}#outputPanelAD{padding-left:0;padding-right:0}}@media(max-height:900px){body{padding-top:25px;padding-bottom:20px}#panel{padding:15px}.outPanel{padding:10px 18px 10px 18px}.mobileHeader{font-size:30px}.mobileSubHeader{margin:8px;font-size:17px}h6{font-size:15px}h1{margin-bottom:1px}.col-md-8{padding:0}#outputPanelAD{padding-left:32px;padding-right:32px}}@media(max-width:1000px){#innerOutput{justify-content:left}.outputLabel{float:left!important;text-align:left!important}.col-md-3{margin-bottom:10px}}@media(min-width:768px){.container{width:1000px!important;max-width:100%!important}}@media(max-width:767px){h5{font-size:16px}h6{font-size:15px}.mobileHeader{font-size:40px}.mobileSubHeader{margin-bottom:10px}#output{margin-bottom:10px}.mt-4{margin-top:10px!important}.accordion-section-title{padding:5px}.form-group.left.col-md-5{padding-right:0}.chart{min-width:400px;height:350px}}@media(max-width:480px){.chart{min-width:350px;height:350px;margin:0 auto}.chartButtons{margin-left:auto;margin-right:auto}.table-responsive{width:100%}}@media(max-width:450px){.mobileHeader{font-size:35px;margin-bottom:5px}h2{font-size:20px!important;margin-bottom:10px!important}.mobileSubHeader{font-size:18px}.container{padding:0}.col-md-8{padding:0}h5{font-size:16px}#dashed{border-width:1px}}@media(max-width:374px){#output{margin-bottom:10px}h5{font-size:16px}h6{font-size:14px}}@media(max-width:325px){#output{margin-bottom:10px}#panel{padding:1px}h6{font-size:14px}}</style>
+</head>
+<body class=container>
+<div id=panel class="col-md-8 card">
+<title>Rental Analysis Calculator</title>
+<div class=col-md-8>
+<h1 class="display-4 text-center mobileHeader">Rental Property Analysis Calculator</h1>
+<h2 class="lead text-center">Created by Deven Swiergiel</h2>
+<p class="lead text-center mobileSubHeader">This tool will allow you to quickly analyze potential rental property investments to help you determine whether or
+not it's a good candidate as a buy and hold investment.
+</p>
+<div>
+<div id=output class="col-lg-7 right" style=padding-right:0;padding-left:0>
+<div style=padding-left:3px;padding-right:3px>
+<div class="card output">
+<div class=outPanel>
+<div id=smallPanel class="row innerOutput" style=display:none>
+<div class="col-md-6 col-sm-6 col-6 outputLabel">
+<h5>Monthly Income</h5>
+<h5 id=smonthlyIncomePANEL class="outputText mb-2">$0.00</h5>
+<h5>Total Initial Equity</h5>
+<h5 id=sinitialEquityPANEL class="outputText mb-2">$0.00</h5>
+<h5>Monthly Cashflow</h5>
+<h5 id=scashflowPANEL class="outputText mb-2">$0.00</h5>
+<h5>Annual Cashflow</h5>
+<h5 id=sannualCashflowPANEL class="outputText mb-2">0.00%</h5>
+<h5>NOI</h5>
+<h5 id=snoiPANEL class="outputText mb-2">$0.00</h5>
+</div>
+<div class="col-md-6 col-sm-6 col-6 outputLabel">
+<h5>Monthly Expenses</h5>
+<h5 id=smonthlyExpensesPANEL class="outputText mb-2">$0.00</h5>
+<h5>Total Cash Needed</h5>
+<h5 id=stotalCashNeededPANEL class="outputText mb-2">$0.00</h5>
+<h5>Cash On Cash ROI</h5>
+<h5 id=scocPANEL class="outputText mb-2">0.00%</h5>
+<h5>Cap Rate</h5>
+<h5 id=scapRatedPANEL class="outputText mb-2">0.00%</h5>
+</div>
+</div>
+<div id=largePanel class="row innerOutput">
+<div class="col-md-4 col-sm-4 col-6 outputLabel">
+<h5>Monthly Income</h5>
+<h5 id=monthlyIncomePANEL class="outputText mb-2">$0.00</h5>
+<h5>Total Initial Equity</h5>
+<h5 id=initialEquityPANEL class="outputText mb-2">$0.00</h5>
+<h5>NOI</h5>
+<h5 id=noiPANEL class=outputText>$0.00</h5>
+</div>
+<div class="col-md-4 col-sm-4 col-6 outputLabel">
+<h5>Monthly Expenses</h5>
+<h5 id=monthlyExpensesPANEL class="outputText mb-2">$0.00</h5>
+<h5>Total Cash Needed</h5>
+<h5 id=totalCashNeededPANEL class="outputText mb-2">$0.00</h5>
+<h5>Cap Rate</h5>
+<h5 id=capRatedPANEL class=outputText>0.00%</h5>
+</div>
+<div class="col-md-4 col-sm-4 col-6 outputLabel">
+<h5>Monthly Cashflow</h5>
+<h5 id=cashflowPANEL class="outputText mb-2">$0.00</h5>
+<h5>Annual Cashflow</h5>
+<h5 id=annualCashflowPANEL class="outputText mb-2">0.00%</h5>
+<h5>Cash On Cash ROI</h5>
+<h5 id=cocPANEL class=outputText>0.00%</h5>
+</div>
+</div>
+<div class=clearfix></div>
+<hr style=margin-top:7px;margin-bottom:3px>
+<script>!function(){let w=Math.max(document.documentElement.clientWidth,window.innerWidth||0);if(w<=576){document.getElementById('smallPanel').style.visibility='visible';document.getElementById('smallPanel').style.display='inline-block';document.getElementById('largePanel').style.display='none';}else{document.getElementById('largePanel').style.visibility='visible';document.getElementById('smallPanel').style.display='none';}}()</script>
+<div class="chartButtons row justify-content-md-center justify-content-center mb-2">
+<div class="btn-group-sm justify-content-md-center justify-content-center" role=group aria-label="Basic example">
+<button id=expenseBtn type=button class="btn btn-secondary">Expenses</button>
+<button id=incomeBtn type=button class="btn btn-secondary">Cashflow</button>
+<button id=amortizationBtn type=button class="btn btn-secondary">Amortization</button>
+<button id=futureBtn type=button class="btn btn-secondary">Future Outlook</button>
+</div>
+<div id=expense style=display:none>
+<div id=expenseChart class=chart></div>
+<div style=width:300px;margin-left:auto;margin-right:auto;text-align:center>
+<h5 style=margin-bottom:0>Operating expenses:
+<div class=outputMobile style=display:inline-block id=totalOppExpenses>$0.00</div>
+</h5>
+<h5 style=margin-bottom:0>Mortgage expenses:
+<div class=outputMobile style=display:inline-block id=mortgageExpense>$0.00</div>
+</h5>
+</div>
+</div>
+<div id=income style=display:none>
+<div id=incomeChart style=margin-top:10px;padding:15px class=chart>
+</div>
+</div>
+<div id=amortization style=display:none>
+<div id=amortizationChart style=margin-top:10px;padding:15px class=chart>
+</div>
+</div>
+<div id=future class=table-responsive style=display:none;padding-top:10px>
+<table class="table table-sm table-hover table-striped" style=padding:20px>
+<thead>
+<tr>
+<th id=tYears style=position:absolute;width:125px;background-color:#eee scope=col>Years</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th id=tExpenses style=position:absolute;width:125px;background-color:#e2e2e2 scope=row>Expenses</th>
+</tr>
+<tr>
+<th id=tIncome style=position:absolute;width:125px;background-color:#eee scope=row>Income</th>
+</tr>
+<tr>
+<th id=tCashflow style=position:absolute;width:125px;background-color:#e2e2e2 scope=row>Cashflow</th>
+</tr>
+<tr>
+<th id=tROI style=position:absolute;width:125px;background-color:#eee scope=row>ROI</th>
+</tr>
+<tr>
+<th id=tPV style=position:absolute;width:125px;background-color:#e2e2e2 scope=row>Property Value</th>
+</tr>
+<tr>
+<th id=tLoanBalance style=position:absolute;width:125px;background-color:#eee scope=row>Loan Balance</th>
+</tr>
+<tr>
+<th id=tEquity style=position:absolute;width:125px;background-color:#e2e2e2 scope=row>Equity</th>
+</tr>
+<tr>
+<th id=tEquityPercentage style=position:absolute;width:125px;background-color:#eee scope=row>Equity %</th>
+</tr>
+<tr>
+<th id=tEquityCashflowROI style=position:absolute;width:125px;background-color:#e2e2e2 scope=row>Total ROI
+<i class="fa fa-info-circle" style=color:grey;margin-left:.2em aria-hidden=true data-toggle=tooltip container: 'body' data-placement=top data-html=true title="Total ROI is the percentage of return on total upfront money calculated by annual cashflow + annual equity gained from the tenant(s) paying down the mortgage all divided by the total upfront money needed."></i>
+</th>
+</tr>
+<tr>
+<th id=tEquityCashflow style=position:absolute;width:125px;background-color:#eee scope=row>Total Return
+<i class="fa fa-info-circle" style=color:grey;margin-left:.2em aria-hidden=true data-toggle=tooltip container: 'body' data-placement=top data-html=true title="Total Return is the annual cashflow + annual equity gained from tenant(s) paying down the mortgage."></i>
+</th>
+</tr>
+<tr style=display:block;width:125px;height:0></tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id=outputPanelAD>
+<script async src=//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js></script>
+<ins class=adsbygoogle style=display:block data-ad-format=fluid data-ad-layout-key=-8q+1x-ds+e7+g1 data-ad-client=ca-pub-9823825251368211 data-ad-slot=7801509185></ins>
+<script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="form-group left col-lg-5">
+<div class=accordion>
+<div class=accordion-section>
+<a id=firstTab class="accordion-section-title active" href=#accordion-1>Property Info</a>
+<div id=accordion-1 class="accordion-section-content open" style=display:block>
+<form id=propertyInfo onsubmit="return Submit()">
+<div>
+<h6>Street address
+<i class="fa fa-info-circle" style=color:grey;margin-left:.2em aria-hidden=true data-toggle=tooltip data-placement=top title="Where is the property located? This is optional."></i>
+</h6>
+<input id=addressIN type=text class="form-control form-control-md" placeholder="745 Seventh Avenue">
+<div class="mt-2 form-row align-items-center">
+<div class=col-9>
+<h6>City
+</h6>
+<input id=cityIN type=text class=form-control placeholder="New York">
+</div>
+<div class=col-3>
+<h6>State
+</h6>
+<input id=stateIN type=text class=form-control placeholder=NY>
+</div>
+</div>
+<div class=mt-2></div>
+<h6>Zip Code
+</h6>
+<input id=zipIN type=number min=0 class="form-control form-control-md" placeholder=10019>
+<div class=mt-2></div>
+<h6>Annual Property Taxes
+<i class="fa fa-info-circle" style=color:grey;margin-left:.2em aria-hidden=true data-toggle=tooltip container: 'body' data-placement=top data-html=true title="How much are the total annual property taxes for the property? <br><br>If you are unsure, this information is typically found on the county's assessor website."></i>
+</h6>
+<div class=input-group>
+<span class=input-group-addon>
+<i class="fa fa-usd"></i>
+</span>
+<input id=taxesIN type=number min=00.00 step=any class="form-control form-control-md" required placeholder=1,234.55>
+</div>
+</div>
+<button type=submit class="accordion-section-title mt-3" style="text-align:center;padding:4px;padding-bottom:8px;border:1px solid;border-radius:0" onclick=propertyValidate()>Next</button>
+</form>
+</div>
+</div>
+</div>
+<div class=accordion>
+<div class=accordion-section>
+<a id=secondTab class=accordion-section-title href=#accordion-2>Purchase Info</a>
+<div id=accordion-2 class=accordion-section-content>
+<form id=purchaseInfo onsubmit="return Submit()">
+<div>
+<div class="form-row align-items-center">
+<div class=col-6>
+<h6>Purchase Price
+<i class="fa fa-info-circle" style=color:grey;margin-left:.2em aria-hidden=true data-toggle=tooltip container: 'body' data-placement=top data-html=true title="What is the purchase price you plan to pay for the property. If unsure, estimate what you can get the property for."></i>
+</h6>
+<div class=input-group>
+<span class=input-group-addon>
+<i class="fa fa-usd"></i>
+</span>
+<input id=purchasePriceIN type=number required class="form-control form-control-md" placeholder=185,000>
+</div>
+</div>
+<div class=col-6>
+<h6>After Repair Value
+<i class="fa fa-info-circle" style=color:grey;margin-left:.2em aria-hidden=true data-toggle=tooltip container: 'body' data-placement=top data-html=true title="This is what you estimate the property to be worth after all repairs. This metric is used for many calculations so make sure to be as close and conservative as possible for best results."></i>
+</h6>
+<div class=input-group>
+<span class=input-group-addon>
+<i class="fa fa-usd"></i>
+</span>
+<input id=arvIN type=number required class="form-control form-control-md" placeholder=204,000>
+</div>
+</div>
+</div>
+<div class=mt-2></div>
+<h6>Purchase Closing Cost
+<i class="fa fa-info-circle" style=color:grey;margin-left:.2em aria-hidden=true data-toggle=tooltip container: 'body' data-placement=top data-html=true title="What are the total fees of the transaction? Typically closing costs are around $1,500-$2,500, but can differ depending on the location and financing."></i>
+</h6>
+<div class=input-group>
+<span class=input-group-addon>
+<i class="fa fa-usd"></i>
+</span>
+<input id=closingCostIN type=number class="form-control form-control-md" placeholder=2,300>
+</div>
+<div class=mt-2></div>
+<h6>Estimated Repair Cost
+<i class="fa fa-info-circle" style=color:grey;margin-left:.2em aria-hidden=true data-toggle=tooltip container: 'body' data-placement=top data-html=true title="How much do you plan to spend repairing the property to get it rent ready? If no repairs are needed, just leave this field blank."></i>
+</h6>
+<div class=input-group>
+<span class=input-group-addon>
+<i class="fa fa-usd"></i>
+</span>
+<input id=repairCostIN type=number class="form-control form-control-md" placeholder=15,000>
+</div>
+<hr>
+<h5 class=subHeader>
+Financing Info
+</h5>
+<div class=mt-2></div>
+<label class=CBcontainer>
+<h6>Cash Purchase?
+<i class="fa fa-info-circle" style=color:grey;margin-left:.2em aria-hidden=true data-toggle=tooltip container: 'body' data-placement=top data-html=true title="Do you plan on paying in all cash for the property? If so, check this box since you will not be using a loan."></i>
+</h6>
+<input id=cashPurchaseIN type=checkbox>
+<span class=checkmark></span>
+</label>
+<div id=loanInfo>
+<div class="mt-3 form-row align-items-center">
+<div class=col-6>
+<h6>Down Payment
+<i class="fa fa-info-circle" style=color:grey;margin-left:.2em aria-hidden=true data-toggle=tooltip container: 'body' data-placement=top data-html=true title="What is the percentage of the purchase price you plan to put down as a down payment?"></i>
+</h6>
+<div class=input-group>
+<select id=downPercentIN required class=form-control>
+<option value disabled selected>20</option>
+<option value=0.0>0%</option>
+<option value=0.03>3%</option>
+<option value=0.035>3.5%</option>
+<option value=0.05>5%</option>
+<option value=0.075>7.5%</option>
+<option value=0.10>10%</option>
+<option value=0.15>15%</option>
+<option value=0.20>20%</option>
+<option value=0.25>25%</option>
+<option value=0.30>30%</option>
+<option value=0.35>35%</option>
+<option value=0.40>40%</option>
+<option value=0.45>45%</option>
+<option value=0.50>50%</option>
+<option value=0.55>55%</option>
+<option value=0.60>60%</option>
+<option value=0.65>65%</option>
+<option value=0.70>70%</option>
+<option value=0.75>75%</option>
+<option value=1.00>100%</option>
+</select>
+<span class=input-group-addon>
+<i class="fa fa-percent"></i>
+</span>
+</div>
+</div>
+<div class=col-6>
+<h6>Loan Interest Rate
+<i class="fa fa-info-circle" style=color:grey;margin-left:.2em aria-hidden=true data-toggle=tooltip container: 'body' data-placement=top data-html=true title="What rate do you think you'll get on your loan?"></i>
+</h6>
+<div class=input-group>
+<input id=interestRateIN type=number step=any required class=form-control placeholder=4.25>
+<span class=input-group-addon>
+<i class="fa fa-percent"></i>
+</span>
+</div>
+</div>
+</div>
+<div class="mt-2 form-row align-items-center">
+<div class=col-6>
+<h6>Points Charged
+<i class="fa fa-info-circle" style=color:grey;margin-left:.2em aria-hidden=true data-toggle=tooltip container: 'body' data-placement=top data-html=true title="How many points were charged by the lender? Points are fees often charged when you take out a loan. Each point=1% of the loan amount. So if your loan is $100,000 and you are charged 1 point, you will pay $1,000."></i>
+</h6>
+<input id=pointsChargedIN type=number class="form-control form-control-md" placeholder=2>
+</div>
+<div class=col-6>
+<h6>Other Charges
+<i class="fa fa-info-circle" style=color:grey;margin-left:.2em aria-hidden=true data-toggle=tooltip container: 'body' data-placement=top data-html=true title="For any other fees charged by the lender. If none, leave blank."></i>
+</h6>
+<div class=input-group>
+<span class=input-group-addon>
+<i class="fa fa-usd"></i>
+</span>
+<input id=otherChargesIN type=number step=any class="form-control form-control-md" placeholder=500>
+</div>
+</div>
+</div>
+<div class=mt-3></div>
+<label class=CBcontainer>
+<h6>Wrap Loan Fees/Points Into the Loan?
+<i class="fa fa-info-circle" style=color:grey;margin-left:.2em aria-hidden=true data-toggle=tooltip container: 'body' data-placement=top data-html=true title="Do you want to include the previous two fees in with the loan? If not checked, you plan to pay those fees out of pocket."></i>
+</h6>
+<input id=wrapFeesIN type=checkbox>
+<span class=checkmark></span>
+</label>
+<div class=mt-2></div>
+<label class=CBcontainer>
+<h6>Interest Only Loan?
+<i class="fa fa-info-circle" style=color:grey;margin-left:.2em aria-hidden=true data-toggle=tooltip container: 'body' data-placement=top data-html=true title="*Feature Coming Soon* <br><br>Loans typically consist of two parts, the interest part(profit for lender) and the principal part(the portion of equity you are paying off each month). With interest-only loans, you never pay down the principle of the loan. These are typically offered by hard money lenders. Leave this unchecked if you are unsure."></i>
+</h6>
+<input id=interestOnlyIN disabled type=checkbox>
+<span class=checkmark></span>
+</label>
+<div class=mt-3></div>
+<h6>Amortized Over How Many Years?
+<i class="fa fa-info-circle" style=color:grey;margin-left:.2em aria-hidden=true data-toggle=tooltip container: 'body' data-placement=top data-html=true title="What is the term length on the loan? This is typically 30 years for residential and 20 or 25 for commercial."></i>
+</h6>
+<select id=yearsIN name=years required class="form-control form-control-md mt-2">
+<option value disabled selected>30</option>
+<option value=0>0</option>
+<option value=1>1</option>
+<option value=2>2</option>
+<option value=3>3</option>
+<option value=4>4</option>
+<option value=5>5</option>
+<option value=6>6</option>
+<option value=7>7</option>
+<option value=8>8</option>
+<option value=9>9</option>
+<option value=10>10</option>
+<option value=11>11</option>
+<option value=12>12</option>
+<option value=13>13</option>
+<option value=14>14</option>
+<option value=15>15</option>
+<option value=16>16</option>
+<option value=17>17</option>
+<option value=18>18</option>
+<option value=19>19</option>
+<option value=20>20</option>
+<option value=21>21</option>
+<option value=22>22</option>
+<option value=23>23</option>
+<option value=24>24</option>
+<option value=25>25</option>
+<option value=26>26</option>
+<option value=27>27</option>
+<option value=28>28</option>
+<option value=29>29</option>
+<option value=30>30</option>
+</select>
+</div>
+</div>
+<button type=submit class="accordion-section-title mt-3" style="text-align:center;padding:4px;padding-bottom:8px;border:1px solid;border-radius:0" onclick=purchaseValidate()>Next</button>
+</form>
+</div>
+</div>
+</div>
+<div class=accordion>
+<div class=accordion-section>
+<a id=thirdTab class=accordion-section-title href=#accordion-3>Rental Info</a>
+<div id=accordion-3 class=accordion-section-content>
+<form id=rentalInfo onsubmit="return Submit()">
+<div>
+<h5 class=subHeader>
+Monthly Income
+</h5>
+<div class="mt-2 form-row align-items-center">
+<div class=col-6>
+<h6>Gross Rent
+<i class="fa fa-info-circle" style=color:grey;margin-left:.2em aria-hidden=true data-toggle=tooltip container: 'body' data-placement=top data-html=true title="How much rent do you expect to receive each month from the property?"></i>
+</h6>
+<div class=input-group>
+<span class=input-group-addon>
+<i class="fa fa-usd"></i>
+</span>
+<input id=monthlyRentIN type=number required class="form-control form-control-md" placeholder=2200>
+</div>
+</div>
+<div class=col-6>
+<h6>Other Income
+<i class="fa fa-info-circle" style=color:grey;margin-left:.2em aria-hidden=true data-toggle=tooltip container: 'body' data-placement=top data-html=true title="Any other monthly income expected to come from the property. Typically this would come from extra storage or laundry."></i>
+</h6>
+<div class=input-group>
+<span class=input-group-addon>
+<i class="fa fa-usd"></i>
+</span>
+<input id=otherIncomeIN type=number class="form-control form-control-md" placeholder=100>
+</div>
+</div>
+</div>
+<hr>
+<h5 class=subHeader>
+Fixed Monthly Expenses
+</h5>
+<div class="mt-2 form-row align-items-center">
+<div class=col-6>
+<h6>Property Taxes
+<i class="fa fa-info-circle" style=color:grey;margin-left:.2em aria-hidden=true data-toggle=tooltip container: 'body' data-placement=top data-html=true title="This is the monthly amount of property taxes owed. This was calculated by dividing the annual property taxes you gave in the Property Info tab. Please change this there if you'd like."></i>
+</h6>
+<div class=input-group>
+<span class=input-group-addon>
+<i class="fa fa-usd"></i>
+</span>
+<input id=monthlyPropertyTax type=number readonly class="form-control form-control-md" placeholder=271.34>
+</div>
+</div>
+<div class=col-6>
+<h6>Water & Sewer
+</h6>
+<div class=input-group>
+<span class=input-group-addon>
+<i class="fa fa-usd"></i>
+</span>
+<input id=watersewerIN type=number class="form-control form-control-md" placeholder=68>
+</div>
+</div>
+</div>
+<div class="mt-2 form-row align-items-center">
+<div class=col-4>
+<h6>Insurance
+</h6>
+<div class=input-group>
+<span class=input-group-addon>
+<i class="fa fa-usd"></i>
+</span>
+<input id=insuranceIN type=number class="form-control form-control-md" placeholder=65>
+</div>
+</div>
+<div class=col-4>
+<h6>Electricity
+</h6>
+<div class=input-group>
+<span class=input-group-addon>
+<i class="fa fa-usd"></i>
+</span>
+<input id=electricityIN type=number class="form-control form-control-md" placeholder=43>
+</div>
+</div>
+<div class=col-4>
+<h6>Garbage
+</h6>
+<div class=input-group>
+<span class=input-group-addon>
+<i class="fa fa-usd"></i>
+</span>
+<input id=garbageIN type=number class="form-control form-control-md" placeholder=50>
+</div>
+</div>
+</div>
+<div class="mt-2 form-row align-items-center">
+<div class=col-4>
+<h6>PMI
+<i class="fa fa-info-circle" style=color:grey;margin-left:.2em aria-hidden=true data-toggle=tooltip container: 'body' data-placement=top data-html=true title="Short for Private Mortgage Insurance, a monthly fee typically added by the bank on loans where the down payment is less than 20%. PMI rate differs but typical range is $45-$65 per $100,000 on the loan."></i>
+</h6>
+<div class=input-group>
+<span class=input-group-addon>
+<i class="fa fa-usd"></i>
+</span>
+<input id=pmiIN type=number class="form-control form-control-md" placeholder=50>
+</div>
+</div>
+<div class=col-4>
+<h6>HOA
+</h6>
+<div class=input-group>
+<span class=input-group-addon>
+<i class="fa fa-usd"></i>
+</span>
+<input id=hoaIN type=number class="form-control form-control-md" placeholder=200>
+</div>
+</div>
+<div class=col-4>
+<h6>Other
+<i class="fa fa-info-circle" style=color:grey;margin-left:.2em aria-hidden=true data-toggle=tooltip container: 'body' data-placement=top data-html=true title="This could be for things like snow removal or landscaping/lawncare."></i>
+</h6>
+<div class=input-group>
+<span class=input-group-addon>
+<i class="fa fa-usd"></i>
+</span>
+<input id=otherIN type=number class="form-control form-control-md" placeholder=50>
+</div>
+</div>
+</div>
+<hr>
+<h5 class=subHeader>
+Variable Monthly Expenses
+</h5>
+<div class="mt-2 form-row align-items-center">
+<div class=col-4>
+<h6>Vacancy
+<i class="fa fa-info-circle" style=color:grey;margin-left:.2em aria-hidden=true data-toggle=tooltip container: 'body' data-placement=top data-html=true title="Percentage of gross monthly rent to account for vacancy of the unit/property. This is to cover expenses when property is in turnover/vacant. This can vary on the area but typical range is 3%-10%."></i>
+</h6>
+<div class=input-group>
+<input id=vacancyIN type=number class="form-control form-control-md" placeholder=6>
+<span class=input-group-addon>
+<i class="fa fa-percent"></i>
+</span>
+</div>
+</div>
+<div class=col-8>
+<h6>Repairs/Maintenance
+<i class="fa fa-info-circle" style=color:grey;margin-left:.2em aria-hidden=true data-toggle=tooltip container: 'body' data-placement=top data-html=true title="This is for the ongoing minor maintenance of the property accounting for when things need to be repaired or replaced. Typical range is 5%-15% of the gross monthly rent."></i>
+</h6>
+<div class=input-group>
+<input id=repairsIN type=number class="form-control form-control-md" placeholder=8>
+<span class=input-group-addon>
+<i class="fa fa-percent"></i>
+</span>
+</div>
+</div>
+</div>
+<div class="mt-2 form-row align-items-center">
+<div class=col-4>
+<h6>CapEx
+<i class="fa fa-info-circle" style=color:grey;margin-left:.2em aria-hidden=true data-toggle=tooltip container: 'body' data-placement=top data-html=true title="Short for Capital Expenditures, are the major repairs that are needed over time like new roof, foundation, siding, parking lot, or appliances. Typical range is 8%-20% of gross monthly rent depending on various things like age, location, etc."></i>
+</h6>
+<div class=input-group>
+<input id=capExIN type=number class="form-control form-control-md" placeholder=10>
+<span class=input-group-addon>
+<i class="fa fa-percent"></i>
+</span>
+</div>
+</div>
+<div class=col-8>
+<h6>Management Fees
+<i class="fa fa-info-circle" style=color:grey;margin-left:.2em aria-hidden=true data-toggle=tooltip container: 'body' data-placement=top data-html=true title="If using third party management, the typical fee ranges 7%-12% of the gross monthly rent."></i>
+</h6>
+<div class=input-group>
+<input id=managementFeesIN type=number class="form-control form-control-md" placeholder=9>
+<span class=input-group-addon>
+<i class="fa fa-percent"></i>
+</span>
+</div>
+</div>
+</div>
+<div class=mt-3></div>
+<label class=CBcontainer>
+<h6>Future Assumptions?
+<i class="fa fa-info-circle" style=color:grey;margin-left:.2em aria-hidden=true data-toggle=tooltip container: 'body' data-placement=top data-html=true title="This can help project how the numbers look in the future. These are fairly speculative with the possible exception of future rent increases so use with a grain of salt."></i>
+</h6>
+<input id=futureAssumptionsIN type=checkbox>
+<span class=checkmark></span>
+</label>
+<div id=futureAssumptions>
+<hr>
+<h5 class=subHeader>
+Future Annual Assumptions
+</h5>
+<div class="mt-2 form-row align-items-center">
+<div class=col-6>
+<h6>Rent Increase
+<i class="fa fa-info-circle" style=color:grey;margin-left:.2em aria-hidden=true data-toggle=tooltip container: 'body' data-placement=top data-html=true title="What percentage of growth do you expect the gross monthly rent to see? This could be by the market, or how much you plan to increase it."></i>
+</h6>
+<div class=input-group>
+<input id=rentIncreaseIN type=number class="form-control form-control-md" placeholder=3>
+<span class=input-group-addon>
+<i class="fa fa-percent"></i>
+</span>
+</div>
+</div>
+<div class=col-6>
+<h6>Appreciation
+<i class="fa fa-info-circle" style=color:grey;margin-left:.2em aria-hidden=true data-toggle=tooltip container: 'body' data-placement=top data-html=true title="A percentage of possible appreciation of the property."></i>
+</h6>
+<div class=input-group>
+<input id=appreciationIN type=number class="form-control form-control-md" placeholder=1>
+<span class=input-group-addon>
+<i class="fa fa-percent"></i>
+</span>
+</div>
+</div>
+</div>
+<div class=mt-2></div>
+<h6>Annual Expense Increase
+<i class="fa fa-info-circle" style=color:grey;margin-left:.2em aria-hidden=true data-toggle=tooltip container: 'body' data-placement=top data-html=true title="What percentage of growth do you expect expenses to increase by? As inflation increases, typically so do expense costs."></i>
+</h6>
+<div class=input-group>
+<input id=expenseIncreaseIN type=number class="form-control form-control-md" placeholder=1>
+<span class=input-group-addon>
+<i class="fa fa-percent"></i>
+</span>
+</div>
+</div>
+</div>
+<button type=submit class="accordion-section-title mt-3" style="text-align:center;padding:4px;padding-bottom:8px;border:1px solid;border-radius:0" onclick=rentalValidate()>Calculate</button>
+</form>
+</div>
+</div>
+</div>
+<div class=accordion>
+<div class=accordion-section>
+<a id=fourthTab class=accordion-section-title href=#accordion-4>Results</a>
+<div id=accordion-4 class=accordion-section-content>
+<h5>Purchase Price
+<div class="right outputMobile" id=purchasePriceRESULTS>0</div>
+</h5>
+<h5>
+Purchase Closing Costs
+<div class="right outputMobile" id=closingCostRESULTS>0</div>
+</h5>
+<h5>Estimated Repairs
+<div class="right outputMobile" id=repairsRESULTS>0</div>
+</h5>
+<h5>Total Project Cost
+<div class="right outputMobile" id=totalProjectCostRESULTS>0</div>
+</h5>
+<h5>After Repair Value (ARV)
+<div class="right outputMobile" id=arvRESULTS>0</div>
+</h5>
+<hr>
+<h5>
+Down Payment
+<div class="right outputMobile" id=downPaymentRESULTS>0</div>
+</h5>
+<h5>Loan Amount
+<div class="right outputMobile" id=loanAmountRESULTS>0</div>
+</h5>
+<h5>Loan Points
+<div class="right outputMobile" id=loanPointsRESULTS>0</div>
+</h5>
+<h5>Amortized Over
+<div class="right outputMobile" id=amortizationLengthRESULTS>0</div>
+</h5>
+<h5>Loan Interest Rate
+<div class="right outputMobile" id=loanRateRESULTS>0</div>
+</h5>
+<h5>Monthly P&I
+<div class="right outputMobile" id=piRESULTS>0</div>
+</h5>
+<h5 style=margin-bottom:0>Total Cash Needed
+<div class="right outputMobile" id=totalCashNeededRESULTS>0</div>
+</h5>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<script>var address;var city;var state;var zip;var annualTaxes=0;var closingCost=0;var repairCost=0;var pointsCharged=0;var otherCharges=0;var purchasePrice=0;var ARV=0;var downPaymentPercent=0;var loanRate=0;var yearsAmortized=0;var cashPurchaseCheck;var wrapFeesCheck;var interestOnlyCheck;var otherIncome=0;var monthlyPropertyTaxes=0;var waterSewer=0;var insurance=0;var electricity=0;var garbage=0;var PMI=0;var HOA=0;var otherExpenses=0;var vacancy=0;var maintenance=0;var capEx=0;var managementFees=0;var rentIncrease=0;var appreciation=0;var expenseIncrease=0;var monthlyRentalIncome=0;var futureAssumptionsCheck;var downPayment=0;var loanAmount=0;var pointsToDollars=0;var totalCashNeeded=0;var paymentsAndInterest=0;var monthlyCashflow=0;var cocROI=0;var grossMonthlyIncome=0;var grossMonthlyExpenses=0;var totalInitialEquity=0;var NOI=0;var capRate=0;var annualIncomeArray=[];var annualExpenseArray=[];var annualCashflowArray=[];var annualROIArray=[];var annualEquity=[];var propertyValueArray=[];var equityArray=[];var loanBalanceArray=[];var profitIfSoldArray=[];var totalAnnualReturnArray=[];var monthlyPrinciplePayments=[];var totalCashflow=[];var w=Math.max(document.documentElement.clientWidth,window.innerWidth||0);function getPropertyInfo(){address=document.getElementById('addressIN').value;city=document.getElementById('cityIN').value;state=document.getElementById('stateIN').value;zip=document.getElementById('zipIN').value;annualTaxes=+document.getElementById('taxesIN').value;monthlyPropertyTaxes=(annualTaxes/12).toFixed(2);document.getElementById('monthlyPropertyTax').value=monthlyPropertyTaxes;console.log("address "+address);console.log("city "+city);console.log("state "+state);console.log("zip "+zip);console.log("yearlyTaxes "+annualTaxes);console.log("");}
+function getPurchaseInfo(){closingCost=+document.getElementById('closingCostIN').value;repairCost=+document.getElementById('repairCostIN').value;pointsCharged=+document.getElementById('pointsChargedIN').value;otherCharges=+document.getElementById('otherChargesIN').value;purchasePrice=+document.getElementById('purchasePriceIN').value;ARV=+document.getElementById('arvIN').value;downPaymentPercent=+document.getElementById('downPercentIN').value;loanRate=+document.getElementById('interestRateIN').value;yearsAmortized=+document.getElementById('yearsIN').value;cashPurchaseCheck=document.getElementById("cashPurchaseIN").checked;wrapFeesCheck=document.getElementById("wrapFeesIN").checked;interestOnlyCheck=document.getElementById("interestOnlyIN").checked;console.log("closing cost: "+closingCost);console.log("repairCost: "+repairCost);console.log("pointsCharged: "+pointsCharged);console.log("otherCharges: "+otherCharges);console.log("purchasePrice: "+purchasePrice);console.log("ARV: "+ARV);console.log("downPayment: "+downPaymentPercent);console.log("loanRate: "+loanRate);console.log("yearsAmortized: "+yearsAmortized);console.log("cashPurchaseCheck: "+cashPurchaseCheck);console.log("wrapFeesCheck: "+wrapFeesCheck);console.log("interestOnlyCheck: "+interestOnlyCheck);console.log("");}
+function getRentalInfo(){otherIncome=+document.getElementById('otherIncomeIN').value;waterSewer=+document.getElementById('watersewerIN').value;insurance=+document.getElementById('insuranceIN').value;electricity=+document.getElementById('electricityIN').value;garbage=+document.getElementById('garbageIN').value;PMI=+document.getElementById('pmiIN').value;HOA=+document.getElementById('hoaIN').value;otherExpenses=+document.getElementById('otherIN').value;vacancy=+document.getElementById('vacancyIN').value/100;maintenance=+document.getElementById('repairsIN').value/100;capEx=+document.getElementById('capExIN').value/100;managementFees=+document.getElementById('managementFeesIN').value/100;rentIncrease=+document.getElementById('rentIncreaseIN').value/100;appreciation=+document.getElementById('appreciationIN').value/100;expenseIncrease=+document.getElementById('expenseIncreaseIN').value/100;monthlyRentalIncome=+document.getElementById('monthlyRentIN').value;futureAssumptionsCheck=document.getElementById("futureAssumptionsIN").checked;console.log("otherIncome "+otherIncome);console.log("waterSewer "+waterSewer);console.log("insurance "+insurance);console.log("electricity "+electricity);console.log("garbage "+garbage);console.log("PMI "+PMI);console.log("HOA "+HOA);console.log("otherExpenses "+otherExpenses);console.log("vacancy "+vacancy);console.log("maintenance "+maintenance);console.log("capEx "+capEx);console.log("managementFees "+managementFees);console.log("rentIncrease "+rentIncrease);console.log("appreciation "+appreciation);console.log("expenseIncrease "+expenseIncrease);console.log("monthlyRentalIncome "+monthlyRentalIncome);console.log("futureAssumptionsCheck "+futureAssumptionsCheck);console.log("");}
+function calculate(){totalProjectCost=purchasePrice+closingCost+repairCost;downPayment=purchasePrice*downPaymentPercent;loanAmount=(purchasePrice-downPayment);pointsToDollars=(pointsCharged/100)*loanAmount;if(wrapFeesCheck==true){loanAmount+=+pointsToDollars+ +otherCharges;totalCashNeeded=closingCost+downPayment+repairCost;}else{loanAmount=(+purchasePrice-+downPayment);totalCashNeeded=downPayment+repairCost+closingCost+pointsToDollars+otherCharges;}
+if(loanAmount!=0){paymentsAndInterest=pmt();}else{paymentsAndInterest=0;}
+monthlyCashflow=cashflow();cocROI=((monthlyCashflow*12)/totalCashNeeded)*100;totalInitialEquity=downPayment+(ARV-purchasePrice);NOI=grossMonthlyIncome*12-(grossMonthlyExpenses-paymentsAndInterest)*12;capRate=(NOI/purchasePrice)*100;calculateFuture();document.getElementById("expenseBtn").click();document.getElementById('purchasePriceRESULTS').innerHTML="$"+parseFloat(purchasePrice).toFixed(2).replace(/./g,function(c,i,a){return i&&c!=="."&&((a.length-i)%3===0)?','+c:c;});document.getElementById('closingCostRESULTS').innerHTML="$"+parseFloat(closingCost).toFixed(2).replace(/./g,function(c,i,a){return i&&c!=="."&&((a.length-i)%3===0)?','+c:c;});document.getElementById('repairsRESULTS').innerHTML="$"+parseFloat(repairCost).toFixed(2).replace(/./g,function(c,i,a){return i&&c!=="."&&((a.length-i)%3===0)?','+c:c;});document.getElementById('totalProjectCostRESULTS').innerHTML="$"+parseFloat(totalProjectCost).toFixed(2).replace(/./g,function(c,i,a){return i&&c!=="."&&((a.length-i)%3===0)?','+c:c;});document.getElementById('arvRESULTS').innerHTML="$"+parseFloat(ARV).toFixed(2).replace(/./g,function(c,i,a){return i&&c!=="."&&((a.length-i)%3===0)?','+c:c;});document.getElementById('downPaymentRESULTS').innerHTML="$"+parseFloat(downPayment).toFixed(2).replace(/./g,function(c,i,a){return i&&c!=="."&&((a.length-i)%3===0)?','+c:c;});document.getElementById('loanAmountRESULTS').innerHTML="$"+parseFloat(loanAmount).toFixed(2).replace(/./g,function(c,i,a){return i&&c!=="."&&((a.length-i)%3===0)?','+c:c;});document.getElementById('loanPointsRESULTS').innerHTML="$"+parseFloat(pointsToDollars).toFixed(2).replace(/./g,function(c,i,a){return i&&c!=="."&&((a.length-i)%3===0)?','+c:c;});document.getElementById('totalCashNeededRESULTS').innerHTML="$"+parseFloat(totalCashNeeded).toFixed(2).replace(/./g,function(c,i,a){return i&&c!=="."&&((a.length-i)%3===0)?','+c:c;});document.getElementById('piRESULTS').innerHTML="$"+parseFloat(paymentsAndInterest).toFixed(2).replace(/./g,function(c,i,a){return i&&c!=="."&&((a.length-i)%3===0)?','+c:c;});document.getElementById('loanRateRESULTS').innerHTML=parseFloat(loanRate).toFixed(3)+"%";document.getElementById('amortizationLengthRESULTS').innerHTML=yearsAmortized+" Years";if(w>576){document.getElementById('cashflowPANEL').innerHTML="$"+parseFloat(monthlyCashflow).toFixed(2).replace(/./g,function(c,i,a){return i&&c!=="."&&((a.length-i)%3===0)?','+c:c;});document.getElementById('monthlyExpensesPANEL').innerHTML="$"+parseFloat(grossMonthlyExpenses).toFixed(2).replace(/./g,function(c,i,a){return i&&c!=="."&&((a.length-i)%3===0)?','+c:c;});document.getElementById('monthlyIncomePANEL').innerHTML="$"+parseFloat(grossMonthlyIncome).toFixed(2).replace(/./g,function(c,i,a){return i&&c!=="."&&((a.length-i)%3===0)?','+c:c;});document.getElementById('initialEquityPANEL').innerHTML="$"+parseFloat(totalInitialEquity).toFixed(2).replace(/./g,function(c,i,a){return i&&c!=="."&&((a.length-i)%3===0)?','+c:c;});document.getElementById('noiPANEL').innerHTML="$"+parseFloat(NOI).toFixed(2).replace(/./g,function(c,i,a){return i&&c!=="."&&((a.length-i)%3===0)?','+c:c;});document.getElementById('totalCashNeededPANEL').innerHTML="$"+parseFloat(totalCashNeeded).toFixed(2).replace(/./g,function(c,i,a){return i&&c!=="."&&((a.length-i)%3===0)?','+c:c;});document.getElementById('annualCashflowPANEL').innerHTML="$"+parseFloat(monthlyCashflow*12).toFixed(2).replace(/./g,function(c,i,a){return i&&c!=="."&&((a.length-i)%3===0)?','+c:c;});document.getElementById('cocPANEL').innerHTML=parseFloat(cocROI).toFixed(3)+"%";document.getElementById('capRatedPANEL').innerHTML=parseFloat(capRate).toFixed(3)+"%";}else{document.getElementById('scashflowPANEL').innerHTML="$"+parseFloat(monthlyCashflow).toFixed(2).replace(/./g,function(c,i,a){return i&&c!=="."&&((a.length-i)%3===0)?','+c:c;});document.getElementById('smonthlyExpensesPANEL').innerHTML="$"+parseFloat(grossMonthlyExpenses).toFixed(2).replace(/./g,function(c,i,a){return i&&c!=="."&&((a.length-i)%3===0)?','+c:c;});document.getElementById('smonthlyIncomePANEL').innerHTML="$"+parseFloat(grossMonthlyIncome).toFixed(2).replace(/./g,function(c,i,a){return i&&c!=="."&&((a.length-i)%3===0)?','+c:c;});document.getElementById('sinitialEquityPANEL').innerHTML="$"+parseFloat(totalInitialEquity).toFixed(2).replace(/./g,function(c,i,a){return i&&c!=="."&&((a.length-i)%3===0)?','+c:c;});document.getElementById('snoiPANEL').innerHTML="$"+parseFloat(NOI).toFixed(2).replace(/./g,function(c,i,a){return i&&c!=="."&&((a.length-i)%3===0)?','+c:c;});document.getElementById('stotalCashNeededPANEL').innerHTML="$"+parseFloat(totalCashNeeded).toFixed(2).replace(/./g,function(c,i,a){return i&&c!=="."&&((a.length-i)%3===0)?','+c:c;});document.getElementById('sannualCashflowPANEL').innerHTML="$"+parseFloat(monthlyCashflow*12).toFixed(2).replace(/./g,function(c,i,a){return i&&c!=="."&&((a.length-i)%3===0)?','+c:c;});document.getElementById('scocPANEL').innerHTML=parseFloat(cocROI).toFixed(3)+"%";document.getElementById('scapRatedPANEL').innerHTML=parseFloat(capRate).toFixed(3)+"%";}
+document.getElementById('totalOppExpenses').innerHTML="$"+parseFloat(grossMonthlyExpenses-paymentsAndInterest).toFixed(2).replace(/./g,function(c,i,a){return i&&c!=="."&&((a.length-i)%3===0)?','+c:c;});document.getElementById('mortgageExpense').innerHTML="$"+parseFloat(paymentsAndInterest).toFixed(2).replace(/./g,function(c,i,a){return i&&c!=="."&&((a.length-i)%3===0)?','+c:c;});}
+function pmt(){var term=yearsAmortized;var apr=loanRate;var amt=loanAmount;var mPmt;apr/=1200;term*=12;mPmt=amt*(apr*Math.pow((1+apr),term))/(Math.pow((1+apr),term)-1);return mPmt;}
+function ePMT(rate,nper,pv,fv,type){if(!fv)fv=0;if(!type)type=0;if(+rate==0)return-(+pv+ +fv)/+nper;var pvif=Math.pow(1+ +rate,+nper);var pmt=+rate/(+pvif-1)*-(+pv*+pvif+ +fv);if(+type==1){pmt/=(1+ +rate);};return pmt;}
+function IPMT(pv,pmt,rate,per){var tmp=Math.pow(1+ +rate,+per);return 0-(+pv*+tmp*+rate+ +pmt*(+tmp-1));}
+function ppmt(rate,per,nper,pv,fv,type){if(per<1||(per>=nper+1))return null;var pmt=ePMT(rate,nper,pv,fv,type);var ipmt=IPMT(pv,pmt,rate,per-1);return(Math.abs(pmt)-Math.abs(ipmt));}
+function cashflow(){var cashflow;grossMonthlyIncome=+(monthlyRentalIncome+otherIncome);grossMonthlyExpenses=+(+paymentsAndInterest+ +monthlyPropertyTaxes+ +waterSewer+ +insurance+ +electricity+ +garbage+ +PMI+ +HOA+ +otherExpenses)+(+grossMonthlyIncome*vacancy+ +grossMonthlyIncome*capEx+ +grossMonthlyIncome*maintenance+ +grossMonthlyIncome*managementFees);cashflow=+grossMonthlyIncome-+grossMonthlyExpenses;return cashflow;}
+function calculateFuture(){var monthlyExpense=grossMonthlyExpenses;var monthlyIncome=grossMonthlyIncome
+var pv=ARV;var cashflow;loanBalanceArray[0]=loanAmount;equityArray[0]=+downPayment;for(let i=1;i<=30*12;i++){monthlyPrinciplePayments[i-1]=+ppmt((+loanRate)/1200,+i,+yearsAmortized*12,+loanAmount)
+if(i>yearsAmortized*12){loanBalanceArray[i]=0;}else{loanBalanceArray[i]=+loanBalanceArray[i-1]-+monthlyPrinciplePayments[i-1];}}
+for(let i=0;i<30;i++){monthlyExpense=+(monthlyExpense*+expenseIncrease)+ +monthlyExpense;monthlyIncome=+(monthlyIncome*+rentIncrease)+ +monthlyIncome;cashflow=+monthlyIncome-+monthlyExpense;pv=+(pv*+appreciation)+ +pv;if(i+1>yearsAmortized){cashflow=cashflow+paymentsAndInterest;equityArray[i]=pv;}else{equityArray[i]=pv-loanBalanceArray[(i+1)*12];annualEquity[i]=equityArray[i]-equityArray[i-1];}
+if(i==0){totalCashflow[0]=+0;annualEquity[0]=+pv-loanBalanceArray[(i+1)*12]-+downPayment;}
+annualExpenseArray[i]=(monthlyExpense*12).toFixed(2);annualIncomeArray[i]=(monthlyIncome*12).toFixed(2);annualCashflowArray[i]=+(cashflow*12).toFixed(2);totalCashflow[i+1]=(+annualCashflowArray[i]+ +totalCashflow[i]);console.log("totalCashflow: "+totalCashflow[i]);console.log("annualCashflowArray: "+annualCashflowArray[i]);annualROIArray[i]=(annualCashflowArray[i]/totalCashNeeded)*100;console.log("annualROIArray: "+annualROIArray[i]);propertyValueArray[i]=pv;}}
+function expenseChart(){if(w<500){Highcharts.chart('expenseChart',{chart:{plotBackgroundColor:null,backgroundColor:null,plotBorderWidth:null,plotShadow:false,type:'pie',spacingBottom:10,spacingTop:10,spacingLeft:10,spacingRight:10,},credits:{enabled:false},title:{text:null},plotOptions:{pie:{size:175,}},series:[{type:'pie',showInLegend:true,dataLabels:{enabled:false,distance:5,formatter:function(){if(this.y>0){return this.point.name+": $"+this.y.toFixed(0);}},style:{color:(Highcharts.theme&&Highcharts.theme.contrastTextColor)||'black'}},allowPointSelect:true,keys:['name','y','selected','sliced'],data:[['Property Taxes',+monthlyPropertyTaxes,false],['P&I',+paymentsAndInterest,false],['Water & Sewer',+waterSewer,false],['Insurance',+insurance,false],['Electricity',+electricity,false],['Garbage',+garbage,false],['PMI',+PMI,false],['HOA',+HOA,false],['Other',+otherExpenses,false],['Vacancy',grossMonthlyIncome*+vacancy,false],['Maintenance',grossMonthlyIncome*+maintenance,false],['CapEx',grossMonthlyIncome*+capEx,false],['Management',grossMonthlyIncome*+managementFees,false]]}],legend:{labelFormat:'{name}: ${y:.0f}',},tooltip:{pointFormat:'<b>${point.y:.2f} ({point.percentage:.1f}%)</b>'},});}else{Highcharts.chart('expenseChart',{chart:{plotBackgroundColor:null,backgroundColor:null,plotBorderWidth:null,plotShadow:false,type:'pie'},credits:{enabled:false},title:{text:null},plotOptions:{pie:{}},series:[{type:'pie',dataLabels:{enabled:true,formatter:function(){if(this.y>0){return this.point.name+": $"+this.y.toFixed(0);}},style:{color:(Highcharts.theme&&Highcharts.theme.contrastTextColor)||'black'}},allowPointSelect:true,keys:['name','y','selected','sliced'],data:[['Property Taxes',+monthlyPropertyTaxes,false],['P&I',+paymentsAndInterest,false],['Water & Sewer',+waterSewer,false],['Insurance',+insurance,false],['Electricity',+electricity,false],['Garbage',+garbage,false],['PMI',+PMI,false],['HOA',+HOA,false],['Other',+otherExpenses,false],['Vacancy',grossMonthlyIncome*+vacancy,false],['Maintenance',grossMonthlyIncome*+maintenance,false],['CapEx',grossMonthlyIncome*+capEx,false],['Management',grossMonthlyIncome*+managementFees,false]]}],tooltip:{pointFormat:'<b>${point.y:.2f} ({point.percentage:.1f}%)</b>'},showInLegend:false,});}}
+function incomeChart(){Highcharts.chart('incomeChart',{chart:{plotBackgroundColor:null,backgroundColor:null,type:'area'},title:{text:null},credits:{enabled:false},xAxis:{allowDecimals:false,title:{text:'Years'},labels:{formatter:function(){return this.value;}}},yAxis:{title:{text:null},labels:{formatter:function(){return'$'+this.value;}}},tooltip:{pointFormat:'{series.name}: <b>${point.y:,.0f}</b><br>'},plotOptions:{area:{pointStart:1,marker:{enabled:false,symbol:'circle',radius:2,states:{hover:{enabled:true}}}}},series:[{name:'Cashflow Break-Even Point',color:'#333',data:[totalCashNeeded,totalCashNeeded,totalCashNeeded,totalCashNeeded,totalCashNeeded,totalCashNeeded,totalCashNeeded,totalCashNeeded,totalCashNeeded,totalCashNeeded,totalCashNeeded,totalCashNeeded,totalCashNeeded,totalCashNeeded,totalCashNeeded,totalCashNeeded,totalCashNeeded,totalCashNeeded,totalCashNeeded,totalCashNeeded,totalCashNeeded,totalCashNeeded,totalCashNeeded,totalCashNeeded,totalCashNeeded,totalCashNeeded,totalCashNeeded,totalCashNeeded,totalCashNeeded,totalCashNeeded,]},{name:'Total Cashflow',data:[totalCashflow[0],totalCashflow[1],totalCashflow[2],totalCashflow[3],totalCashflow[4],totalCashflow[5],totalCashflow[6],totalCashflow[7],totalCashflow[8],totalCashflow[9],totalCashflow[10],totalCashflow[11],totalCashflow[12],totalCashflow[13],totalCashflow[14],totalCashflow[15],totalCashflow[16],totalCashflow[17],totalCashflow[18],totalCashflow[19],totalCashflow[20],totalCashflow[21],totalCashflow[22],totalCashflow[23],totalCashflow[24],totalCashflow[25],totalCashflow[26],totalCashflow[27],totalCashflow[28],totalCashflow[29]]}]});}
+function amortizationChart(){Highcharts.chart('amortizationChart',{chart:{plotBackgroundColor:null,backgroundColor:null,type:'area'},title:{text:null},credits:{enabled:false},xAxis:{allowDecimals:false,title:{text:'Years'},labels:{formatter:function(){return this.value;}}},yAxis:{title:{text:null},labels:{formatter:function(){return'$'+this.value;}}},tooltip:{pointFormat:'{series.name}: <b>${point.y:,.0f}</b><br>'},plotOptions:{area:{pointStart:1,marker:{enabled:false,symbol:'circle',radius:2,states:{hover:{enabled:true}}}}},series:[{name:'Property Value',data:[propertyValueArray[0],propertyValueArray[1],propertyValueArray[2],propertyValueArray[3],propertyValueArray[4],propertyValueArray[5],propertyValueArray[6],propertyValueArray[7],propertyValueArray[8],propertyValueArray[9],propertyValueArray[10],propertyValueArray[11],propertyValueArray[12],propertyValueArray[13],propertyValueArray[14],propertyValueArray[15],propertyValueArray[16],propertyValueArray[17],propertyValueArray[18],propertyValueArray[19],propertyValueArray[20],propertyValueArray[21],propertyValueArray[22],propertyValueArray[23],propertyValueArray[24],propertyValueArray[25],propertyValueArray[26],propertyValueArray[27],propertyValueArray[28],propertyValueArray[29]]},{name:'Equity',data:[equityArray[0],equityArray[1],equityArray[2],equityArray[3],equityArray[4],equityArray[5],equityArray[6],equityArray[7],equityArray[8],equityArray[9],equityArray[10],equityArray[11],equityArray[12],equityArray[13],equityArray[14],equityArray[15],equityArray[16],equityArray[17],equityArray[18],equityArray[19],equityArray[20],equityArray[21],equityArray[22],equityArray[23],equityArray[24],equityArray[25],equityArray[26],equityArray[27],equityArray[28],equityArray[29]]},{name:'Loan Balance',color:'#dddddd',data:[loanBalanceArray[1*12],loanBalanceArray[2*12],loanBalanceArray[3*12],loanBalanceArray[4*12],loanBalanceArray[5*12],loanBalanceArray[6*12],loanBalanceArray[7*12],loanBalanceArray[8*12],loanBalanceArray[9*12],loanBalanceArray[10*12],loanBalanceArray[11*12],loanBalanceArray[12*12],loanBalanceArray[13*12],loanBalanceArray[14*12],loanBalanceArray[15*12],loanBalanceArray[16*12],loanBalanceArray[17*12],loanBalanceArray[18*12],loanBalanceArray[19*12],loanBalanceArray[20*12],loanBalanceArray[21*12],loanBalanceArray[22*12],loanBalanceArray[23*12],loanBalanceArray[24*12],loanBalanceArray[25*12],loanBalanceArray[26*12],loanBalanceArray[27*12],loanBalanceArray[28*12],loanBalanceArray[29*12],loanBalanceArray[30*12]]}]});}
+function futureOutlook(){$("td").remove();$(".yearTH").remove();for(let i=30;i>0;i--){var td=document.createElement("th");td.setAttribute("class","yearTH");var content=document.createTextNode(i);td.appendChild(content);var element=document.getElementById("tYears");element.insertAdjacentElement('afterend',td);td=document.createElement("td");content=document.createTextNode("$"+parseFloat(annualExpenseArray[i-1]).toFixed(2).replace(/./g,function(c,y,a){return y&&c!=="."&&((a.length-y)%3===0)?','+c:c;}));td.appendChild(content);element=document.getElementById("tExpenses");element.insertAdjacentElement('afterend',td);td=document.createElement("td");content=document.createTextNode("$"+parseFloat(annualIncomeArray[i-1]).toFixed(2).replace(/./g,function(c,y,a){return y&&c!=="."&&((a.length-y)%3===0)?','+c:c;}));td.appendChild(content);element=document.getElementById("tIncome");element.insertAdjacentElement('afterend',td);td=document.createElement("td");content=document.createTextNode("$"+parseFloat(annualCashflowArray[i-1]).toFixed(2).replace(/./g,function(c,y,a){return y&&c!=="."&&((a.length-y)%3===0)?','+c:c;}));td.appendChild(content);element=document.getElementById("tCashflow");element.insertAdjacentElement('afterend',td);td=document.createElement("td");content=document.createTextNode(parseFloat(annualROIArray[i-1]).toFixed(3)+"%");td.appendChild(content);element=document.getElementById("tROI");element.insertAdjacentElement('afterend',td);td=document.createElement("td");content=document.createTextNode("$"+parseFloat(propertyValueArray[i-1]).toFixed(2).replace(/./g,function(c,y,a){return y&&c!=="."&&((a.length-y)%3===0)?','+c:c;}));td.appendChild(content);element=document.getElementById("tPV");element.insertAdjacentElement('afterend',td);td=document.createElement("td");if(i>yearsAmortized){content=document.createTextNode("$"+parseFloat(0).toFixed(2).replace(/./g,function(c,y,a){return y&&c!=="."&&((a.length-y)%3===0)?','+c:c;}));}else{content=document.createTextNode("$"+parseFloat(+loanBalanceArray[i*12]).toFixed(2).replace(/./g,function(c,y,a){return y&&c!=="."&&((a.length-y)%3===0)?','+c:c;}));}
+td.appendChild(content);element=document.getElementById("tLoanBalance");element.insertAdjacentElement('afterend',td);td=document.createElement("td");content=document.createTextNode("$"+parseFloat(equityArray[i-1]).toFixed(2).replace(/./g,function(c,y,a){return y&&c!=="."&&((a.length-y)%3===0)?','+c:c;}));td.appendChild(content);element=document.getElementById("tEquity");element.insertAdjacentElement('afterend',td);td=document.createElement("td");content=document.createTextNode(parseFloat((equityArray[i-1]/propertyValueArray[i-1])*100).toFixed(3)+"%");td.appendChild(content);element=document.getElementById("tEquityPercentage");element.insertAdjacentElement('afterend',td);td=document.createElement("td");content=document.createTextNode(parseFloat((annualCashflowArray[i-1]+(annualEquity[i-1]))/+totalCashNeeded*100).toFixed(3)+"%");td.appendChild(content);element=document.getElementById("tEquityCashflowROI");element.insertAdjacentElement('afterend',td);td=document.createElement("td");content=document.createTextNode("$"+parseFloat(annualCashflowArray[i-1]+(annualEquity[i-1])).toFixed(2).replace(/./g,function(c,y,a){return y&&c!=="."&&((a.length-y)%3===0)?','+c:c;}));td.appendChild(content);element=document.getElementById("tEquityCashflow");element.insertAdjacentElement('afterend',td);if(i>=30){i=21;}
+else if(i>21){i=21;}
+else if(i>16){i=16;}
+else if(i>11){i=11;}
+else if(i>6){i=6;}
+else if(i>3){i=3;}}}
+var justValidate=false
+function Submit(){if(justValidate){justValidate=false
+return false}
+justValidate=true
+preventDefault();}
+function propertyValidate(){justValidate=true
+if(propertyInfo.checkValidity()){$('#secondTab').trigger('click');getPropertyInfo();}}
+function purchaseValidate(){justValidate=true
+if(purchaseInfo.checkValidity()){$('#thirdTab').trigger('click');getPurchaseInfo();}}
+function rentalValidate(){justValidate=true
+if(rentalInfo.checkValidity()){if(purchaseInfo.checkValidity()&&propertyInfo.checkValidity()){$('#fourthTab').trigger('click');getRentalInfo();calculate();}else{alert("Warning: You must have missed required fields on previous tabs. \n\nPlease go through each tab and fill out required fields.");}}}
+document.getElementById('expenseBtn').onclick=function(){expenseChart();document.getElementById('expense').style.display='inline-block';document.getElementById('income').style.display='none';document.getElementById('amortization').style.display='none';document.getElementById('future').style.display='none';document.getElementById('outputPanelAD').style.display='none';};document.getElementById('incomeBtn').onclick=function(){incomeChart();document.getElementById('income').style.display='inline-block';document.getElementById('expense').style.display='none';document.getElementById('amortization').style.display='none';document.getElementById('future').style.display='none';document.getElementById('outputPanelAD').style.display='none';};document.getElementById('amortizationBtn').onclick=function(){amortizationChart();document.getElementById('amortization').style.display='inline-block';document.getElementById('income').style.display='none';document.getElementById('expense').style.display='none';document.getElementById('future').style.display='none';document.getElementById('outputPanelAD').style.display='none';};document.getElementById('futureBtn').onclick=function(){futureOutlook();document.getElementById('future').style.display='inline-block';document.getElementById('income').style.display='none';document.getElementById('amortization').style.display='none';document.getElementById('expense').style.display='none';document.getElementById('outputPanelAD').style.display='none';};$(document).ready(function(){function close_accordion_section(){$('.accordion .accordion-section-title').removeClass('active');$('.accordion .accordion-section-content').slideUp(600).removeClass('open');}
+$(document).on('click','#firstTab, #secondTab, #thirdTab, #fourthTab',function(e){var currentAttrValue=$(this).attr('href');if($(e.target).is('.active')){close_accordion_section();}else{close_accordion_section();$(this).addClass('active');$('.accordion '+currentAttrValue).slideDown(300).addClass('open');}
+e.preventDefault();});});document.getElementById('cashPurchaseIN').addEventListener('change',function(e){cashPurchaseCheck=document.getElementById("cashPurchaseIN").checked;if(cashPurchaseCheck){document.getElementById('loanInfo').style.display='none';document.getElementById('downPercentIN').value="1.00";document.getElementById('interestRateIN').value=0.0;document.getElementById('yearsIN').value="0";}else{document.getElementById('loanInfo').style.display='block';document.getElementById('downPercentIN').value="";document.getElementById('interestRateIN').value="";document.getElementById('yearsIN').value="";}});document.getElementById('futureAssumptionsIN').addEventListener('change',function(e){futureAssumptionsCheck=document.getElementById("futureAssumptionsIN").checked;if(futureAssumptionsCheck==false){document.getElementById('futureAssumptions').style.display='none';document.getElementById('rentIncreaseIN').value="";document.getElementById('appreciationIN').value="";document.getElementById('expenseIncreaseIN').value="";}else{document.getElementById('futureAssumptions').style.display='block';}});window.addEventListener('load',function(e){futureAssumptionsCheck=document.getElementById("futureAssumptionsIN").checked;if(futureAssumptionsCheck==false){document.getElementById('futureAssumptions').style.display='none';}else{document.getElementById('futureAssumptions').style.display='block';}});</script>
+<script>$(function(){$('[data-toggle="tooltip"]').tooltip()})</script>
+</body>
+</html>
