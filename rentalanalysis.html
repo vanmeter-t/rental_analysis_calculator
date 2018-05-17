@@ -887,33 +887,21 @@ margin-top: 4px;
                           <td>$100,000</td>
                           <td>$100,000</td> -->
                         </tr>
-                        <tr>
+                        <!-- <tr>
                           <th id="tEquityCashflowROI" style="position:absolute; width: 125px; background-color: rgb(226, 226, 226);" scope="row">Total ROI
                             <i class="fa fa-info-circle" style="color: grey; margin-left: .2em;" aria-hidden="true" data-toggle="tooltip" container:
                               'body' data-placement="top" data-html="true" title="Total ROI is the percentage of return on total upfront money calculated by annual cashflow + annual equity gained from the tenant(s) paying down the mortgage all divided by the total upfront money needed."></i>
                           </th>
 
-                          <!-- <td>$100,000</td>
-                          <td>$100,000</td>
-                          <td>$100,000</td>
-                          <td>$100,000</td>
-                          <td>$100,000</td>
-                          <td>$100,000</td>
-                          <td>$100,000</td> -->
+
                         </tr>
                         <tr>
                           <th id="tEquityCashflow" style="position:absolute; width: 125px; background-color: #eee;" scope="row">Total Return
                             <i class="fa fa-info-circle" style="color: grey; margin-left: .2em;" aria-hidden="true" data-toggle="tooltip" container:
                               'body' data-placement="top" data-html="true" title="Total Return is the annual cashflow + annual equity gained from tenant(s) paying down the mortgage."></i>
                           </th>
-                          <!-- <td>$100,000</td>
-                          <td>$100,000</td>
-                          <td>$100,000</td>
-                          <td>$100,000</td>
-                          <td>$100,000</td>
-                          <td>$100,000</td>
-                          <td>$100,000</td> -->
-                        </tr>
+
+                        </tr> -->
 
 
                         <tr style="display: block; width: 125px; height: 0px;"></tr>
@@ -2000,7 +1988,7 @@ margin-top: 4px;
           if (i > yearsAmortized * 12) {
             loanBalanceArray[i] = 0;
           } else {
-            loanBalanceArray[i] = +loanBalanceArray[i - 1] - +monthlyPrinciplePayments[i - 1];
+            loanBalanceArray[i] = Math.abs(+loanBalanceArray[i - 1] - +monthlyPrinciplePayments[i - 1]);
           }
         }
         for (let i = 0; i < 30; i++) {
@@ -2587,19 +2575,19 @@ margin-top: 4px;
           element = document.getElementById("tEquityPercentage");
           element.insertAdjacentElement('afterend', td);
 
-          td = document.createElement("td");
-          content = document.createTextNode(parseFloat((annualCashflowArray[i - 1] + (annualEquity[i - 1])) / +totalCashNeeded * 100).toFixed(3) + "%");
-          td.appendChild(content);
-          element = document.getElementById("tEquityCashflowROI");
-          element.insertAdjacentElement('afterend', td);
+          // td = document.createElement("td");
+          // content = document.createTextNode(parseFloat((annualCashflowArray[i - 1] + (annualEquity[i - 1])) / +totalCashNeeded * 100).toFixed(3) + "%");
+          // td.appendChild(content);
+          // element = document.getElementById("tEquityCashflowROI");
+          // element.insertAdjacentElement('afterend', td);
 
-          td = document.createElement("td");
-          content = document.createTextNode("$" + parseFloat(annualCashflowArray[i - 1] + (annualEquity[i - 1])).toFixed(2).replace(/./g, function (c, y, a) {
-            return y && c !== "." && ((a.length - y) % 3 === 0) ? ',' + c : c;
-          }));
-          td.appendChild(content);
-          element = document.getElementById("tEquityCashflow");
-          element.insertAdjacentElement('afterend', td);
+          // td = document.createElement("td");
+          // content = document.createTextNode("$" + parseFloat(annualCashflowArray[i - 1] + (annualEquity[i - 1])).toFixed(2).replace(/./g, function (c, y, a) {
+          //   return y && c !== "." && ((a.length - y) % 3 === 0) ? ',' + c : c;
+          // }));
+          // td.appendChild(content);
+          // element = document.getElementById("tEquityCashflow");
+          // element.insertAdjacentElement('afterend', td);
 
           if (i >= 30) {
             i = 21;
