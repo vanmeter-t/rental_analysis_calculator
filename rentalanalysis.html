@@ -62,13 +62,15 @@ Author: Deven Swiergiel
     .accordion {
       overflow: hidden;
       /* box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.25); */
-      border: solid none;
+     border: none;
 margin-top: 4px;
       margin-bottom: 5px;
       position: relative;
       /* border-radius: 6px; */
       background: #ffffff;
-      box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+      border-radius: 5px;
+      /* box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23); */
+      box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 
 
     }
@@ -86,21 +88,41 @@ margin-top: 4px;
       transition: all linear 0.15s;
       /* Type */
       font-size: 1.200em;
+      font-weight: 500;
+      border-top-right-radius: 5px;
+      border-top-left-radius: 5px;
       /* text-shadow: 0px 1px 0px #1a1a1a; */
       color: #333;
 
     }
 
 
-    .accordion-section-title.active,
-    .accordion-section-title:hover {
-      background: #375a7f;
+    .accordion-section-title.active{
+      background: #40739e;
+      color: #eee;
+      
+      /* Type */
+      text-decoration: none;
+
+    }
+    button.accordion-section-title:hover{
+      box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+      text-decoration: none;
+
+    }
+    a.accordion-section-title:hover{
+      background: #40739e;
       color: #eee;
       /* Type */
       text-decoration: none;
 
     }
 
+    button.accordion-section-title{
+      font-weight: 500;
+      border-radius: 50px!important;
+
+    }
     .accordion-section:last-child .accordion-section-title {
       border-bottom: none;
 
@@ -209,7 +231,7 @@ margin-top: 4px;
       /* margin-top: 50px; */
       padding: 50px 10px 50px 10px;
       /* background: #d8d8d8; */
-      background-color: #222f3e;
+      background-color: #28384b;
   color: black!important;
       
       /* color: rgb(214, 214, 214); */
@@ -236,10 +258,11 @@ margin-top: 4px;
     }
 
 
-.card {
-  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+    .card {
+      /* box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23); */
+      box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 
-}
+    }
 
     .col-md-8 {
       width: 1000px!important;
@@ -274,7 +297,9 @@ margin-top: 4px;
     }
 
     button {
+      /* box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23); */
       box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+
       border: none!important;
       
     }
@@ -288,7 +313,13 @@ margin-top: 4px;
       /* background-color: #40739e!important; */
       /* background-color: #222f3e; */
      /* background-color: buttonface; */
-     color: #eee;
+     color: #333;
+     font-weight: 500;
+     
+    }
+    .btn:hover{
+      box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+
     }
 
     #yearsIN {
@@ -313,7 +344,7 @@ margin-top: 4px;
       margin-top: 3px;
       background-color: white;
       color: rgb(63, 63, 63);
-      border-radius: 0;
+      border-radius: 5px;
     }
 
     .innerOutput {
@@ -363,7 +394,7 @@ margin-top: 4px;
     }
 
     .btn {
-      margin-top: 5px;
+      margin: 5px;
       border-radius: 50px!important;
     }
 
@@ -759,10 +790,10 @@ margin-top: 4px;
                 <!-- <div class="row justify-content-md-center mb-2" style="max-width: 285px; margin: 0 auto"> -->
                 <div class="chartButtons row justify-content-md-center justify-content-center mb-2">
                   <div class="btn-group-sm justify-content-md-center justify-content-center" role="group" aria-label="Basic example">
-                    <button id="expenseBtn" type="button" class="btn btn-secondary">Expenses</button>
-                    <button id="incomeBtn" type="button" class="btn btn-secondary">Cashflow</button>
-                    <button id="amortizationBtn" type="button" class="btn btn-secondary">Amortization</button>
-                    <button id="futureBtn" type="button" class="btn btn-secondary">Future Outlook</button>
+                    <button id="expenseBtn" type="button" class="btn ">Expenses</button>
+                    <button id="incomeBtn" type="button" class="btn ">Cashflow</button>
+                    <button id="amortizationBtn" type="button" class="btn ">Amortization</button>
+                    <button id="futureBtn" type="button" class="btn">Future Outlook</button>
                   </div>
 
                   <div id="expense" style="display: none;">
